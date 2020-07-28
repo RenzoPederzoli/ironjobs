@@ -53,7 +53,7 @@ mongoose
         console.log(`Connected succesfully to "${self.connection.name}"`)
       })
     .then(() => {
-        User.create({email:'fefwef', name:'wdedw'})
+        User.create({email:'uhdweodhnow', name:'bdnewodnwe'})
             .then(()=> {
                 mongoose.connection.close()
             })
