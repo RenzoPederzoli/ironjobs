@@ -8,7 +8,14 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const mongoose = require('mongoose')
-const User = require('./models/User')
+
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/deploymentExample'
+console.log('Connecting DB to ', MONGODB_URI)
+
+mongoose
+  .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then((x) => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`))
+  .catch((err) => console.error('Error connecting to mongo', err));
 
 const app = express();
 
@@ -63,24 +70,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.json({message:'error'});
 });
-
-const MONGODB_URI = 'mongodb://localhost:27017/testdb'
-
-mongoose
-    .connect(MONGODB_URI, {
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    })
-    .then(self => {
-        console.log(`Connected succesfully to "${self.connection.name}"`)
-      })
-    .then(() => {
-        User.create({email:'uhdweodhnow', name:'bdnewodnwe'})
-            .then(()=> {
-                mongoose.connection.close()
-            })
-        })
-    .catch(error => console.error('Error connecting to database', error))
 
 module.exports = app;
