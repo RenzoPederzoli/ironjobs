@@ -1,9 +1,9 @@
 import React, {Fragment, useState, useEffect} from 'react';
 import {NavLink, Switch, Route} from 'react-router-dom';
 import actions from "./services/actions"
-import Home from './componenets/Home'
-import LogIn from './componenets/auth/login'
-import SignUp from './componenets/auth/signup';
+import Home from './components/Home'
+import LogIn from './components/auth/login'
+import SignUp from './components/auth/signup';
 import {NotificationContainer,NotificationManager} from 'react-notifications'
 
 function App() {

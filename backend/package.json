@@ -12,12 +12,8 @@
     "express": "~4.16.1",
     "express-session": "^1.17.1",
     "http-errors": "~1.6.3",
-<<<<<<< HEAD
     "indeed-scraper": "^3.1.2",
-    "jade": "~1.11.0",
     "linkedin-jobs-scraper": "^2.1.2",
-=======
->>>>>>> b31ca6dd5967a566d7f8708977b845b1ad2f9e04
     "mongoose": "^5.9.26",
     "morgan": "~1.9.1",
     "passport": "^0.4.1",
