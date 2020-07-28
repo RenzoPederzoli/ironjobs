@@ -1,34 +1,59 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
+const passport = require('passport')
+const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const cors = require('cors')
-const passport = require('./config/passport');
 
 const mongoose = require('mongoose')
-const User = require('./models/User')
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/deploymentExample'
+console.log('Connecting DB to ', MONGODB_URI)
+
+mongoose
+  .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then((x) => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`))
+  .catch((err) => console.error('Error connecting to mongo', err));
 
 const app = express();
 
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
+app.use(
+  cors({
+    credentials: true,
+    origin: ["http://localhost:3000", "https://clientnetlify.netlify.app"] //Swap this with the client url 
+  })
+);
+
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: true,
+    secret: "secret",
+    cookie: { maxAge: 1000 * 60 * 60 }
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+// app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const authRouter = require('./routes/auth')
 
 app.use('/', indexRouter);
+app.use('/', authRouter)
 app.use('/users', usersRouter);
 
-app.use(passport.initialize());
-app.use(passport.session());
+// let client = path.join(__dirname + '../public/index.html')
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,26 +68,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json({message:'error'});
 });
-
-const MONGODB_URI = 'mongodb://localhost/testdb'
-
-mongoose
-    .connect(MONGODB_URI, {
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    })
-    .then(self => {
-        console.log(`Connected succesfully to "${self.connection.name}"`)
-      })
-    .then(() => {
-        User.create({email:'324324', name:'222432432422'})
-            .then(()=> {
-                mongoose.connection.close()
-            })
-        })
-    .catch(error => console.error('Error connecting to database', error))
 
 module.exports = app;

@@ -1,6 +1,5 @@
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const { Schema, model } = require("mongoose");
-
 const PLM = require("passport-local-mongoose");
 
 const userSchema = new Schema(
@@ -8,7 +7,7 @@ const userSchema = new Schema(
     email: String,
     name: String,
     googleId: String,
-    imageUrl: String,
+    imageUrl: String
   },
   {
     timestamps: true,
