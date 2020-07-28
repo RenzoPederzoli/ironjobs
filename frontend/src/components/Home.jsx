@@ -1,10 +1,11 @@
 import React from 'react';
 
-const Home = () => {
+const Home = (props) => {
+    {console.log(props)}
     return ( 
-        <di>
+        <div>
             Home Component
-        </di>
+        </div>
      );
 }
  
