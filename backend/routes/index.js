@@ -1,9 +1,8 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const { LinkedinScraper, events, IData } = require('linkedin-jobs-scraper');
 
 router.get(`/search-results/:location/:searchTerm`, async function(req, res, next){
-
    
         // Each scraper instance is associated with one browser.
         // Concurrent queries will run on different pages within the same browser instance.
@@ -75,3 +74,4 @@ router.get(`/search-results/:location/:searchTerm`, async function(req, res, nex
 })
 
 module.exports = router;
+
