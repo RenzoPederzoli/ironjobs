@@ -7,7 +7,8 @@ const userSchema = new Schema(
     email: String,
     name: String,
     googleId: String,
-    imageUrl: String
+    imageUrl: String,
+    addedJobs: []
   },
   {
     timestamps: true,

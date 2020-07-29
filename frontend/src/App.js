@@ -52,8 +52,8 @@ function App() {
         <Route exact path="/" render={props => <Home {...props} />} />
         <Route exact path="/login" render={(props) => <LogIn setUser={setUser} {...props} />} />
         <Route exact path="/signup" render={(props) => <SignUp setUser={setUser} {...props} />} />
-        <Route exact path="/search" render={(props) => <JobSearch setUser={setUser} {...props} />} />
-        <Route exact path="/search-results/:location/:searchTerm" render={(props) => <SearchResults setUser={setUser} {...props} />} />
+        <Route exact path="/search" render={(props) => <JobSearch {...props} />} />
+        <Route exact path="/search-results/:location/:searchTerm" render={(props) => <SearchResults user={user} {...props} />} />
       </Switch>
 
       <NotificationContainer/>

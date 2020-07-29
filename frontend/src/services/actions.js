@@ -22,6 +22,9 @@ const actions = {
   },
   getLinkedinJobs: async (location, searchTerm) => {
     return await service.get(`/search-results/${location}/${searchTerm}`)
+  },
+  addJob: async (job) => {
+    return await service.post(`/users/addjob`, job)
   }
 };
 

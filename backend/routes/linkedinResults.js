@@ -15,7 +15,7 @@ router.get(`/search-results/:location/:searchTerm`, async function(req, res, nex
     
         // Add listeners for scraper events
         scraper.on(events.scraper.data, (data) => {
-            console.log(
+            // console.log(
                 // data.description.length,
                 // `Query='${data.query}'`,
                 // `Location='${data.location}'`,
@@ -28,7 +28,7 @@ router.get(`/search-results/:location/:searchTerm`, async function(req, res, nex
                 // `function='${data.jobFunction}'`,
                 // `employmentType='${data.employmentType}'`,
                 // `industries='${data.industries}'`,
-            );
+            // );
             allData.push(data)
         });
     
@@ -37,8 +37,6 @@ router.get(`/search-results/:location/:searchTerm`, async function(req, res, nex
         });
         scraper.on(events.scraper.end, () => {
             console.log('All done!');
-            console.log(allData)
-            console.log(allData.length)
         });
     
         // Add listeners for puppeteer browser events
@@ -69,7 +67,7 @@ router.get(`/search-results/:location/:searchTerm`, async function(req, res, nex
     
         // Close browser
         await scraper.close();
-        res.json({message:allData})
+        res.json(allData)
     
 })
 
