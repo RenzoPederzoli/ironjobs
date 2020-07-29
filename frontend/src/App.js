@@ -5,6 +5,8 @@ import Home from './componenets/Home'
 import LogIn from './componenets/auth/login'
 import SignUp from './componenets/auth/signup';
 import {NotificationContainer,NotificationManager} from 'react-notifications'
+import GoogleSignUp from './componenets/auth/googlesingup'
+import GoogleLogIn from './componenets/auth/googlelogin'
 
 function App() {
   let [user, setUser] = useState({})
@@ -21,14 +23,14 @@ function App() {
     NotificationManager.info('Logged Out Succesfully')
     let res = await actions.logOut();
     console.log(res)
-    setUser({}); //FIX
+    setUser({});
   };
 
   return (
     <div>
       IronJobs
       <nav>
-      <NavLink to="/"> Home </NavLink>
+        <NavLink to="/"> Home </NavLink>
         {user?.email ? (
           <Fragment>
             <NavLink onClick={logOut} to="/"> Log Out </NavLink>
@@ -40,6 +42,8 @@ function App() {
             <NavLink to="/login"> Log In </NavLink>
           </Fragment>
         )}
+        {!user?.email && <GoogleSignUp setUser={setUser} />}
+        {!user?.email && <GoogleLogIn setUser={setUser} />}
       </nav>
 
       <Switch>
