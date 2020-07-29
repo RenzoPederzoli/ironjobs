@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import axios from 'axios';
+import actions from "../services/actions.js";
 
 const SearchResults = (props) => {
     const INDEED_KEY = process.env.REACT_APP_INDEED_API_KEY
@@ -32,6 +33,19 @@ const SearchResults = (props) => {
     //   }
     //   getJobs();    
     // }, [])
+
+    useEffect(() => {
+      function getJobs2() {
+        actions.getLinkedinJobs(props.match.params.location, props.match.params.searchTerm)
+          .then((response)=>{
+            console.log(response)
+          })
+          .catch((error)=>{
+            console.log(error)
+          })
+      }
+      getJobs2();    
+    }, [])
 
     console.log(props)
     
