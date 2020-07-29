@@ -6,7 +6,7 @@ import { NotificationManager } from 'react-notifications';
 const SearchResults = (props) => {
   const INDEED_KEY = process.env.REACT_APP_INDEED_API_KEY;
 
-  let [jobs, setJobs] = useState([]);
+  let [jobs, setJobs] = useState([{title:"test1"},{title:"test2"}]);
 
   // useEffect(() => {
   //   async function getJobs() {
@@ -47,8 +47,8 @@ const SearchResults = (props) => {
           props.match.params.searchTerm
         )
         .then((response) => {
-          setJobs(response.data);
-          console.log(response.data);
+          //setJobs(response?.data);
+          console.log(response);
         })
         .catch((error) => {
           console.log(error);
