@@ -37,8 +37,6 @@ router.get(`/search-results/:location/:searchTerm`, async function(req, res, nex
         });
         scraper.on(events.scraper.end, () => {
             console.log('All done!');
-            console.log(allData)
-            console.log(allData.length)
         });
     
         // Add listeners for puppeteer browser events
@@ -69,7 +67,7 @@ router.get(`/search-results/:location/:searchTerm`, async function(req, res, nex
     
         // Close browser
         await scraper.close();
-        res.json({message:allData})
+        // res.json({message:allData})
     
 })
 

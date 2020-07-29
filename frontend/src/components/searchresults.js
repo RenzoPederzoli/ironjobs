@@ -46,8 +46,6 @@ const SearchResults = (props) => {
       }
       getJobs2();    
     }, [])
-
-    console.log(props)
     
     return (
       <Fragment>
