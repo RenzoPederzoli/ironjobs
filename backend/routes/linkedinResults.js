@@ -57,13 +57,13 @@ router.get(`/search-results/:location/:searchTerm`, async function(req, res, nex
     
         // Run queries concurrently
         let jobs = scraper.run(
-                req.params.searchTerm,
-                req.params.location,
-                {
-                    paginationMax: 1,
-                }
-            )
-            await jobs
+          req.params.searchTerm,
+          req.params.location,
+          {
+            paginationMax: 1,
+          }
+        )
+        await jobs
     
         // Close browser
         await scraper.close();
