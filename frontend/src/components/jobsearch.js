@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import axios from 'axios';
+// import axios from 'axios';
 
 const JobSearch = (props) => {
     let [location, setLocation] = useState("");
