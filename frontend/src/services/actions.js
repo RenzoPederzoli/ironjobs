@@ -19,6 +19,9 @@ const actions = {
   },
   logOut: async () => {
     return await service.get('/logout')
+  },
+  getLinkedinJobs: async (location, searchTerm) => {
+    return await service.get(`/search-results/${location}/${searchTerm}`)
   }
 };
 
