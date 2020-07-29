@@ -1,19 +1,19 @@
 var express = require('express');
 var router = express.Router();
-const indeed = require('indeed-scraper');
+// const indeed = require('indeed-scraper');
 const { LinkedinScraper, events, IData } = require('linkedin-jobs-scraper');
 
-const queryOptions = {
-  host: 'www.indeed.com',
-  query: 'javascript',
-  city: 'fort lauderdale, fl',
-  radius: '25',
-  level: '',
-  jobType: '',
-  maxAge: '3',
-  sort: 'date',
-  limit: 1
-};
+// const queryOptions = {
+//   host: 'www.indeed.com',
+//   query: 'javascript',
+//   city: 'fort lauderdale, fl',
+//   radius: '25',
+//   level: '',
+//   jobType: '',
+//   maxAge: '3',
+//   sort: 'date',
+//   limit: 1
+// };
 
 (async () => {
     // Each scraper instance is associated with one browser.
@@ -23,7 +23,7 @@ const queryOptions = {
         // slowMo: 100,
     });
 
-    let allData=[['beruifberofueb']]
+    let allData=[]
 
     // Add listeners for scraper events
     scraper.on(events.scraper.data, (data) => {
@@ -75,7 +75,7 @@ const queryOptions = {
             "software engineer",
             "new york city",
             {
-                paginationMax: 10,
+                paginationMax: 1,
             }
         ),
         // scraper.run(
