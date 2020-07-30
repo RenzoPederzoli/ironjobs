@@ -1,31 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const { LinkedinScraper, events, IData } = require('linkedin-jobs-scraper');
-// const indeed = require('indeed-scraper');
-
-// router.get(`/search-results/:location/:searchTerm`, async function(req, res, next){
-
-//     let indeedJobs =[]
-
-//     const queryOptions = {
-//         host: 'www.indeed.com',
-//         query: 'javascript',
-//         city: 'fort lauderdale, fl',
-//         radius: '25',
-//         level: '',
-//         jobType: '',
-//         maxAge: '3',
-//         sort: 'date',
-//         limit: 25
-//         };
-    
-        
-//         indeed.query(queryOptions).then(response => {
-//             indeedJobs.push(response)
-//             res.json(indeedJobs)
-            
-//         })
-//     })
 
 router.get(`/search-results/:location/:searchTerm`, async function(req, res, next){
         

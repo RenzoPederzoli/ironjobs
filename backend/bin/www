@@ -28,9 +28,6 @@ var server = http.createServer(app);
 server.listen(port, function(){
   console.log('listening on port ' + port)})
 
-var io = require('socket.io').listen(server);
-require('../sockets/base')(io);  
-
 server.on('error', onError);
 server.on('listening', onListening);
 

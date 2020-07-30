@@ -51,7 +51,7 @@ const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth')
 
 // app.use('/', indeedResultsRouter);
-app.use('/search', linkedinResultsRouter);
+app.use('/', linkedinResultsRouter);
 app.use('/', authRouter)
 app.use('/users', usersRouter);
 
