@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useEffect } from "react";
-import axios from "axios";
 import actions from "../../services/actions.js";
 import { NotificationManager } from 'react-notifications';
 
@@ -8,6 +7,7 @@ const SearchResults = (props) => {
 
   let [jobs, setJobs] = useState([]);
   let [originalJobsArray, setOriginalJobsArray] = useState([]);
+  let [loading,setLoading] = useState(true)
 
   useEffect(() => {
     function getJobs2() {
@@ -19,6 +19,11 @@ const SearchResults = (props) => {
         .then((response) => {
           setJobs(response?.data);
           setOriginalJobsArray(response?.data)
+          setLoading(false)
+          if (response.data.length === 0) {
+            NotificationManager.warning("No Jobs found")
+            props.history.push('/search')
+          }
           console.log(response);
         })
         .catch((error) => {
@@ -106,7 +111,10 @@ const SearchResults = (props) => {
       <button onClick={filterByDate}>Filter by date xx</button>
       <button onClick={filterBySeniorityLevel}>Filter by seniority level xx</button>
       <br/>
-      {printJobs()}
+      {loading ? 
+      ( <Fragment>Loading...</Fragment> )
+        :
+      ( printJobs() ) }
     </Fragment>
   )
 };

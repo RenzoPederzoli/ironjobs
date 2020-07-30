@@ -69,6 +69,7 @@ router.get(`/search-results/:location/:searchTerm`, async function(req, res, nex
         // Close browser
         await scraper.close();
         res.json(allData)
+    
 })
         
 

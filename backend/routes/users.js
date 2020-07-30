@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const User = require('../models/User');
 
-/* GET users listing. */
+/* POST job to user */
 router.post('/addjob', isAuth, function(req, res, next) {
   let updated = [...req.user.addedJobs]
   updated.push(req.body)
