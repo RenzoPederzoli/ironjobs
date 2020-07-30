@@ -27,6 +27,14 @@ const actions = {
   getLinkedinJobs: async (location, searchTerm) => {
     return await service.get(`/search-results/${location}/${searchTerm}`)
   }
+  // getLinkedinJobs: async (location,searchTerm)=>{
+  //   socket.emit('get data', {location, searchTerm})
+  //   socket.on('recieve data', (data=>{
+  //     console.log('data recieved', data)
+  //     return data
+  //   }))
+  // },
+  // socket:socket
 };
 
 export default actions;
