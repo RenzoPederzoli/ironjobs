@@ -13,7 +13,7 @@ module.exports = function (io) {
                 // slowMo: 100,
             });
 
-            let allData = []
+            // let allData = []
 
             // Add listeners for scraper events
             scraper.on(events.scraper.data, (data) => {
@@ -32,7 +32,7 @@ module.exports = function (io) {
                     // `industries='${data.industries}'`,
                 );
                 socket.emit('recieve data', data)
-                allData.push(data)
+                // allData.push(data)
             });
 
             scraper.on(events.scraper.error, (err) => {
