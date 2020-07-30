@@ -2,13 +2,13 @@ import React, {Fragment, useState, useEffect} from 'react';
 import {NavLink, Switch, Route} from 'react-router-dom';
 import actions from "./services/actions"
 import Home from './components/Home'
-import JobSearch from './components/jobsearch'
-import SearchResults from './components/searchresults'
 import LogIn from './components/auth/login'
 import SignUp from './components/auth/signup';
 import {NotificationContainer,NotificationManager} from 'react-notifications'
 import GoogleSignUp from './components/auth/googlesingup'
 import GoogleLogIn from './components/auth/googlelogin'
+import JobSearch from './components/jobsearch/jobsearch'
+import SearchResults from './components/jobsearch/searchresults'
 
 function App() {
   let [user, setUser] = useState({})

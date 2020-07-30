@@ -15,7 +15,7 @@ function LogIn(props) {
         NotificationManager.success("Logged In Succesfully!")
         console.log(user.data);
         props.setUser({ ...user.data });
-        props.history.push("/") //takes you back to home after login
+        props.history.goBack() //takes you back to home after login
       })
       .catch((response) => {
         NotificationManager.error("Error message","We couldn't find a match, signup if you dont have an account")

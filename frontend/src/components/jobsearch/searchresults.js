@@ -1,43 +1,14 @@
 import React, { Fragment, useState, useEffect } from "react";
 import axios from "axios";
-import actions from "../services/actions.js";
+import actions from "../../services/actions.js";
 import { NotificationManager } from 'react-notifications';
 
 const SearchResults = (props) => {
   const INDEED_KEY = process.env.REACT_APP_INDEED_API_KEY;
 
-  let [jobs, setJobs] = useState([{title:"test1"},{title:"test2"}]);
+  let [jobs, setJobs] = useState([]);
 
-  // useEffect(() => {
-  //   async function getJobs() {
-  //     let jobList = await axios({
-  //       "method":"GET",
-  //       "url":"https://indeed-com.p.rapidapi.com/search/jobs",
-  //       "headers":{
-  //       "content-type":"application/octet-stream",
-  //       "x-rapidapi-host":"indeed-com.p.rapidapi.com",
-  //       "x-rapidapi-key":INDEED_KEY,
-  //       "useQueryString":true
-  //       },"params":{
-  //       "sort":"relevance",
-  //       "location":props.match.params.location,
-  //       "offset":"0",
-  //       "query":props.match.params.searchTerm,
-  //       "radius":"50",
-
-  //       }
-  //       })
-  //       .then((response)=>{
-  //         console.log(JSON.stringify(response.data.results))
-  //       })
-  //       .catch((error)=>{
-  //         console.log(error)
-  //       })
-  //   }
-  //   getJobs();
-  // }, [])
-  
-  // console.log(props);
+  // {title:"test1"},{title:"test2"}
 
   useEffect(() => {
     function getJobs2() {
@@ -47,7 +18,7 @@ const SearchResults = (props) => {
           props.match.params.searchTerm
         )
         .then((response) => {
-          //setJobs(response?.data);
+          setJobs(response?.data);
           console.log(response);
         })
         .catch((error) => {
