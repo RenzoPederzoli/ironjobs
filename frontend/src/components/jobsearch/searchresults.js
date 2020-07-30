@@ -6,7 +6,7 @@ const SearchResults = (props) => {
   const INDEED_KEY = process.env.REACT_APP_INDEED_API_KEY;
 
   let [jobs, setJobs] = useState([]);
-  // {title:"test1"},{title:"test2"}
+  let [loading,setLoading] = useState(true)
 
   useEffect(() => {
     function getJobs2() {
@@ -17,6 +17,11 @@ const SearchResults = (props) => {
         )
         .then((response) => {
           setJobs(response?.data);
+          setLoading(false)
+          if (response.data.length === 0) {
+            NotificationManager.warning("No Jobs found")
+            props.history.push('/search')
+          }
           console.log(response);
         })
         .catch((error) => {
@@ -55,7 +60,10 @@ const SearchResults = (props) => {
   return (
     <Fragment>
       Search Results <br/>
-      {printJobs()}
+      {loading ? 
+      ( <Fragment>Loading...</Fragment> )
+        :
+      ( printJobs() ) }
     </Fragment>
   )
 };

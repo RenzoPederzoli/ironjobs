@@ -9,6 +9,7 @@ import GoogleSignUp from './components/auth/googlesingup'
 import GoogleLogIn from './components/auth/googlelogin'
 import JobSearch from './components/jobsearch/jobsearch'
 import SearchResults from './components/jobsearch/searchresults'
+import Profile from './components/profile/profile';
 
 function App() {
   let [user, setUser] = useState({})
@@ -35,6 +36,7 @@ function App() {
         <NavLink to="/"> Home </NavLink>
         {user?.email ? (
           <Fragment>
+            <NavLink to="/profile">Profile</NavLink>
             <NavLink onClick={logOut} to="/"> Log Out </NavLink>
             <p>Hello, {user.email}</p>
           </Fragment>
@@ -54,6 +56,7 @@ function App() {
         <Route exact path="/signup" render={(props) => <SignUp setUser={setUser} {...props} />} />
         <Route exact path="/search" render={(props) => <JobSearch {...props} />} />
         <Route exact path="/search-results/:location/:searchTerm" render={(props) => <SearchResults user={user} {...props} />} />
+        <Route exact path="/profile" render={(props) => <Profile user={user} {...props} />} />
       </Switch>
 
       <NotificationContainer/>
