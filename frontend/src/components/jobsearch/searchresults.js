@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useEffect } from "react";
-import axios from "axios";
 import actions from "../../services/actions.js";
 import { NotificationManager } from 'react-notifications';
 
@@ -7,7 +6,6 @@ const SearchResults = (props) => {
   const INDEED_KEY = process.env.REACT_APP_INDEED_API_KEY;
 
   let [jobs, setJobs] = useState([]);
-
   // {title:"test1"},{title:"test2"}
 
   useEffect(() => {
