@@ -41,7 +41,7 @@ router.get(`/search-results/:location/:searchTerm`, async function(req, res, nex
     
         // Add listeners for scraper events
         scraper.on(events.scraper.data, (data) => {
-            console.log(
+            // console.log(
                 // data.description.length,
                 // `Query='${data.query}'`,
                 // `Location='${data.location}'`,
@@ -54,7 +54,7 @@ router.get(`/search-results/:location/:searchTerm`, async function(req, res, nex
                 // `function='${data.jobFunction}'`,
                 // `employmentType='${data.employmentType}'`,
                 // `industries='${data.industries}'`,
-            );
+            // );
             allData.push(data)
         });
     

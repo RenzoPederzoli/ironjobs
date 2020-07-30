@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import io from "socket.io-client";
 
 let baseURL;
 
@@ -8,9 +7,6 @@ process.env.NODE_ENV === 'production'
   : (baseURL = 'http://localhost:5000');
 
 const service = axios.create({ withCredentials: true, baseURL });
-
-// var socket = io.connect(baseURL)
-
 
 const actions = {
   isLoggedIn: async () => {
@@ -25,8 +21,8 @@ const actions = {
   logOut: async () => {
     return await service.get('/logout')
   },
-  getIndeedJobs: async (location, searchTerm) => {
-    return await service.get(`/search-results/${location}/${searchTerm}`)
+  addJob: async (job) => {
+    return await service.post(`/users/addjob`, job)
   },
   getLinkedinJobs: async (location, searchTerm) => {
     return await service.get(`/search-results/${location}/${searchTerm}`)
@@ -40,4 +36,5 @@ const actions = {
   // },
   // socket:socket
 };
+
 export default actions;
