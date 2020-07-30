@@ -1,7 +1,7 @@
 import React, {Fragment,NavLink} from 'react';
 
 const Profile = (props) => {
-  if(!props.user.email){ 
+  if(!props.user.email){ // this might be buggy
     props.history.push('/log-in') 
   }
 
@@ -15,7 +15,7 @@ const Profile = (props) => {
     <div>
       <h2>Profile {props.user.email}</h2>
       Saved Jobs <br/>
-      {props.user.addedJobs ? 
+      {props.user.addedJobs.length !== 0 ? 
         ( printJobs() )
         :
         ( <Fragment>Start looking for jobs now!</Fragment> )

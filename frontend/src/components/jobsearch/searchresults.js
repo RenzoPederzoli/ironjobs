@@ -39,6 +39,7 @@ const SearchResults = (props) => {
     else {
       actions.addJob(jobs[i])
         .then((res) => {
+          NotificationManager.success("Added Job!")
           console.log(res)
         })
         .catch((error) => {
