@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import Autocomplete from 'react-google-autocomplete'
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
+import { NotificationManager } from 'react-notifications';
 import jobsArr from './job-phrase-list.json'
 
 const JobSearch = (props) => {
@@ -10,14 +11,27 @@ const JobSearch = (props) => {
     const changeLocation = (s) => {
         setLocation(s)
     }
-    const handleSubmit = e => {
-        props.history.push(`/search-results/${location}/${searchTerm}`)
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      if (!location) {
+        NotificationManager.warning("Please choose a location")
+        return
+      }
+      else if (!searchTerm) {
+        NotificationManager.warning("Please choose a job")
+        return
+      }
+      else
+       props.history.push(`/search-results/${location}/${searchTerm}`)
     }
 
     const handleOnSearch = (string, cached) => {
       // onSearch returns the string searched and if
       // the values are cached. If the values are cached
       // "cached" contains the cached values, if not, returns false
+      if (!cached) {
+        setSearchTerm(string)
+      }
       console.log(string, cached);
     }
 

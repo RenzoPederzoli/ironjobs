@@ -46,11 +46,11 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 const linkedinResultsRouter = require('./routes/linkedinResults');
-// const indeedResultsRouter = require('./routes/indeedResults');
+const indeedResultsRouter = require('./routes/indeedResults');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth')
 
-// app.use('/', indeedResultsRouter);
+app.use('/', indeedResultsRouter);
 app.use('/', linkedinResultsRouter);
 app.use('/', authRouter)
 app.use('/users', usersRouter);

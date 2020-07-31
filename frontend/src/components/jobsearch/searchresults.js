@@ -7,19 +7,22 @@ const SearchResults = (props) => {
 
   let [jobs, setJobs] = useState([]);
   let [originalJobsArray, setOriginalJobsArray] = useState([]);
+  let [moreResultsLoading, setMoreResultsLoading] = useState(false)
   let [loading,setLoading] = useState(true)
 
   useEffect(() => {
-    function getJobs2() {
+    function getJobs(aid) {
       actions
-        .getLinkedinJobs(
+        .getIndeedJobs(
           props.match.params.location,
           props.match.params.searchTerm
         )
         .then((response) => {
-          setJobs(response?.data);
-          setOriginalJobsArray(response?.data)
+          aid = response.data
+          setJobs(response.data);
+          setOriginalJobsArray(response.data)
           setLoading(false)
+          setMoreResultsLoading(true)
           if (response.data.length === 0) {
             NotificationManager.warning("No Jobs found")
             props.history.push('/search')
@@ -29,8 +32,24 @@ const SearchResults = (props) => {
         .catch((error) => {
           console.log(error);
         });
+      actions
+        .getLinkedinJobs(
+          props.match.params.location,
+          props.match.params.searchTerm
+        )
+        .then((response) => {
+          let temp = [...aid]
+          temp = temp.concat(response.data)
+          setJobs(temp);
+          setOriginalJobsArray(temp)
+          setMoreResultsLoading(false)
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-    getJobs2();
+    getJobs();
   }, []);
 
   const addJob = (i) => {
@@ -116,6 +135,11 @@ const SearchResults = (props) => {
       ( <Fragment>Loading...</Fragment> )
         :
       ( printJobs() ) }
+
+      {moreResultsLoading ? 
+      ( <Fragment>Loading more results...</Fragment> )
+        :
+      ( null ) }
     </Fragment>
   )
 };

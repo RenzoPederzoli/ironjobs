@@ -2,9 +2,7 @@ const express = require('express');
 const router = express.Router();
 const indeed = require('indeed-scraper');
 
-router.get(`/search-results/:location/:searchTerm`, async function(req, res, next){
-
-    let indeedJobs =[]
+router.get(`/indeed-results/:location/:searchTerm`, async function(req, res, next){
 
     const queryOptions = {
         host: 'www.indeed.com',
@@ -20,9 +18,7 @@ router.get(`/search-results/:location/:searchTerm`, async function(req, res, nex
     
         
         indeed.query(queryOptions).then(response => {
-            indeedJobs.push(response)
-            res.json(indeedJobs)
-            
+            res.json(response) 
         })
     })
 
