@@ -12,14 +12,13 @@ router.get(`/indeed-results/:location/:searchTerm`, async function(req, res, nex
         level: '',
         jobType: '',
         maxAge: '',
-        sort: 'date',
-        limit: 50
+        sort: 'relevance',
+        limit: 25
         };
     
         
         indeed.query(queryOptions).then(response => {
-            res.json(response)
-            
+            res.json(response) 
         })
     })
 
