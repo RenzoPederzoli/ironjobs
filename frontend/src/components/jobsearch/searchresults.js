@@ -8,16 +8,18 @@ const SearchResults = (props) => {
   let [jobs, setJobs] = useState([]);
   let [originalJobsArray, setOriginalJobsArray] = useState([]);
   let [loading,setLoading] = useState(true)
+  let temp=[]
 
   useEffect(() => {
-    function getJobs2() {
+    function getJobs() {
       actions
-        .getLinkedinJobs(
+        .getIndeedJobs(
           props.match.params.location,
           props.match.params.searchTerm
         )
         .then((response) => {
-          setJobs(response?.data);
+          temp = response?.data
+          setJobs(response.data);
           setOriginalJobsArray(response?.data)
           setLoading(false)
           if (response.data.length === 0) {
@@ -29,8 +31,24 @@ const SearchResults = (props) => {
         .catch((error) => {
           console.log(error);
         });
-    }
-    getJobs2();
+        actions.getLinkedinJobs(
+          props.match.params.location,
+          props.match.params.searchTerm,
+          temp
+        )
+        .then((response) => {
+          temp=temp.concat(response.data)
+          setJobs(temp);
+          setOriginalJobsArray(temp)
+          setLoading(false)
+          console.log(response);
+          console.log(jobs)
+        })
+        .catch((error) => {
+          console.log(error);
+    })
+  }
+    getJobs();
   }, []);
 
   const addJob = (i) => {
@@ -98,7 +116,7 @@ const SearchResults = (props) => {
     return jobs.map((job,i) => {
       return (
         <Fragment key={i}>
-          {job.title} {new Date(job.date).toDateString()} {job.senorityLevel}<button onClick={() => {addJob(i)}}> Add </button> <br/> 
+          {job.title} {job.company} {new Date(job.date).toDateString()} {job.senorityLevel}<button onClick={() => {addJob(i)}}> Add </button> <br/> 
         </Fragment>
       )
     })

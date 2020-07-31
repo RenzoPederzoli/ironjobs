@@ -26,6 +26,9 @@ const actions = {
   },
   getLinkedinJobs: async (location, searchTerm) => {
     return await service.get(`/search-results/${location}/${searchTerm}`)
+  },
+  getIndeedJobs: async (location, searchTerm) => {
+    return await service.get(`/indeed-results/${location}/${searchTerm}`)
   }
   // getLinkedinJobs: async (location,searchTerm)=>{
   //   socket.emit('get data', {location, searchTerm})

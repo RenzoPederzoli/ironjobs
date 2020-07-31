@@ -18,6 +18,8 @@ const JobSearch = (props) => {
       // onSearch returns the string searched and if
       // the values are cached. If the values are cached
       // "cached" contains the cached values, if not, returns false
+      if(!cached)
+        setSearchTerm(string)
       console.log(string, cached);
     }
 
