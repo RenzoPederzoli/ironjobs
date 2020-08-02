@@ -4,16 +4,12 @@ import { NotificationManager } from 'react-notifications';
 
 const SearchResults = (props) => {
 
-  let [jobsObj, setJobsObj] = useState({
-
-    filteredBySeniorityLevel:false,
-    filteredByDate: false,
-    jobsArray:[]
-
-  });
+  let [jobs, setJobs] = useState([]);
   let [originalJobsArray, setOriginalJobsArray] = useState([]);
   let [moreResultsLoading, setMoreResultsLoading] = useState(false)
   let [loading,setLoading] = useState(true)
+  let [filteredByDate, setFilteredByDate] = useState(false)
+  let [filteredBySeniorityLevel, setFilteredBySeniorityLevel] = useState(false)
 
   useEffect(() => {
     function getJobs(aid) {
@@ -24,10 +20,8 @@ const SearchResults = (props) => {
         )
         .then((response) => {
           aid = response.data
-          // let jobsObjCopy={...jobsObj}
-          // jobsObjCopy.jobsArray=response.data
-          // setJobsObj(jobsObjCopy)
-          setJobsObj({...jobsObj, jobsArray:response.data});
+          // setJobsObj({...jobsObj, jobsArray:response.data});
+          setJobs(response.data)
           setOriginalJobsArray(response.data)
           setLoading(false)
           setMoreResultsLoading(true)
@@ -50,10 +44,8 @@ const SearchResults = (props) => {
           response.data.map(job=>formatDate(job,today)) //format linkedin jod-posting dates to match indeed's
           let temp = [...aid]
           temp = temp.concat(response.data)
-          // let jobsObjCopy={...jobsObj}
-          // jobsObjCopy.jobsArray=temp
-          // setJobsObj(jobsObjCopy)
-          setJobsObj({...jobsObj, jobsArray:temp});
+          // setJobsObj({...jobsObj, jobsArray:temp});
+          setJobs(temp)
           setOriginalJobsArray(temp)
           setMoreResultsLoading(false)
           console.log(response);
@@ -82,35 +74,34 @@ const SearchResults = (props) => {
   // }
 
   const sortByDate = () =>{
-    let jobsCopy={...jobsObj}
-    jobsCopy.jobsArray.sort((a,b)=>{
+    let jobsCopy=[...jobs]
+    jobsCopy.sort((a,b)=>{
       if(a.postDate[0]==='J'){return -1}
       if(a.postDate[0]==='T'){return -1}
       if(parseInt(a.postDate.split(' ')[0]) < parseInt(b.postDate.split(' ')[0])) { return -1; }
       if(parseInt(a.postDate.split(' ')[0]) > parseInt(b.postDate.split(' ')[0])) { return 1; }
       return 0;
     })
-    setJobsObj(jobsCopy)
-    console.log(jobsObj)
+    setJobs(jobsCopy)
     printJobs()
   }
 
-  // const sortByCompany = () =>{
-  //   let jobsCopy=[...jobs]
-  //   jobsCopy.sort(function(a, b){
-  //     if(a.company < b.company) { return -1; }
-  //     if(a.company > b.company) { return 1; }
-  //     return 0;
-  // })
-  //   setJobs(jobsCopy)
-  //   printJobs()
-  // }
+  const sortByCompany = () =>{
+    let jobsCopy=[...jobs]
+    jobsCopy.sort(function(a, b){
+      if(a.company < b.company) { return -1; }
+      if(a.company > b.company) { return 1; }
+      return 0;
+  })
+    setJobs(jobsCopy)
+    printJobs()
+  }
 
   const filterByDate = range =>{
-    // let jobsCopy={...jobsObj}
+    if(!filteredByDate){
     let jobsFilteredByDate = []
 
-    jobsObj.jobsArray.map((job)=>{
+    jobs.map((job)=>{
       if(job.postDate[0]=='T' || job.postDate[0]=='J'){
         jobsFilteredByDate.push(job)
       }
@@ -118,22 +109,35 @@ const SearchResults = (props) => {
         jobsFilteredByDate.push(job)
       }
     })
-    // jobsCopy.jobsArray=jobsFilteredByDate
-    setJobsObj({...jobsObj, jobsArray:jobsFilteredByDate})
+    setFilteredByDate(true)
+    setJobs(jobsFilteredByDate)
     // printJobs()
+    }
+    else{
+      setJobs(originalJobsArray)
+      setFilteredByDate(false)
+      // printJobs()
+    }
   }
 
-  // const filterBySeniorityLevel = () =>{
-  //   let jobsFilteredBySeniorityLevel = []
+  const filterBySeniorityLevel = () =>{
+    if(!filteredBySeniorityLevel){
+    let jobsFilteredBySeniorityLevel = []
 
-  //   jobs.map((job)=>{
-  //     if (job.senorityLevel ==='Entry level'){
-  //       jobsFilteredBySeniorityLevel.push(job)
-  //     }
-  //   })
-  //   setJobs(jobsFilteredBySeniorityLevel)
-  //   printJobs()
-  // }
+    jobs.map((job)=>{
+      if (job.senorityLevel ==='Entry level'){
+        jobsFilteredBySeniorityLevel.push(job)
+      }
+    })
+    setJobs(jobsFilteredBySeniorityLevel)
+    setFilteredBySeniorityLevel(true)
+    // printJobs()
+    } 
+    else{
+      setJobs(originalJobsArray)
+      setFilteredBySeniorityLevel(false)
+    }
+  }
 
   const formatDate = (job, today) =>{
 
@@ -166,29 +170,15 @@ const SearchResults = (props) => {
 
   }
 
-  const setDateFilter = () =>{
-    // console.log('dsdsd')
-    // let jobsCopy = {...jobsObj}
-    // jobsCopy.filteredByDate = !jobsCopy.filteredByDate
-    // console.log(jobsCopy)
-    
-    setJobsObj({
-      ...jobsObj, 
-      filteredByDate: false
-    });
-  
-    // setJobsObj(jobsCopy)
-    console.log(jobsObj)
-    // printJobs()
+  const changeFilteredByDate = () =>{
+    setFilteredByDate(!filteredByDate)
+    console.log(filteredByDate)
+    printJobs()
   }
 
   const printJobs = () => {
-
-    if(jobsObj.filteredByDate){
-      filterByDate(14)
-    }
-
-    return jobsObj.jobsArray.map((job,i) => {
+  
+    return jobs.map((job,i) => {
       return (
         <Fragment key={i}>
         {job.company} {job.title} {job.postDate} {job.senorityLevel} 
@@ -204,8 +194,8 @@ const SearchResults = (props) => {
       Search Results <br/>
       <button onClick={sortByDate}>Sort by date</button>
       {/* <button onClick={sortByCompany}>Sort by company</button> */}
-      <button onClick={setDateFilter}>Filter by date xx</button>
-      {/* <button onClick={filterBySeniorityLevel}>Filter by seniority level xx</button> */}
+      <button onClick={()=>filterByDate(14)}>Filter by date xx</button>
+      <button onClick={filterBySeniorityLevel}>Filter by seniority level xx</button>
       <br/>
       {loading ? 
       ( <Fragment>Loading...</Fragment> )
