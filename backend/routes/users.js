@@ -6,9 +6,9 @@ const User = require('../models/User');
 router.post('/addjob', isAuth, function(req, res, next) {
   let updated = [...req.user.addedJobs]
   updated.push(req.body)
-  User.findByIdAndUpdate({_id: req.user._id}, {addedJobs: updated})
-    .then(() => {
-      res.status(200).send("Added Job!")
+  User.findByIdAndUpdate(req.user._id, {addedJobs: updated}, {new: true})
+    .then((user) => {
+      res.status(200).send({user})
     })
     .catch((err) => {
       console.log(req.user)

@@ -1,22 +1,23 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import JobSearch from './jobsearch/jobsearch.js'
 import '../Styles/home.css'
+import { Link } from 'react-router-dom'
+import FooterMobile from './FooterMobile.js';
+
+const popularJobs = [
+  "Front-end Engineer",
+  "Java Developer",
+  "Data Scientist",
+  "Product Manager",
+  "DevOps Engineer",
+  "Data Engineer",
+  "Software Engineer",
+  "Speech Language Pathologist",
+  "Strategy Manager",
+  "Business Development Manager"
+]
 
 const Home = (props) => {
-
-  const popularJobs = [
-    "Front-end Engineer",
-    "Java Developer",
-    "Data Scientist",
-    "Product Manager",
-    "DevOps Engineer",
-    "Data Engineer",
-    "Software Engineer",
-    "Speech Language Pathologist",
-    "Strategy Manager",
-    "Business Development Manager"
-  ]
 
   const printPopJobs = () => {
     return popularJobs.map(item => {

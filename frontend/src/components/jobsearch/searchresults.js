@@ -8,8 +8,10 @@ const SearchResults = (props) => {
   let [originalJobsArray, setOriginalJobsArray] = useState([]);
   let [moreResultsLoading, setMoreResultsLoading] = useState(false)
   let [loading,setLoading] = useState(true)
-  let [filteredByDate, setFilteredByDate] = useState(false)
-  let [filteredBySeniorityLevel, setFilteredBySeniorityLevel] = useState(false)
+  let [filters, setFilters] = useState({
+    filterByDate:false, 
+    filterBySeniorotyLevel:false, 
+    sortedByDate:false})
 
   useEffect(() => {
     function getJobs(aid) {
@@ -64,6 +66,7 @@ const SearchResults = (props) => {
     else {
       actions.addJob(jobs[i])
         .then((res) => {
+          props.setUser(res.data.user)
           NotificationManager.success("Added Job!")
           console.log(res)
         })
@@ -73,69 +76,32 @@ const SearchResults = (props) => {
     }
   }
 
-  const sortByDate = () =>{
-    let jobsCopy=[...jobs]
-    jobsCopy.sort((a,b)=>{
-      if(a.postDate[0]==='J'){return -1}
-      if(a.postDate[0]==='T'){return -1}
-      if(parseInt(a.postDate.split(' ')[0]) < parseInt(b.postDate.split(' ')[0])) { return -1; }
-      if(parseInt(a.postDate.split(' ')[0]) > parseInt(b.postDate.split(' ')[0])) { return 1; }
-      return 0;
-    })
-    setJobs(jobsCopy)
-    // printJobs()
-  }
-
-  const sortByCompany = () =>{
-    let jobsCopy=[...jobs]
-    jobsCopy.sort(function(a, b){
-      if(a.company < b.company) { return -1; }
-      if(a.company > b.company) { return 1; }
-      return 0;
-  })
-    setJobs(jobsCopy)
-    // printJobs()
-  }
-
-  const filterByDate = () =>{
-    // if(filteredByDate){
-    let jobsFilteredByDate = []
-
-    jobs.map((job)=>{
-      if(job.postDate[0]=='T' || job.postDate[0]=='J'){
-        jobsFilteredByDate.push(job)
-      }
-      if(job.postDate.split(' ')[0] <= 14){
-        jobsFilteredByDate.push(job)
-      }
-    })
-    setJobs(jobsFilteredByDate)
-    // printJobs()
-    }
-    // else{
-    //   setJobs(originalJobsArray)
-    //   // printJobs()
-    // }
+  // const sortByDate = (arr) =>{
+  //   // let jobsCopy=[...jobs]
+  //   return arr.sort((a,b)=>{
+  //     if(a.postDate[0]==='J'){return -1}
+  //     if(a.postDate[0]==='T'){return -1}
+  //     if(parseInt(a.postDate.split(' ')[0]) < parseInt(b.postDate.split(' ')[0])) { return -1; }
+  //     if(parseInt(a.postDate.split(' ')[0]) > parseInt(b.postDate.split(' ')[0])) { return 1; }
+  //     return 0;
+  //   })
+  //   // setJobs(jobsCopy)
+  //   // printJobs()
+  //   return arr
   // }
 
-  const filterBySeniorityLevel = () =>{
-    if(!filteredBySeniorityLevel){
-    let jobsFilteredBySeniorityLevel = []
+  // const sortByCompany = () =>{
+  //   let jobsCopy=[...jobs]
+  //   jobsCopy.sort(function(a, b){
+  //     if(a.company < b.company) { return -1; }
+  //     if(a.company > b.company) { return 1; }
+  //     return 0;
+  // })
+  //   setJobs(jobsCopy)
+  //   // printJobs()
+  // }
 
-    jobs.map((job)=>{
-      if (job.senorityLevel ==='Entry level'){
-        jobsFilteredBySeniorityLevel.push(job)
-      }
-    })
-    setJobs(jobsFilteredBySeniorityLevel)
-    setFilteredBySeniorityLevel(true)
-    // printJobs()
-    } 
-    else{
-      setJobs(originalJobsArray)
-      setFilteredBySeniorityLevel(false)
-    }
-  }
+
 
   const formatDate = (job, today) =>{
 
@@ -168,23 +134,31 @@ const SearchResults = (props) => {
 
   }
 
-  const checkFilters = () =>{
-    if(filteredByDate){
-      filterByDate()
-    }
-  }
-
-  const changeFilteredByDate = () =>{
-    setFilteredByDate(!filteredByDate)
-    console.log(filteredByDate)
-    filterByDate()
+  const changeFilters = jobProp =>{
+    setFilters({...filters, 
+    [jobProp] : !filters[jobProp]})
+    console.log(filters)
   }
 
   const printJobs = () => {
-    
-    // checkFilters()
 
-    return jobs.map((job,i) => {
+    return jobs.filter(j => {
+      if(filters.filterBySeniorotyLevel) {
+        if(j.senorityLevel !== 'Entry level' || !j.senorityLevel)
+          return false
+      } 
+      if(filters.filterByDate && parseInt(j.postDate.split(' ')[0]) >= 14)
+        return false
+      return true
+    })
+    .sort((a,b) => {if(filters.sortedByDate){
+      if(a.postDate[0]==='J'){return -1}
+      if(a.postDate[0]==='T'){return -1}
+      if(parseInt(a.postDate.split(' ')[0]) < parseInt(b.postDate.split(' ')[0])) { return -1; }
+      if(parseInt(a.postDate.split(' ')[0]) > parseInt(b.postDate.split(' ')[0])) { return 1; }
+      return 0;
+    }})
+    .map((job,i) => {
       return (
         <Fragment key={i}>
         {job.company} {job.title} {job.postDate} {job.senorityLevel} 
@@ -198,10 +172,16 @@ const SearchResults = (props) => {
   return (
     <Fragment>
       <h4>Showing Results for '{props.match.params.searchTerm}' in {props.match.params.location}</h4>
-      <button onClick={sortByDate}>Sort by date</button>
+      <button onClick={() => {
+        changeFilters('sortedByDate')
+        }}>Sort by date</button>
       {/* <button onClick={sortByCompany}>Sort by company</button> */}
-      <button onClick={changeFilteredByDate}>Filter by date xx</button>
-      <button onClick={filterBySeniorityLevel}>Filter by seniority level xx</button>
+      <button onClick={() => {
+        changeFilters('filterByDate')
+        }}>Filter by date xx</button>
+      <button onClick={() => {
+        changeFilters('filterBySeniorotyLevel')
+        }}>Filter by seniority level xx</button>
       <br/>
       {loading ? 
       ( <Fragment>Loading...</Fragment> )

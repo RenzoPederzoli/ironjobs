@@ -2,7 +2,8 @@ import React, { Fragment, useState } from "react";
 import Autocomplete from 'react-google-autocomplete'
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { NotificationManager } from 'react-notifications';
-import jobsArr from './job-phrase-list.json'
+import jobsArr from './job-phrase-list.json';
+import "../../Styles/home.css"
 
 const JobSearch = (props) => {
     let [location, setLocation] = useState("");
@@ -49,10 +50,11 @@ const JobSearch = (props) => {
               onSelect={handleOnSelect}
               placeholder={"Job title, Keyword, or Company"}
               autoFocus
-              styling={{}}
+              showIcon={false}
             />
 
             <Autocomplete
+              placeholder="Location"
               onPlaceSelected={(place) => {
                 changeLocation(place.address_components[0].short_name)
                 // console.log(place);
@@ -60,7 +62,7 @@ const JobSearch = (props) => {
               componentRestrictions={{country: "us"}}
             />
 
-            <input className='submit-button' type="submit" value=""/>
+            <input className="submit-btn" type="submit" value=""/>
         </form>
       </Fragment>
     );
