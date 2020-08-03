@@ -1,3 +1,5 @@
+@import url(//db.onlinewebfonts.com/c/d02befc8fdd8e5315fb21fa7f38fd55a?family=Shree+Devanagari+714);
+
 * {
   font-family: 'Ubuntu', sans-serif;
 }
@@ -6,4 +8,111 @@ body {
   background-color: #F4F6FA;
   margin: 0;
   padding: 0;
+}
+
+.home-greeting {
+  font-size: 18px;
+  font-weight: bold;
+  position: relative;
+  color: #223577;
+  margin-top:8%;
+  margin-left: 9.5%;
+}
+
+.home-description {
+  font-family: 'Shree Devanagari 714';
+  width: 80%;
+  height: 12.8%;
+  color: #333232;
+  font-size: 25px;
+  position: relative;
+  margin: 0 0 0 9.5%;
+}
+
+ /* selector for 'search wrapper' */
+#root > div > div:nth-child(2) > form > div > div {
+  border-radius: 12px;
+  width: 58%;
+  height:6.5vh;
+  top: 30%;
+  margin-left: 9.5%;
+  box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
+}
+
+/* to fix pop up */
+#root > div > div:nth-child(2) > form > div > div > div {
+  background-color: white;
+  width: 100%;
+  border-radius: 12px;
+  z-index: 1;
+}
+
+ /* selector for 'search input' */
+#root > div > div:nth-child(2) > form > div > div > div > input {
+  padding-top: 10px;
+}
+
+/*selector for first placeholder */
+#root > div > div:nth-child(2) > form > div > div > div > input::placeholder {
+  font-size: 21px;
+  opacity: 70%;
+}
+
+/* selector for second search bar*/
+#root > div > div:nth-child(2) > form > input.pac-target-input {
+  width: 58%;
+  border: 1px solid #dfe1e5;
+  outline: none;
+  height: 6.5vh;
+  border-radius: 12px;
+  margin-left: 9.5%;
+  margin-top: 30px;
+  padding: 13px;
+  box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
+}
+
+/* selector for second search bar placeholder*/
+#root > div > div:nth-child(2) > form > input.pac-target-input::placeholder {
+  font-size: 21px;
+  opacity: 70%;
+}
+
+.submit-btn {
+  position: absolute;
+  top: 34%;
+  left: 73%;
+  width: 18%;
+  height: 15%;
+  background: transparent url('../images/submit-img.svg') 0% 0% no-repeat padding-box;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+}
+
+.pop-jobs-title {
+  font-size: 24px;
+  font-family: "Shree Devanagari 714";
+  font-weight: bold;
+  margin-left: 9.5%;
+  margin-bottom: 3%;
+}
+
+.pop-jobs-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 9.5%;
+}
+
+.pop-job {
+  border-radius: 12px;
+  background-color: white;
+  width: fit-content;
+  padding: 5px 7px;
+  margin: 5px;
+  text-decoration: none;
+  color: black;
+  font-size: 17px;
+  box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
 }

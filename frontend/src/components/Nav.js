@@ -1,10 +1,11 @@
 import React from 'react';
-import "../Styles/nav.css"
+import "../Styles/nav.css";
+import { Link } from 'react-router-dom'
 
 const Nav = () => {
   return (
     <div className="nav-wrapper">
-      <img className="mobile-logo" src={require("../images/mobile-logo.svg")}></img>
+      <Link to="/" className="mobile-logo"><img src={require("../images/mobile-logo.png")}></img></Link>
     </div>
   );
 };

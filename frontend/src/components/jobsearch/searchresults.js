@@ -64,6 +64,7 @@ const SearchResults = (props) => {
     else {
       actions.addJob(jobs[i])
         .then((res) => {
+          props.setUser(res.data.user)
           NotificationManager.success("Added Job!")
           console.log(res)
         })

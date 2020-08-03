@@ -16,8 +16,8 @@ const Profile = (props) => {
     if (!props.user.email) // Only added to prevent error
       return    
 
-    let index = Math.floor(Math.random() * props.user.addedJobs.length)
-    let obj = props.user.addedJobs[index]
+    let index = Math.floor(Math.random() * props.user.addedJobs?.length)
+    let obj = props.user?.addedJobs[index]
     let regexp = /^[A-Z,a-z]/
     console.log(obj.title.split(" ")[0])
     if (regexp.test(obj.title.split(" ")[0])) {
@@ -60,7 +60,7 @@ const Profile = (props) => {
 
   //apply some sort of basic filtering to this save jobs
   const printJobs = () => {
-    return props.user?.addedJobs.map((job,i) => {
+    return props.user.addedJobs?.map((job,i) => {
       return <p key={i}>{job.title} <a target="_blank" href={job.link || job.url}>Link</a><button onClick={(e) => removeJob(i,e)}>Remove</button></p>
     })
   }
@@ -68,8 +68,8 @@ const Profile = (props) => {
   const printSuggestions = () => {
     if (!props.user.email) //Only added to prevent message
       return
-    let lastInd = props.user?.addedJobs.length - 1
-    let place = props.user?.addedJobs[lastInd].location
+    let lastInd = props.user.addedJobs?.length - 1
+    let place = props.user.addedJobs[lastInd]?.location
     return suggestions.map((item) => {
       return <Link to={`/search-results/${place}/${item.word}`}>{item.word} <br/></Link>
     })
