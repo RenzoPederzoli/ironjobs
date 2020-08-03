@@ -10,3 +10,31 @@
   height: 4.6%;
   padding: 1.6% 0;
 }
+
+#desktop-homepage-signin-button{
+  display:none;
+}
+
+@media only screen and (min-width: 900px) {
+  
+  .nav-wrapper{
+    display:flex;
+    justify-content: space-between;
+    border:none;
+    width:100%;
+    margin:0;
+  }
+  .mobile-logo{
+    width:16.7%;
+    height:6.6%;
+    margin-left:10.1%;
+    margin-top:2.7vh;
+    padding:0;
+  }
+
+  #desktop-homepage-signin-button{
+    display: block;
+    margin-right: 3.6%;
+  }
+  
+}

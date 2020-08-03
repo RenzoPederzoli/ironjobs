@@ -14,17 +14,13 @@ const JobSearch = (props) => {
     }
     const handleSubmit = (e) => {
       e.preventDefault()
-      if (!searchTerm && !location) {
-        NotificationManager.warning("Please choose job and location!")
-        // return
+      if (!location) {
+        NotificationManager.warning("Please choose a location")
+        return
       }
       else if (!searchTerm) {
         NotificationManager.warning("Please choose a job")
-        // return
-      }
-      else if (!location) {
-        NotificationManager.warning("Please choose a location!")
-        // return
+        return
       }
       else
        props.history.push(`/search-results/${location}/${searchTerm}`)
@@ -52,7 +48,7 @@ const JobSearch = (props) => {
               items={jobsArr}
               onSearch={handleOnSearch}
               onSelect={handleOnSelect}
-              placeholder={"Search"}
+              placeholder={"Job title, Keyword, or Company"}
               autoFocus
               showIcon={false}
             />

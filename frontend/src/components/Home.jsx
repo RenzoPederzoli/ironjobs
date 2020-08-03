@@ -27,14 +27,14 @@ const Home = (props) => {
 
   return ( 
     <div>
-      <p className="home-greeting"> Good Morning </p>
-      <p className="home-description"> Find Your Next Job Using The Centralized Job <br/> Search. </p>
-      <JobSearch {...props}/>
-      <p className="pop-jobs-title"> Popular Jobs </p>
+        <p className='home-greeting'>Good Morning</p>
+        <p className="home-description">Find Your Next Job Using The Centralized Job Search.</p>
+        <JobSearch {...props}/>
+        <img id='desktop-home-image' src={require('../images/desktop-home/desktop-home-image.png')} />
+        <p className="pop-jobs-title"> Popular Jobs </p>
       <div className="pop-jobs-container">
         {printPopJobs()}
       </div>
-      <FooterMobile {...props}/>
     </div>
   );
 }
