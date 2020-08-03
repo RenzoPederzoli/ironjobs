@@ -3,10 +3,13 @@ import actions from "../../services/actions.js";
 import { NotificationManager } from 'react-notifications';
 
 const SearchResults = (props) => {
+
   let [jobs, setJobs] = useState([]);
   let [originalJobsArray, setOriginalJobsArray] = useState([]);
   let [moreResultsLoading, setMoreResultsLoading] = useState(false)
   let [loading,setLoading] = useState(true)
+  let [filteredByDate, setFilteredByDate] = useState(false)
+  let [filteredBySeniorityLevel, setFilteredBySeniorityLevel] = useState(false)
 
   useEffect(() => {
     function getJobs(aid) {
@@ -17,7 +20,8 @@ const SearchResults = (props) => {
         )
         .then((response) => {
           aid = response.data
-          setJobs(response.data);
+          // setJobsObj({...jobsObj, jobsArray:response.data});
+          setJobs(response.data)
           setOriginalJobsArray(response.data)
           setLoading(false)
           setMoreResultsLoading(true)
@@ -36,9 +40,12 @@ const SearchResults = (props) => {
           props.match.params.searchTerm
         )
         .then((response) => {
+          let today = new Date()
+          response.data.map(job=>formatDate(job,today)) //format linkedin jod-posting dates to match indeed's
           let temp = [...aid]
           temp = temp.concat(response.data)
-          setJobs(temp);
+          // setJobsObj({...jobsObj, jobsArray:temp});
+          setJobs(temp)
           setOriginalJobsArray(temp)
           setMoreResultsLoading(false)
           console.log(response);
@@ -68,39 +75,53 @@ const SearchResults = (props) => {
 
   const sortByDate = () =>{
     let jobsCopy=[...jobs]
-    jobsCopy.sort((a,b)=>new Date(b.date) - new Date(a.date))
+    jobsCopy.sort((a,b)=>{
+      if(a.postDate[0]==='J'){return -1}
+      if(a.postDate[0]==='T'){return -1}
+      if(parseInt(a.postDate.split(' ')[0]) < parseInt(b.postDate.split(' ')[0])) { return -1; }
+      if(parseInt(a.postDate.split(' ')[0]) > parseInt(b.postDate.split(' ')[0])) { return 1; }
+      return 0;
+    })
     setJobs(jobsCopy)
     printJobs()
   }
 
-  const filterByDate = () =>{
-    let today = new Date()
-    let month = today.getMonth().toString()
-    if(month.length==1){
-      month="0"+month
-    }
-    let day = today.getDate().toString()
-    let year = today.getFullYear().toString()
-    let fToday = year+month+day
-    let jobsFilteredByDate = []
-    jobs.map((job)=>{
-      let jobDate = new Date(job.date)
-      let jobMonth = jobDate.getMonth().toString()
-      if(jobMonth.length==1){
-        jobMonth = "0"+jobMonth
-      }
-      let jobDay = jobDate.getDate().toString()
-      let jobYear = jobDate.getFullYear().toString()
-      let fJobDate = jobYear+jobMonth+jobDay
-      if(Number(fToday) - Number(fJobDate) < 15){
-        jobsFilteredByDate.push(job)
-      }
-    })
-    setJobs(jobsFilteredByDate)
+  const sortByCompany = () =>{
+    let jobsCopy=[...jobs]
+    jobsCopy.sort(function(a, b){
+      if(a.company < b.company) { return -1; }
+      if(a.company > b.company) { return 1; }
+      return 0;
+  })
+    setJobs(jobsCopy)
     printJobs()
   }
 
+  const filterByDate = range =>{
+    if(!filteredByDate){
+    let jobsFilteredByDate = []
+
+    jobs.map((job)=>{
+      if(job.postDate[0]=='T' || job.postDate[0]=='J'){
+        jobsFilteredByDate.push(job)
+      }
+      if(job.postDate.split(' ')[0] <= range){
+        jobsFilteredByDate.push(job)
+      }
+    })
+    setFilteredByDate(true)
+    setJobs(jobsFilteredByDate)
+    // printJobs()
+    }
+    else{
+      setJobs(originalJobsArray)
+      setFilteredByDate(false)
+      // printJobs()
+    }
+  }
+
   const filterBySeniorityLevel = () =>{
+    if(!filteredBySeniorityLevel){
     let jobsFilteredBySeniorityLevel = []
 
     jobs.map((job)=>{
@@ -109,14 +130,60 @@ const SearchResults = (props) => {
       }
     })
     setJobs(jobsFilteredBySeniorityLevel)
+    setFilteredBySeniorityLevel(true)
+    // printJobs()
+    } 
+    else{
+      setJobs(originalJobsArray)
+      setFilteredBySeniorityLevel(false)
+    }
+  }
+
+  const formatDate = (job, today) =>{
+
+    Object.defineProperty(job, 'postDate',
+      Object.getOwnPropertyDescriptor(job, 'date'));
+    delete job['date'];
+
+    let jobDate = new Date(job.postDate)
+    
+    let diffTime = Math.abs(today - jobDate)
+    let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    
+      if(diffDays === 0){
+        job['postDate'] = "Today"
+        return job['postDate']
+      }
+
+      if(diffDays>30){
+        job['postDate'] = "30+ days ago"
+        return job['postDate']
+      }
+
+      if(diffDays === 1){
+        job['postDate'] = `${diffDays} day ago`
+        return job['postDate']
+      }
+
+      job['postDate'] = `${diffDays} days ago`
+      return job['postDate']
+
+  }
+
+  const changeFilteredByDate = () =>{
+    setFilteredByDate(!filteredByDate)
+    console.log(filteredByDate)
     printJobs()
   }
 
   const printJobs = () => {
+  
     return jobs.map((job,i) => {
       return (
         <Fragment key={i}>
-          {job.title} {new Date(job.date).toDateString()} {job.senorityLevel}<button onClick={() => {addJob(i)}}> Add </button> <br/> 
+        {job.company} {job.title} {job.postDate} {job.senorityLevel} 
+        <button onClick={() => {addJob(i)}}> Add </button>
+        <br/> 
         </Fragment>
       )
     })
@@ -126,7 +193,8 @@ const SearchResults = (props) => {
     <Fragment>
       <h4>Showing Results for '{props.match.params.searchTerm}' in {props.match.params.location}</h4>
       <button onClick={sortByDate}>Sort by date</button>
-      <button onClick={filterByDate}>Filter by date xx</button>
+      {/* <button onClick={sortByCompany}>Sort by company</button> */}
+      <button onClick={()=>filterByDate(14)}>Filter by date xx</button>
       <button onClick={filterBySeniorityLevel}>Filter by seniority level xx</button>
       <br/>
       {loading ? 
