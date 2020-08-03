@@ -11,6 +11,7 @@ import GoogleLogIn from './components/auth/googlelogin'
 import SearchResults from './components/jobsearch/searchresults'
 import Profile from './components/profile/profile';
 import Nav from './components/Nav'
+import AboutUs from './components/AboutUs'
 
 function App() {
   let [user, setUser] = useState({loading: true})
@@ -58,6 +59,7 @@ function App() {
         {/* <Route exact path="/search" render={(props) => <JobSearch {...props} />} /> */}
         <Route exact path="/search-results/:location/:searchTerm" render={(props) => <SearchResults setUser={setUser} user={user} {...props} />} />
         <Route exact path="/profile" render={(props) => <Profile user={user} {...props} />} />
+        <Route exact path="/aboutus" render={(props) => <AboutUs user={user} {...props} />} />
       </Switch>
 
       <NotificationContainer/>

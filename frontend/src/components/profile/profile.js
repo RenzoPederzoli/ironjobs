@@ -3,19 +3,18 @@ import axios from 'axios'
 import {Link} from 'react-router-dom'
 import defaultSuggestions from './defaultsuggestions.json'
 import actions from '../../services/actions'
+import FooterMobile from "../FooterMobile";
 
 const Profile = (props) => {
-  if(!props.user.email){ // tneed to delay render when refreshed
-    props.history.push('/log-in') 
+  if(!props.user.email && !props.user.loading){ 
+    props.history.push('/login') 
   }
-  
+  // console.log(props.user)
+
   // suggestions very shaky, i.e. "full"
-  let [suggestions,setSuggestions] = useState([])
+  let [suggestions,setSuggestions] = useState([defaultSuggestions])
 
   const selectRandTitle = () => {
-    if (!props.user.email) // Only added to prevent error
-      return    
-
     let index = Math.floor(Math.random() * props.user.addedJobs?.length)
     let obj = props.user?.addedJobs[index]
     let regexp = /^[A-Z,a-z]/
@@ -29,14 +28,13 @@ const Profile = (props) => {
   }
   
   useEffect(() => {
+    if(!props.user.email) return
     let str = selectRandTitle()
     async function getSuggestions() { //proxy to prevent cross site hack
       await axios.get(`https://cors-anywhere.herokuapp.com/https://api.datamuse.com/words?rel_trg=${str}&topics=jobs&max=10`)
         .then((res) => {
           if (res.data.length !== 0)
             setSuggestions(res.data)
-          else
-            setSuggestions(defaultSuggestions)
           console.log(res)
         })
         .catch((err) => {
@@ -66,14 +64,16 @@ const Profile = (props) => {
   }
 
   const printSuggestions = () => {
-    if (!props.user.email) //Only added to prevent message
-      return
+    console.log(suggestions)
     let lastInd = props.user.addedJobs?.length - 1
     let place = props.user.addedJobs[lastInd]?.location
     return suggestions.map((item) => {
       return <Link to={`/search-results/${place}/${item.word}`}>{item.word} <br/></Link>
     })
   }
+
+  if (!props.user.email) // put a spinner loader here!
+    return  <>Loading...</>
 
   return (
     <div>
@@ -85,7 +85,10 @@ const Profile = (props) => {
         ( <Fragment>Start looking for jobs now!</Fragment> )
       }
       <h3>Suggestions</h3>
-      {printSuggestions()}
+      <div>
+        {printSuggestions()}
+      </div>
+      <FooterMobile {...props}/>
     </div>
   );
 };
