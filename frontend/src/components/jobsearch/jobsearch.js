@@ -42,19 +42,17 @@ const JobSearch = (props) => {
 
     return (
       <Fragment>
-        Job Search
         <form onSubmit = {handleSubmit}>
             <ReactSearchAutocomplete
               items={jobsArr}
               onSearch={handleOnSearch}
               onSelect={handleOnSelect}
-              placeholder={"What"}
+              placeholder={"Job title, Keyword, or Company"}
               autoFocus
               styling={{}}
             />
 
             <Autocomplete
-              style={{width: '90%'}}
               onPlaceSelected={(place) => {
                 changeLocation(place.address_components[0].short_name)
                 // console.log(place);
@@ -62,7 +60,7 @@ const JobSearch = (props) => {
               componentRestrictions={{country: "us"}}
             />
 
-            <input type="submit" value="Search"/>
+            <input className='submit-button' type="submit" value=""/>
         </form>
       </Fragment>
     );

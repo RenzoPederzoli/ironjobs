@@ -16,6 +16,21 @@ router.post('/addjob', isAuth, function(req, res, next) {
     })
 });
 
+/* POST remove job */
+router.post('/removejob', isAuth, function(req,res,next) {
+  let updated = [...req.user.addedJobs].filter(each => {
+    return each.title != req.body.title
+  })
+  User.findByIdAndUpdate({_id: req.user._id}, {addedJobs: updated})
+  .then(() => {
+    res.status(200).send("Removed Job!")
+  })
+  .catch((err) => {
+    console.log(req.user)
+    res.json({err})
+  })
+})
+
 function isAuth(req, res, next) {
   req.isAuthenticated() ? next() : res.status(401).json({ msg: 'Log in first' });
 }

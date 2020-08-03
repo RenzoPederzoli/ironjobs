@@ -15,7 +15,7 @@ const SignUp = (props) => {
         NotificationManager.success("Signed Up Succesfully!")
         console.log(user.data);
         props.setUser({ ...user.data });
-        props.history.push("/") // takes you back to home after login
+        props.history.goBack() // takes you back to where you were
       })
       .catch((response) => {
         NotificationManager.error("Error message","Already Exists")

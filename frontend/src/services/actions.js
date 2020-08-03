@@ -24,6 +24,9 @@ const actions = {
   addJob: async (job) => {
     return await service.post(`/users/addjob`, job)
   },
+  removeJob: async (title) => {
+    return await service.post(`/users/removejob`,{title})
+  },
   getLinkedinJobs: async (location, searchTerm) => {
     return await service.get(`/linkedin-results/${location}/${searchTerm}`)
   },

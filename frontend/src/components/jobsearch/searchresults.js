@@ -197,8 +197,7 @@ const SearchResults = (props) => {
 
   return (
     <Fragment>
-      {checkFilters}
-      Search Results <br/>
+      <h4>Showing Results for '{props.match.params.searchTerm}' in {props.match.params.location}</h4>
       <button onClick={sortByDate}>Sort by date</button>
       {/* <button onClick={sortByCompany}>Sort by company</button> */}
       <button onClick={changeFilteredByDate}>Filter by date xx</button>
