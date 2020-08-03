@@ -57,21 +57,21 @@ const SearchResults = (props) => {
     getJobs();
   }, []);
 
-  // const addJob = (i) => {
-  //   if (!props.user.email) {
-  //     NotificationManager.warning("Please sign in to add a listing!")
-  //   }
-  //   else {
-  //     actions.addJob(jobs[i])
-  //       .then((res) => {
-  //         NotificationManager.success("Added Job!")
-  //         console.log(res)
-  //       })
-  //       .catch((error) => {
-  //         console.error(error)
-  //       })
-  //   }
-  // }
+  const addJob = (i) => {
+    if (!props.user.email) {
+      NotificationManager.warning("Please sign in to add a listing!")
+    }
+    else {
+      actions.addJob(jobs[i])
+        .then((res) => {
+          NotificationManager.success("Added Job!")
+          console.log(res)
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    }
+  }
 
   const sortByDate = () =>{
     let jobsCopy=[...jobs]
@@ -83,7 +83,7 @@ const SearchResults = (props) => {
       return 0;
     })
     setJobs(jobsCopy)
-    printJobs()
+    // printJobs()
   }
 
   const sortByCompany = () =>{
@@ -94,31 +94,29 @@ const SearchResults = (props) => {
       return 0;
   })
     setJobs(jobsCopy)
-    printJobs()
+    // printJobs()
   }
 
-  const filterByDate = range =>{
-    if(!filteredByDate){
+  const filterByDate = () =>{
+    // if(filteredByDate){
     let jobsFilteredByDate = []
 
     jobs.map((job)=>{
       if(job.postDate[0]=='T' || job.postDate[0]=='J'){
         jobsFilteredByDate.push(job)
       }
-      if(job.postDate.split(' ')[0] <= range){
+      if(job.postDate.split(' ')[0] <= 14){
         jobsFilteredByDate.push(job)
       }
     })
-    setFilteredByDate(true)
     setJobs(jobsFilteredByDate)
     // printJobs()
     }
-    else{
-      setJobs(originalJobsArray)
-      setFilteredByDate(false)
-      // printJobs()
-    }
-  }
+    // else{
+    //   setJobs(originalJobsArray)
+    //   // printJobs()
+    // }
+  // }
 
   const filterBySeniorityLevel = () =>{
     if(!filteredBySeniorityLevel){
@@ -170,19 +168,27 @@ const SearchResults = (props) => {
 
   }
 
+  const checkFilters = () =>{
+    if(filteredByDate){
+      filterByDate()
+    }
+  }
+
   const changeFilteredByDate = () =>{
     setFilteredByDate(!filteredByDate)
     console.log(filteredByDate)
-    printJobs()
+    filterByDate()
   }
 
   const printJobs = () => {
-  
+    
+    // checkFilters()
+
     return jobs.map((job,i) => {
       return (
         <Fragment key={i}>
         {job.company} {job.title} {job.postDate} {job.senorityLevel} 
-        {/* <button onClick={() => {addJob(i)}}> Add </button> */}
+        <button onClick={() => {addJob(i)}}> Add </button>
         <br/> 
         </Fragment>
       )
@@ -191,10 +197,11 @@ const SearchResults = (props) => {
 
   return (
     <Fragment>
+      {checkFilters}
       Search Results <br/>
       <button onClick={sortByDate}>Sort by date</button>
       {/* <button onClick={sortByCompany}>Sort by company</button> */}
-      <button onClick={()=>filterByDate(14)}>Filter by date xx</button>
+      <button onClick={changeFilteredByDate}>Filter by date xx</button>
       <button onClick={filterBySeniorityLevel}>Filter by seniority level xx</button>
       <br/>
       {loading ? 
