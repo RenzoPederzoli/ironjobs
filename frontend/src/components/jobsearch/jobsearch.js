@@ -13,13 +13,17 @@ const JobSearch = (props) => {
     }
     const handleSubmit = (e) => {
       e.preventDefault()
-      if (!location) {
-        NotificationManager.warning("Please choose a location")
-        return
+      if (!searchTerm && !location) {
+        NotificationManager.warning("Please choose job and location!")
+        // return
       }
       else if (!searchTerm) {
         NotificationManager.warning("Please choose a job")
-        return
+        // return
+      }
+      else if (!location) {
+        NotificationManager.warning("Please choose a location!")
+        // return
       }
       else
        props.history.push(`/search-results/${location}/${searchTerm}`)
@@ -42,7 +46,6 @@ const JobSearch = (props) => {
 
     return (
       <Fragment>
-        Job Search
         <form onSubmit = {handleSubmit}>
             <ReactSearchAutocomplete
               items={jobsArr}

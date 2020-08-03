@@ -1,10 +1,11 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom'
-const Home = () => {
+import JobSearch from './jobsearch/jobsearch.js'
+import '../Styles/home.css'
+
+const Home = (props) => {
   return ( 
     <div>
-        Home Component
-        <NavLink to="/search">Search</NavLink>
+        <JobSearch {...props}/>
     </div>
   );
 }

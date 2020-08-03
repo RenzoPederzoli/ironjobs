@@ -10,6 +10,7 @@ import GoogleLogIn from './components/auth/googlelogin'
 import JobSearch from './components/jobsearch/jobsearch'
 import SearchResults from './components/jobsearch/searchresults'
 import Profile from './components/profile/profile';
+import Nav from './components/Nav'
 
 function App() {
   let [user, setUser] = useState({})
@@ -31,7 +32,7 @@ function App() {
 
   return (
     <div>
-      IronJobs
+      <Nav/>
       <nav>
         <NavLink to="/"> Home </NavLink>
         {user?.email ? (
@@ -54,7 +55,7 @@ function App() {
         <Route exact path="/" render={props => <Home {...props} />} />
         <Route exact path="/login" render={(props) => <LogIn setUser={setUser} {...props} />} />
         <Route exact path="/signup" render={(props) => <SignUp setUser={setUser} {...props} />} />
-        <Route exact path="/search" render={(props) => <JobSearch {...props} />} />
+        {/* <Route exact path="/search" render={(props) => <JobSearch {...props} />} /> */}
         <Route exact path="/search-results/:location/:searchTerm" render={(props) => <SearchResults user={user} {...props} />} />
         <Route exact path="/profile" render={(props) => <Profile user={user} {...props} />} />
       </Switch>

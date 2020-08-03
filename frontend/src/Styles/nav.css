@@ -1,0 +1,12 @@
+.nav-wrapper {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #D1D1D1;
+}
+
+.mobile-logo {
+  position: relative;
+  width: 44.8%;
+  height: 4.6%;
+  padding: 1.6% 0;
+}

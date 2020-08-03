@@ -3,8 +3,6 @@ import actions from "../../services/actions.js";
 import { NotificationManager } from 'react-notifications';
 
 const SearchResults = (props) => {
-  const INDEED_KEY = process.env.REACT_APP_INDEED_API_KEY;
-
   let [jobs, setJobs] = useState([]);
   let [originalJobsArray, setOriginalJobsArray] = useState([]);
   let [moreResultsLoading, setMoreResultsLoading] = useState(false)
@@ -126,7 +124,7 @@ const SearchResults = (props) => {
 
   return (
     <Fragment>
-      Search Results <br/>
+      <h4>Showing Results for '{props.match.params.searchTerm}' in {props.match.params.location}</h4>
       <button onClick={sortByDate}>Sort by date</button>
       <button onClick={filterByDate}>Filter by date xx</button>
       <button onClick={filterBySeniorityLevel}>Filter by seniority level xx</button>
