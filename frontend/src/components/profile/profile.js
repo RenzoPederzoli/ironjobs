@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import defaultSuggestions from './defaultsuggestions.json'
 import actions from '../../services/actions'
 import FooterMobile from "../FooterMobile";
+import "../../Styles/profile.css"
 
 const Profile = (props) => {
   if(!props.user.email && !props.user.loading){ 
@@ -85,7 +86,7 @@ const Profile = (props) => {
         ( <Fragment>Start looking for jobs now!</Fragment> )
       }
       <h3>Suggestions</h3>
-      <div>
+      <div className="suggestions-list">
         {printSuggestions()}
       </div>
       <FooterMobile {...props}/>
