@@ -163,7 +163,7 @@ const SearchResults = (props) => {
     }})
     .map((job,i) => {
       return (
-        <div key={i}>
+        <div className='job-box' key={i}>
           {job.company} {job.title} {job.postDate} {job.senorityLevel} 
           <button onClick={() => {addJob(i)}}> Add </button>
           <br/> 
@@ -175,6 +175,7 @@ const SearchResults = (props) => {
   return (
     <Fragment>
       <JobSearchPage/>
+      <div id='search-results-container'>
       <h4>Showing Results for '{props.match.params.searchTerm}' in {props.match.params.location}</h4>
       <button onClick={() => {
         changeFilters('sortedByDate')
@@ -197,6 +198,7 @@ const SearchResults = (props) => {
         :
       ( null ) }
       <FooterMobile {...props} />
+      </div>
     </Fragment>
   )
 };

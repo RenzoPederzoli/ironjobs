@@ -1,3 +1,37 @@
 #jobsearch-container{
-    background: linear-gradient(180deg, #F4F6FA 25%, #FFFFFF 25%);
+   display:none;
+}
+
+@media only screen and (min-width: 600px) {
+    #jobsearch-container{
+        background-color: #F4F6FA;
+        display:flex;
+    }
+
+    /* .search-results-form{
+        display: flex;
+        flex-direction: row;
+    } */
+    #search-results-location-input{
+        width:200px;
+        margin:20px;
+    }
+    #search-results-job-input{
+        width: 200px;
+        margin-left:2000px;
+    }
+    #search-results-container{
+        background-color: white;
+    }
+    .search-results{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .job-box{
+        width:200px;
+        height:200px;
+    }
+
+    
 }
