@@ -22,7 +22,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:3000", "https://clientnetlify.netlify.app"] //Swap this with the client url 
+    origin: ["http://localhost:3000", "https://iron-jobs.netlify.app"] //Swap this with the client url 
   })
 );
 

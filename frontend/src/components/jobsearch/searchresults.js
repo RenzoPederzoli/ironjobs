@@ -163,10 +163,9 @@ const SearchResults = (props) => {
     }})
     .map((job,i) => {
       return (
-        <div key={i}>
+        <div className="job-card" key={i}>
           {job.company} {job.title} {job.postDate} {job.senorityLevel} 
           <button onClick={() => {addJob(i)}}> Add </button>
-          <br/> 
         </div>
       )
     })

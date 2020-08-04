@@ -88,6 +88,7 @@ body {
   width: 18%;
   height: 15%;
   background: transparent url('../images/submit-img.svg') 0% 0% no-repeat padding-box;
+  margin-left: 5vw;
   border: none;
   outline: none;
 }
