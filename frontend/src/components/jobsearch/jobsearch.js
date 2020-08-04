@@ -3,7 +3,7 @@ import Autocomplete from 'react-google-autocomplete'
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { NotificationManager } from 'react-notifications';
 import jobsArr from './job-phrase-list.json';
-import "../../Styles/home.css"
+import "../../Styles/jobsearch.css"
 
 const JobSearch = (props) => {
     let [location, setLocation] = useState("");
@@ -43,6 +43,7 @@ const JobSearch = (props) => {
 
     return (
       <Fragment>
+      
         <form className='search-form' onSubmit = {handleSubmit}>
             <ReactSearchAutocomplete
               items={jobsArr}
@@ -62,6 +63,7 @@ const JobSearch = (props) => {
             />
             <input className="submit-btn" type="submit" value=""/>
         </form>
+        
       </Fragment>
     );
   };

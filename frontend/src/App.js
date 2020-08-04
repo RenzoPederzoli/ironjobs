@@ -7,7 +7,7 @@ import SignUp from './components/auth/signup';
 import {NotificationContainer,NotificationManager} from 'react-notifications'
 import GoogleSignUp from './components/auth/googlesingup'
 import GoogleLogIn from './components/auth/googlelogin'
-// import JobSearch from './components/jobsearch/jobsearch'
+import JobSearch from './components/jobsearch/jobsearch'
 import SearchResults from './components/jobsearch/searchresults'
 import Profile from './components/profile/profile';
 import Nav from './components/Nav'
@@ -56,7 +56,7 @@ function App() {
         <Route exact path="/" render={props => <Home {...props} />} />
         <Route exact path="/login" render={(props) => <LogIn setUser={setUser} {...props} />} />
         <Route exact path="/signup" render={(props) => <SignUp setUser={setUser} {...props} />} />
-        {/* <Route exact path="/search" render={(props) => <JobSearch {...props} />} /> */}
+        <Route exact path="/search" render={(props) => <JobSearch {...props} />} />
         <Route exact path="/search-results/:location/:searchTerm" render={(props) => <SearchResults setUser={setUser} user={user} {...props} />} />
         <Route exact path="/profile" render={(props) => <Profile user={user} {...props} />} />
         <Route exact path="/aboutus" render={(props) => <AboutUs user={user} {...props} />} />

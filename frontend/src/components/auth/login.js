@@ -25,21 +25,39 @@ function LogIn(props) {
 
   return (
     <Fragment>
-      <h2>Log In Hooman</h2>
-      <form onSubmit={handleSubmit}>
-        <input
+      <div className='signup-container'>
+      <div className='form-content'>
+      <p className='signup-text'>Sign In</p>
+      <form className='signup-form' onSubmit={handleSubmit}>
+      <input className='text-input'
+          name="firstName"
+          type="text"
+          placeholder='First Name'
+        />
+        <input className='text-input'
+          name="lastName"
+          type="text"
+          placeholder='Last Name'
+        />
+        <input className='text-input'
           name="email"
           type="email"
+          placeholder='Email'
           onChange={(e) => setEmail(e.target.value)}
         />
-        <input
+        <input className='text-input'
           name="password"
           type="password"
           autoComplete="on"
+          placeholder='Password'
           onChange={(e) => setPassword(e.target.value)}
         />
-        <input type="submit" value="Log In" />
+        <input className='signin-btn' type="submit" value="" />
       </form>
+      <img className='or-sign-in-with' src={require('../../images/or-sign-in-with.png')}/>
+      <img className='google-logo' src={require('../../images/google-logo.png')} />
+      </div>
+      </div>
     </Fragment>
   );
 }

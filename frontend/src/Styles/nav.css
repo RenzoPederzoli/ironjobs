@@ -15,7 +15,7 @@
   display:none;
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 800px) {
   
   .nav-wrapper{
     display:flex;
@@ -34,6 +34,7 @@
 
   #desktop-homepage-signin-button{
     display: block;
+    margin-top:1.3%;
     margin-right: 3.6%;
   }
   

@@ -1,0 +1,114 @@
+@media only screen and (min-width: 800px) {
+   
+     
+}
+
+.signup-container{
+    max-width:300px;
+    width:100%;
+    margin: 0 auto;
+    display: block;
+}
+
+.form-content{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.signup-text{
+    width:105px;
+    font-family: 'Shree Devanagari 714', Regular;
+    font-size: 28px;
+    color: #333232;
+    margin-top: 20.1%;
+    /* margin-left: 36%;
+    margin-right: 43%; */
+    margin-bottom: 1vh;
+}
+
+.signup-text::after {
+    background-color: #F06239; 
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 1px;
+    left: 46%;
+    position: relative;
+    transform: translate(-50%,0);
+    width: 70px;
+}
+
+.to-login{
+    font-family: 'Shree Devanagari 714', Regular;
+    font-size: 16px;
+    text-decoration: none;
+    /* margin-left: 41%; */
+    width:fit-content;
+}
+
+.signup-form{
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.text-input{
+    /* margin-left: 13%; */
+    min-width: 50%;
+    width: 280px;
+    margin-bottom: 2%;
+    height: 7vh;
+    box-shadow: 5px 5px 10px #00000026;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+    text-indent: 5.3%;
+}
+
+.text-input::placeholder{
+    font-family: 'Shree Devanagari 714', Regular;
+    font-size: 18px;
+    color: #9F9F9F;
+    text-indent: 5.3%;
+}
+
+.signup-btn{
+    align-self: center;
+    width:174px;
+    height: 7vh;
+    margin-top:3%;
+    /* margin-left: 30%; */
+    background: transparent url('../images/signup-btn.svg') 0% 0% no-repeat padding-box;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+.signin-btn{
+    align-self: center;
+    width:174px;
+    height: 7vh;
+    margin-top:3%;
+    /* margin-left: 30%; */
+    background: transparent url('../images/signin-btn.svg') 0% 0% no-repeat padding-box;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+.or-sign-in-with{
+    margin-top: 2.2%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.google-logo{
+    margin-top: 15%;
+}

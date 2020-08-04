@@ -122,10 +122,9 @@ body {
 }
 
 @media only screen and (min-width: 800px) {
-  body {
-
+  /* body{
     background: linear-gradient(90deg, #FFFFFF 62%, #F4F6FA 38%);
-  }
+  } */
 
   .home-greeting{
     color:#223577;

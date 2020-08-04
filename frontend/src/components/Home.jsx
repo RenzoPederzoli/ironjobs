@@ -26,7 +26,7 @@ const Home = (props) => {
   }
 
   return ( 
-    <div>
+    <div id='home-container'>
       <p className='home-greeting'>Good Morning</p>
       <p className="home-description">Find Your Next Job Using The Centralized Job Search.</p>
       <JobSearch {...props}/>
