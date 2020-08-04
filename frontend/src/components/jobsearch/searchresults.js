@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import actions from "../../services/actions.js";
 import { NotificationManager } from 'react-notifications';
 import FooterMobile from "../FooterMobile.js";
+import "../../Styles/search-results.css"
 
 const SearchResults = (props) => {
 
