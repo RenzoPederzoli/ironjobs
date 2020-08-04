@@ -120,7 +120,7 @@ body {
   box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 800px) {
   body {
 
     background: linear-gradient(90deg, #FFFFFF 62%, #F4F6FA 38%);
@@ -166,7 +166,7 @@ body {
   /* location search bar */
   #root > div > div:nth-child(2) > form > input.pac-target-input{
     position: relative;
-    bottom:6vh;
+    bottom:8vh;
     width:21.7%;
     height:6.6vh;
     margin-left:33.2%;
@@ -177,20 +177,32 @@ body {
     border-radius: 12px;
   }
   
-  .submit-btn{
+  .search-form{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+
+  #root > div > div:nth-child(2) > form > input.submit-btn{
     position: relative;
-    left:28vw;
-    margin-right: 700px;
-    bottom:50vh;
-    top:45%;
+    left: 0;
+    margin-left: 24%;
     width:179px;
-    height:7.2vh;
-    margin-top:0;
+    height:7vh;
     background: transparent url('../images/desktop-home/desktop-homepage-search-button.svg') 0% 0% no-repeat padding-box;
     padding: 0;
     border: none;
     outline: none;
   }
+
+  /* .submit-btn{
+    width:17%;
+    height:7vh;
+    background: transparent url('../images/desktop-home/desktop-homepage-search-button.svg') 0% 0% no-repeat padding-box;
+    padding: 0;
+    border: none;
+    outline: none;
+  } */
 
   #desktop-home-image{
     position: absolute;
@@ -224,5 +236,15 @@ body {
     font-size: 17px;
     box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
   }
+}
+
+@media only screen and (min-width: 1600px) {
+
+  #root > div > div:nth-child(2) > form > input.pac-target-input{
+    
+    bottom:6vh;
+    
+  }
+
 }
 
