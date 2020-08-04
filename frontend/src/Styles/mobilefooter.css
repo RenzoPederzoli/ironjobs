@@ -7,7 +7,7 @@
 }
 
 .footer-nav-home{
-  background: transparent url('../images/footer-imgs/home-footer.svg');
+  background: transparent url('../images/footer-imgs/home-footer.svg') 0% 0% no-repeat padding-box;
   background-size: cover;
   background-color: #F4F6FA;
   display: flex;
@@ -24,6 +24,14 @@
 
 .footer-nav-aboutus {
   background: transparent url('../images/footer-imgs/aboutus-footer.svg') 0% 0% no-repeat padding-box;
+  background-size: cover;
+  background-color: #F4F6FA;
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-nav-blank {
+  background: transparent url('../images/footer-imgs/blank-footer.svg') 0% 0% no-repeat padding-box;
   background-size: cover;
   background-color: #F4F6FA;
   display: flex;
