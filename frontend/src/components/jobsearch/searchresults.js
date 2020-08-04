@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import actions from "../../services/actions.js";
 import { NotificationManager } from 'react-notifications';
+import JobSearchPage from './jobsearchpage'
 
 const SearchResults = (props) => {
 
@@ -171,6 +172,7 @@ const SearchResults = (props) => {
 
   return (
     <Fragment>
+      <JobSearchPage/>
       <h4>Showing Results for '{props.match.params.searchTerm}' in {props.match.params.location}</h4>
       <button onClick={() => {
         changeFilters('sortedByDate')
