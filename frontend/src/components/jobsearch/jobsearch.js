@@ -8,6 +8,7 @@ import "../../Styles/home.css"
 const JobSearch = (props) => {
     let [location, setLocation] = useState("");
     let [searchTerm, setSearchTerm] = useState("");
+    let [searchPlaceholder, setSearchPlaceholder] = useState("")
 
     const changeLocation = (s) => {
         setLocation(s)
@@ -48,7 +49,7 @@ const JobSearch = (props) => {
               items={jobsArr}
               onSearch={handleOnSearch}
               onSelect={handleOnSelect}
-              placeholder={"Job title, Keyword, or Company"}
+              placeholder={"Search"}
               autoFocus
               showIcon={false}
             />

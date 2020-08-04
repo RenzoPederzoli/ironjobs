@@ -6,6 +6,8 @@
 
 .mobile-logo {
   position: relative;
+  display: flex;
+  justify-content: center;
   width: 45%;
   height: 4.6%;
   padding: 1.6% 0;

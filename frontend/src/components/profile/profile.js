@@ -13,7 +13,7 @@ const Profile = (props) => {
   // console.log(props.user)
 
   // suggestions very shaky, i.e. "full"
-  let [suggestions,setSuggestions] = useState([defaultSuggestions])
+  const [suggestions,setSuggestions] = useState([defaultSuggestions])
 
   const selectRandTitle = () => {
     let index = Math.floor(Math.random() * props.user.addedJobs?.length)
@@ -33,17 +33,17 @@ const Profile = (props) => {
     let str = selectRandTitle()
     async function getSuggestions() { //proxy to prevent cross site hack
       await axios.get(`https://cors-anywhere.herokuapp.com/https://api.datamuse.com/words?rel_trg=${str}&topics=jobs&max=10`)
-        .then((res) => {
+      .then((res) => {
+        console.log(res)
           if (res.data.length !== 0)
             setSuggestions(res.data)
-          console.log(res)
         })
         .catch((err) => {
           console.error(err)
         })
     }
     getSuggestions()
-  }, [])
+  }, [props.user])
 
   // actually go to DB and delete
   const removeJob = (ind,event) => {

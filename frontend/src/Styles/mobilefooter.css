@@ -7,20 +7,25 @@
 }
 
 .footer-nav-home{
-  background: transparent url('../images/footer-imgs/home-footer.svg') 0% 0% no-repeat padding-box;
+  background: transparent url('../images/footer-imgs/home-footer.svg');
+  background-size: cover;
+  background-color: #F4F6FA;
   display: flex;
   flex-direction: row;
 }
 
 .footer-nav-profile {
-  background:  url('../images/footer-imgs/profile-footer.svg') 0% 0% no-repeat padding-box;
-  z-index: 1;
+  background: transparent url('../images/footer-imgs/profile-footer.svg') 0% 0% no-repeat padding-box;
+  background-size: cover;
+  background-color: #F4F6FA;
   display: flex;
   flex-direction: row;
 }
 
 .footer-nav-aboutus {
   background: transparent url('../images/footer-imgs/aboutus-footer.svg') 0% 0% no-repeat padding-box;
+  background-size: cover;
+  background-color: #F4F6FA;
   display: flex;
   flex-direction: row;
 }
