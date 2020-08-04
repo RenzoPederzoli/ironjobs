@@ -2,6 +2,8 @@ import React, { Fragment, useState, useEffect } from "react";
 import actions from "../../services/actions.js";
 import { NotificationManager } from 'react-notifications';
 import JobSearchPage from './jobsearchpage'
+import FooterMobile from "../FooterMobile.js";
+import "../../Styles/search-results.css"
 
 const SearchResults = (props) => {
 
@@ -161,11 +163,11 @@ const SearchResults = (props) => {
     }})
     .map((job,i) => {
       return (
-        <Fragment key={i}>
-        {job.company} {job.title} {job.postDate} {job.senorityLevel} 
-        <button onClick={() => {addJob(i)}}> Add </button>
-        <br/> 
-        </Fragment>
+        <div key={i}>
+          {job.company} {job.title} {job.postDate} {job.senorityLevel} 
+          <button onClick={() => {addJob(i)}}> Add </button>
+          <br/> 
+        </div>
       )
     })
   }
@@ -188,12 +190,13 @@ const SearchResults = (props) => {
       {loading ? 
       ( <Fragment>Loading...</Fragment> )
         :
-      ( printJobs() ) }
+      ( <div className="search-results">{printJobs()}</div> ) }
 
       {moreResultsLoading ? 
       ( <Fragment>Loading more results...</Fragment> )
         :
       ( null ) }
+      <FooterMobile {...props} />
     </Fragment>
   )
 };

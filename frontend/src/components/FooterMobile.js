@@ -25,6 +25,12 @@ const FooterMobile = (props) => {
         <Link className="footer-nav-link" to="/aboutus"></Link>
         <Link className="footer-nav-link" to="/profile"></Link>
       </div>)
+      default :
+       return (<div className="footer-nav-blank">
+       <Link className="footer-nav-link" to="/"></Link>
+       <Link className="footer-nav-link" to="/aboutus"></Link>
+       <Link className="footer-nav-link" to="/profile"></Link>
+     </div>)
     }
   }
 
