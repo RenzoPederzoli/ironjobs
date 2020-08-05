@@ -86,10 +86,10 @@
 }
 
 @media only screen and (min-width: 800px) {
-  .profile-wrapper {
+  /* .profile-wrapper {
     background-color: white;
   }
-  /* 1366x768 */
+  
   .profile-greeting {
     background-color: #F4F6FA;
     margin:0;
@@ -157,5 +157,5 @@
 
   .saved-job-card::-webkit-scrollbar {
    display: none;
-  }
+  } */
 }

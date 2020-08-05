@@ -5,7 +5,7 @@ import "../Styles/aboutus.css"
 const AboutUs = (props) => {
   return (
     <div>
-      <div className="profile-wrapper">
+      <div className="aboutus-wrapper">
         <div>
           <img className="avatar" src={require("../images/avatars/delu avataaars.svg")}></img>
           <span>Delu - Designer </span>

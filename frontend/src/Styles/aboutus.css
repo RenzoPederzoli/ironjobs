@@ -1,4 +1,4 @@
-.profile-wrapper {
+.aboutus-wrapper {
   display: flex;
   flex-direction: column;
   align-items:center;
@@ -6,7 +6,7 @@
   height: 83vh;
 }
 
-.profile-wrapper > div {
+.aboutus-wrapper > div {
   border-radius: 15px;
   box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
   width: 73vw;
@@ -19,7 +19,7 @@
   font-style: italic;
 }
 
-.profile-wrapper > div > div {
+.aboutus-wrapper > div > div {
   display: flex;
   width: 50%;
   justify-content: space-around;
