@@ -9,15 +9,45 @@
   align-items: center;
 }
 
+#back-arrow-container{
+  display:flex;
+  align-items: center;
+}
+
+#mobile-back-arrow{
+  margin: 5%;
+}
+
 .job-card {
   text-align: center;
   background-color: white;
   box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
   border-radius: 12px;
   width: 88%;
-  height: 21vh;
+  height: 21%;
   margin: 1vh 0;
   overflow:hidden;
+}
+
+.job-title{
+  font-size: 1.3em;
+}
+
+.job-company{
+  font-size: 1em;
+}
+
+.job-location{
+  font-size: 0.9em;
+}
+
+.job-description{
+  font-size: 0.8em;
+}
+
+.job-postDate-seniorityLevel{
+  font-size: 0.7em;
+  color:grey;
 }
 
 .add-job-btn{
@@ -61,10 +91,42 @@
   margin:3px;
 }
 
+.modal{
+  height: 90vh;
+  background-color: white;
+}
+
+.modal-job-title{
+  font-size: 1.7em;
+  font-family: 'Shree Devanagari 714';
+  font-weight: bold;
+  overflow-wrap: break-word;
+}
+
+.modal-job-company{
+  font-family: 'Shree Devanagari 714';
+  font-size: 1.5em;
+}
+
+.modal-job-location{
+  font-family: 'Shree Devanagari 714';
+  font-size: 1.4em;
+}
+
+.modal-job-description{
+  line-height: 1.5;
+}
+
+.modal-body{
+  max-height: calc(100vh - 35vh); 
+  overflow-y: auto; 
+  margin: 20px;
+}
+
 #close-modal-btn{
   background: url('../images/close-modal-btn.svg');
   background-repeat: no-repeat;
-  margin:10px;
+  margin:20px;
   border:none;
   height:20px;
   width:20px;
@@ -81,17 +143,6 @@
   height:6.8vh;
   font-size: 1.6em;
 }
-
-/* #filter-button-container > button{
-  font-size: .8em;
-  height: 10vh;
-  background-image: url('../images/filter-button.svg');
-  background-color: #F4F6FA;
-  background-size: center;
-  background-repeat: no-repeat;
-  border:none;
-  outline:none;
-} */
 
 @media only screen and (min-width: 750px) {
    #jobsearch-container{
@@ -123,6 +174,5 @@
        width:200px;
        height:200px;
    }
-
    
 }
