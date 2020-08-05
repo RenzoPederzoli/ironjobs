@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import {Link} from 'react-router-dom'
 import actions from "../../services/actions.js";
 import { NotificationManager } from 'react-notifications';
 import JobSearchPage from './jobsearchpage'
@@ -33,9 +34,14 @@ const SearchResults = (props) => {
             <button onClick={props.onHide} id='close-modal-btn'></button>
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body style={{maxHeight: 'calc(100vh - 300px)', overflowY: 'auto', margin:'20px'}}>
-        <h4>{clickedJob?.title}</h4>
-        <p style={{fontSize:'20px'}}>{clickedJob?.summary || clickedJob?.description}</p>
+        <Modal.Body className='modal-body'>
+        <button className='add-job-btn' onClick={() => {addJob(clickedJob)}}></button>
+        <span className='modal-job-title'>{clickedJob?.title}</span>
+        <br/>
+        <span className='modal-job-company'>{clickedJob?.company}</span>
+        <br/>
+        <span className='modal-job-location'>{clickedJob?.location}</span>
+        <p className='modal-job-description'>{clickedJob?.summary || clickedJob?.description}</p>
         <button id='modal-apply-now-btn' onClick={()=>window.location.href=clickedJob?.url}>Apply Now</button>
         </Modal.Body>
         {/* <Modal.Footer>
@@ -53,7 +59,6 @@ const SearchResults = (props) => {
         )
         .then((response) => {
           aid = response.data
-          // setJobsObj({...jobsObj, jobsArray:response.data});
           setJobs(response.data)
           setOriginalJobsArray(response.data)
           setLoading(false)
@@ -77,7 +82,6 @@ const SearchResults = (props) => {
           response.data.map(job=>formatDate(job,today)) //format linkedin jod-posting dates to match indeed's
           let temp = [...aid]
           temp = temp.concat(response.data)
-          // setJobsObj({...jobsObj, jobsArray:temp});
           setJobs(temp)
           setOriginalJobsArray(temp)
           setMoreResultsLoading(false)
@@ -177,9 +181,13 @@ const SearchResults = (props) => {
     }})
     .map((job,i) => {
       return (
-        <div onClick={() => {setClickedJob(job); setModalShow(true)}} className="job-card" key={i}>
+        <div onClick={(e) => {
+          if(e.target.type !== 'submit'){
+          setClickedJob(job); 
+          window.innerWidth<= 750 ? setModalShow(true) : setModalShow(false)}}} 
+          className="job-card" key={i}>
           
-      <ul className='job-list'><li>{job.title} <button className='add-job-btn' onClick={() => {addJob(i)}}></button></li> <li>{job.company}</li> <li>{job.location}</li> <li>{job.summary || job.description?.slice(0,100)+'...'}</li></ul>{job.postDate} {job.senorityLevel} 
+      <ul className='job-list'><li className='job-title'>{job.title} <button className='add-job-btn' onClick={() => {addJob(i)}}></button></li> <li className='job-company'>{job.company}</li> <li className='job-location'>{job.location}</li> <li className='job-description'>{job.summary ? job.summary?.slice(0,50)+'...' : job.description?.slice(0,50)+'...'}</li><li className='job-postDate-seniorityLevel'>{job.postDate} {job.senorityLevel}</li></ul> 
           
         </div>
       )
@@ -190,12 +198,14 @@ const SearchResults = (props) => {
     <Fragment>
       <JobSearchPage/>
       <div id='search-results-container'>
+        <div id='back-arrow-container'>
+       <Link id='mobile-back-arrow' to='/'><img src={require('../../images/mobile-back-arrow.svg')} /></Link>
       <h4>Showing Results for '{props.match.params.searchTerm}' in {props.match.params.location}</h4>
+      </div>
       <div id='filter-button-container'>
       <button onClick={() => {
         changeFilters('sortedByDate')
         }}>Sort by date</button>
-      {/* <button onClick={sortByCompany}>Sort by company</button> */}
       <button onClick={() => {
         changeFilters('filterByDate')
         }}>Filter by date</button>
@@ -216,7 +226,7 @@ const SearchResults = (props) => {
       <FooterMobile {...props} />
       </div>
       <MyVerticallyCenteredModal
-        style={{height:'90vh'}}
+        className='modal'
         show={modalShow}
         onHide={() => setModalShow(false)}
 
