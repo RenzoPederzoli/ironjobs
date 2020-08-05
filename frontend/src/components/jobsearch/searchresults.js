@@ -42,7 +42,7 @@ const SearchResults = (props) => {
         <br/>
         <span className='modal-job-location'>{clickedJob?.location}</span>
         <p className='modal-job-description'>{clickedJob?.summary || clickedJob?.description}</p>
-        <button id='modal-apply-now-btn' onClick={()=>window.location.href=clickedJob?.url}>Apply Now</button>
+        <button id='modal-apply-now-btn' onClick={()=> clickedJob?.url ? window.open(clickedJob?.url, '_blank') : window.open(clickedJob?.link, '_blank')}>Apply Now</button>
         </Modal.Body>
         {/* <Modal.Footer>
         </Modal.Footer> */}
@@ -184,11 +184,17 @@ const SearchResults = (props) => {
         <div onClick={(e) => {
           if(e.target.type !== 'submit'){
           setClickedJob(job); 
-          window.innerWidth<= 750 ? setModalShow(true) : setModalShow(false)}}} 
+          window.innerWidth < 1000 ? setModalShow(true) : setModalShow(false)}}} 
           className="job-card" key={i}>
           
-      <ul className='job-list'><li className='job-title'>{job.title} <button className='add-job-btn' onClick={() => {addJob(i)}}></button></li> <li className='job-company'>{job.company}</li> <li className='job-location'>{job.location}</li> <li className='job-description'>{job.summary ? job.summary?.slice(0,50)+'...' : job.description?.slice(0,50)+'...'}</li><li className='job-postDate-seniorityLevel'>{job.postDate} {job.senorityLevel}</li></ul> 
-          
+          <ul className='job-list'>
+            <li className='job-title'>{job.title} <button className='add-job-btn' onClick={() => {addJob(i)}}></button></li> 
+            <li className='job-company'>{job.company}</li> 
+            <li className='job-location'>{job.location}</li> 
+            <li className='job-description'>{job.summary ? job.summary?.slice(0,50)+'...' : job.description?.slice(0,50)+'...'}</li> 
+            <li className='job-postDate-seniorityLevel'>{job.postDate} {job.senorityLevel}</li>
+          </ul> 
+              
         </div>
       )
     })
@@ -196,7 +202,7 @@ const SearchResults = (props) => {
 
   return (
     <Fragment>
-      <JobSearchPage/>
+      <JobSearchPage {...props}/>
       <div id='search-results-container'>
         <div id='back-arrow-container'>
        <Link id='mobile-back-arrow' to='/'><img src={require('../../images/mobile-back-arrow.svg')} /></Link>
@@ -217,7 +223,26 @@ const SearchResults = (props) => {
       {loading ? 
       ( <Fragment>Loading...</Fragment> )
         :
-      ( <div className="search-results">{printJobs()}</div> ) }
+        
+      ( <div className="search-results"> 
+          <div id='all-jobs'>{printJobs()}</div> 
+          {clickedJob !== null ? 
+          <div id='display-job'>
+            <button className='add-job-btn' onClick={() => {addJob(clickedJob)}}></button>
+            <span id='display-job-title'>{clickedJob?.title}</span>
+            <br/>
+            <span id='display-job-company'>{clickedJob?.company}</span>
+            <br />
+            <span id='display-job-location'>{clickedJob?.location}</span>
+            <br/>
+            <br/>
+            <span id='display-job-description'>{clickedJob?.summary || clickedJob?.description}</span>
+            <br/>
+            <br/>
+            <button id='display-job-apply-btn' onClick={()=> clickedJob?.url ? window.open(clickedJob?.url, '_blank') : window.open(clickedJob?.link, '_blank')}>Apply Now</button>
+        </div> : ''} 
+          </div> ) }
+      
 
       {moreResultsLoading ? 
       ( <Fragment>Loading more results...</Fragment> )
