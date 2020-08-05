@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import actions from "../../services/actions";
 import { NotificationManager } from 'react-notifications';
+import { Link } from 'react-router-dom'
 
 function LogIn(props) {
   let [email, setEmail] = useState("");
@@ -28,17 +29,8 @@ function LogIn(props) {
       <div className='signup-container'>
       <div className='form-content'>
       <p className='signup-text'>Sign In</p>
+      <Link className="to-login" to="/signup">Sign up</Link>
       <form className='signup-form' onSubmit={handleSubmit}>
-      <input className='text-input'
-          name="firstName"
-          type="text"
-          placeholder='First Name'
-        />
-        <input className='text-input'
-          name="lastName"
-          type="text"
-          placeholder='Last Name'
-        />
         <input className='text-input'
           name="email"
           type="email"

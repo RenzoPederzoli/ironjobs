@@ -4,9 +4,10 @@ import { NotificationManager } from 'react-notifications';
 import JobSearchPage from './jobsearchpage'
 import FooterMobile from "../FooterMobile.js";
 import "../../Styles/search-results.css"
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 const SearchResults = (props) => {
-
   let [jobs, setJobs] = useState([]);
   let [originalJobsArray, setOriginalJobsArray] = useState([]);
   let [moreResultsLoading, setMoreResultsLoading] = useState(false)
@@ -15,6 +16,33 @@ const SearchResults = (props) => {
     filterByDate:false, 
     filterBySeniorotyLevel:false, 
     sortedByDate:false})
+  const [modalShow, setModalShow] = React.useState(false);
+  let [clickedJob, setClickedJob] = useState(null)
+    
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        animation
+      >
+        <Modal.Header>
+          <Modal.Title id="contained-modal-title-vcenter">
+            <button onClick={props.onHide} id='close-modal-btn'></button>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body style={{maxHeight: 'calc(100vh - 300px)', overflowY: 'auto', margin:'20px'}}>
+        <h4>{clickedJob?.title}</h4>
+        <p style={{fontSize:'20px'}}>{clickedJob?.summary || clickedJob?.description}</p>
+        <button id='modal-apply-now-btn' onClick={()=>window.location.href=clickedJob?.url}>Apply Now</button>
+        </Modal.Body>
+        {/* <Modal.Footer>
+        </Modal.Footer> */}
+      </Modal>
+    );
+  }
 
   useEffect(() => {
     function getJobs(aid) {
@@ -78,20 +106,6 @@ const SearchResults = (props) => {
         })
     }
   }
-
-  // const sortByDate = (arr) =>{
-  //   // let jobsCopy=[...jobs]
-  //   return arr.sort((a,b)=>{
-  //     if(a.postDate[0]==='J'){return -1}
-  //     if(a.postDate[0]==='T'){return -1}
-  //     if(parseInt(a.postDate.split(' ')[0]) < parseInt(b.postDate.split(' ')[0])) { return -1; }
-  //     if(parseInt(a.postDate.split(' ')[0]) > parseInt(b.postDate.split(' ')[0])) { return 1; }
-  //     return 0;
-  //   })
-  //   // setJobs(jobsCopy)
-  //   // printJobs()
-  //   return arr
-  // }
 
   // const sortByCompany = () =>{
   //   let jobsCopy=[...jobs]
@@ -163,10 +177,10 @@ const SearchResults = (props) => {
     }})
     .map((job,i) => {
       return (
-        <div className='job-box' key={i}>
-          {job.company} {job.title} {job.postDate} {job.senorityLevel} 
-          <button onClick={() => {addJob(i)}}> Add </button>
-          <br/> 
+        <div onClick={() => {setClickedJob(job); setModalShow(true)}} className="job-card" key={i}>
+          
+      <ul className='job-list'><li>{job.title} <button className='add-job-btn' onClick={() => {addJob(i)}}></button></li> <li>{job.company}</li> <li>{job.location}</li> <li>{job.summary || job.description?.slice(0,100)+'...'}</li></ul>{job.postDate} {job.senorityLevel} 
+          
         </div>
       )
     })
@@ -177,16 +191,18 @@ const SearchResults = (props) => {
       <JobSearchPage/>
       <div id='search-results-container'>
       <h4>Showing Results for '{props.match.params.searchTerm}' in {props.match.params.location}</h4>
+      <div id='filter-button-container'>
       <button onClick={() => {
         changeFilters('sortedByDate')
         }}>Sort by date</button>
       {/* <button onClick={sortByCompany}>Sort by company</button> */}
       <button onClick={() => {
         changeFilters('filterByDate')
-        }}>Filter by date xx</button>
+        }}>Filter by date</button>
       <button onClick={() => {
         changeFilters('filterBySeniorotyLevel')
-        }}>Filter by seniority level xx</button>
+        }}>Filter by seniority level</button>
+        </div>
       <br/>
       {loading ? 
       ( <Fragment>Loading...</Fragment> )
@@ -199,6 +215,12 @@ const SearchResults = (props) => {
       ( null ) }
       <FooterMobile {...props} />
       </div>
+      <MyVerticallyCenteredModal
+        style={{height:'90vh'}}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+
+      />
     </Fragment>
   )
 };

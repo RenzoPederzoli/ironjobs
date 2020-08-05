@@ -1,3 +1,128 @@
+#jobsearch-container{
+  display:none;
+}
+
 .search-results {
   margin-bottom: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.job-card {
+  text-align: center;
+  background-color: white;
+  box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
+  border-radius: 12px;
+  width: 88%;
+  height: 21vh;
+  margin: 1vh 0;
+  overflow:hidden;
+}
+
+.add-job-btn{
+  float: right;
+  background: url('../images/add-job-btn.svg');
+  height:20px;
+  width:18px;
+  border:none;
+  background-repeat: no-repeat;
+  margin-right: 5%;
+}
+
+.job-list{
+  margin-left: 5%;
+  text-align: left;
+  padding:0;
+  max-height: fit-content;
+  height: 100%;
+  list-style-type: none;
+}
+
+.job-list > li{
+  padding:5px;
+}
+
+#filter-button-container{
+  display:flex;
+  justify-content: space-evenly;
+}
+
+#filter-button-container > button{
+  font-size: 18px;
+  font-family: 'Shree Devanagari 714', Regular;
+  border:1px solid #253cc3;
+  border-radius: 12.5px;
+  outline:none;
+  background-color: #e8effc;
+  color: #253cc3;
+  padding:6px;
+  line-height: 1;
+  margin:3px;
+}
+
+#close-modal-btn{
+  background: url('../images/close-modal-btn.svg');
+  background-repeat: no-repeat;
+  margin:10px;
+  border:none;
+  height:20px;
+  width:20px;
+}
+
+#modal-apply-now-btn{
+  /* background: url('../images/modal-apply-now-btn.svg'); */
+  background-color: #f06239;
+  color:	#fef8f6;
+  border:none;
+  border-radius: 25px;
+  width:100%;
+  max-width:302px;
+  height:6.8vh;
+  font-size: 1.6em;
+}
+
+/* #filter-button-container > button{
+  font-size: .8em;
+  height: 10vh;
+  background-image: url('../images/filter-button.svg');
+  background-color: #F4F6FA;
+  background-size: center;
+  background-repeat: no-repeat;
+  border:none;
+  outline:none;
+} */
+
+@media only screen and (min-width: 750px) {
+   #jobsearch-container{
+       background-color: #F4F6FA;
+       display:flex;
+   }
+
+   /* .search-results-form{
+       display: flex;
+       flex-direction: row;
+   } */
+   #search-results-location-input{
+       width:200px;
+       margin:20px;
+   }
+   #search-results-job-input{
+       width: 200px;
+       margin-left:2000px;
+   }
+   #search-results-container{
+       background-color: white;
+   }
+   .search-results{
+       display: flex;
+       flex-direction: column;
+   }
+
+   .job-info{
+       width:200px;
+       height:200px;
+   }
+
+   
 }

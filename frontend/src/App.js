@@ -34,7 +34,7 @@ function App() {
   return (
     <div>
       <Nav/>
-      {/* <nav>
+      <nav>
         <NavLink to="/"> Home </NavLink>
         {user?.email ? (
           <Fragment>
@@ -50,7 +50,7 @@ function App() {
         )}
         {!user?.email && <GoogleSignUp setUser={setUser} />}
         {!user?.email && <GoogleLogIn setUser={setUser} />}
-      </nav> */}
+      </nav>
 
       <Switch>
         <Route exact path="/" render={props => <Home {...props} />} />
