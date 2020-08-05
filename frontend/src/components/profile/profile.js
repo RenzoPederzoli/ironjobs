@@ -8,7 +8,7 @@ import "../../Styles/profile.css"
 
 const Profile = (props) => {
   if(!props.user.email && !props.user.loading){ 
-    props.history.push('/login') 
+    props.history.push('/signup') 
   }
   // console.log(props.user)
 
@@ -47,9 +47,9 @@ const Profile = (props) => {
 
   // actually go to DB and delete
   const removeJob = (ind,event) => {
-    event.target.parentNode.innerHTML = ""
     actions.removeJob(props.user.addedJobs[ind].title)
       .then((res) => {
+        props.setUser(res.data.user)
         console.log(res)
       })
       .catch((err)=> {
@@ -60,12 +60,22 @@ const Profile = (props) => {
   //apply some sort of basic filtering to this save jobs
   const printJobs = () => {
     return props.user.addedJobs?.map((job,i) => {
-      return <p key={i}>{job.title} <a target="_blank" href={job.link || job.url}>Link</a><button onClick={(e) => removeJob(i,e)}>Remove</button></p>
+      console.log(job)
+      return (
+      <div className="saved-job-wrapper" key={i}>
+        <p className="saved-job-card">
+          <span className="card-info">
+            <span>{job.title}</span>
+          </span> 
+          <button onClick={(e) => removeJob(i,e)}>Remove</button>
+        </p>
+        <a target="_blank" href={job.link || job.url}><img src={require("../../images/profile-imgs/applynow.png")}></img></a>
+      </div> 
+      )
     })
   }
 
   const printSuggestions = () => {
-    console.log(suggestions)
     let lastInd = props.user.addedJobs?.length - 1
     let place = props.user.addedJobs[lastInd]?.location
     return suggestions.map((item) => {
@@ -78,8 +88,10 @@ const Profile = (props) => {
 
   return (
     <div>
-      <h2>Profile {props.user.email}</h2>
-      Saved Jobs <br/>
+      <h2 className="profile-greeting">Hi, {props.user.email}!</h2>
+      <div className="profile-mini-nav">
+        <span> Saved Jobs </span> | <span>Suggested </span>
+      </div>
       {props.user.addedJobs ? 
         ( printJobs() )
         :

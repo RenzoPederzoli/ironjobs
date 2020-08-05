@@ -50,8 +50,7 @@ const JobSearch = (props) => {
               items={jobsArr}
               onSearch={handleOnSearch}
               onSelect={handleOnSelect}
-              placeholder={"Search"}
-              autoFocus
+              placeholder="Search"
               showIcon={false}
             />
 
@@ -62,6 +61,7 @@ const JobSearch = (props) => {
               }}
               componentRestrictions={{country: "us"}}
             />
+
             <input className="submit-btn" type="submit" value=""/>
         </form>
         
