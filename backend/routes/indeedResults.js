@@ -13,7 +13,7 @@ router.get(`/indeed-results/:location/:searchTerm`, async function(req, res, nex
         jobType: '',
         maxAge: '',
         sort: '',
-        limit: 50
+        limit: 25
         };
     
         

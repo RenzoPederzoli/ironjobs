@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .signup-wrapper {
   position: absolute;
   top: 50%;
@@ -5,6 +6,8 @@
   transform: translate(-50%,-50%);
 }
 
+=======
+>>>>>>> 5e1dee42e77c8138cf75f1452124028acbf3dfa9
 .signup-container{
     max-width:300px;
     width:100%;

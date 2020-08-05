@@ -36,7 +36,10 @@ function App() {
   return (
     <div>
       <Nav/>
+<<<<<<< HEAD
       
+=======
+>>>>>>> 5e1dee42e77c8138cf75f1452124028acbf3dfa9
       <nav>
         <NavLink to="/"> Home </NavLink>
         {user?.email ? (
