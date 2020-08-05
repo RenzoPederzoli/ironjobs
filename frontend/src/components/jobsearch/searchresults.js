@@ -187,8 +187,14 @@ const SearchResults = (props) => {
           window.innerWidth < 1000 ? setModalShow(true) : setModalShow(false)}}} 
           className="job-card" key={i}>
           
-      <ul className='job-list'><li className='job-title'>{job.title} <button className='add-job-btn' onClick={() => {addJob(i)}}></button></li> <li className='job-company'>{job.company}</li> <li className='job-location'>{job.location}</li> <li className='job-description'>{job.summary ? job.summary?.slice(0,50)+'...' : job.description?.slice(0,50)+'...'}</li> <li className='job-postDate-seniorityLevel'>{job.postDate} {job.senorityLevel}</li></ul> 
-          
+          <ul className='job-list'>
+            <li className='job-title'>{job.title} <button className='add-job-btn' onClick={() => {addJob(i)}}></button></li> 
+            <li className='job-company'>{job.company}</li> 
+            <li className='job-location'>{job.location}</li> 
+            <li className='job-description'>{job.summary ? job.summary?.slice(0,50)+'...' : job.description?.slice(0,50)+'...'}</li> 
+            <li className='job-postDate-seniorityLevel'>{job.postDate} {job.senorityLevel}</li>
+          </ul> 
+              
         </div>
       )
     })
@@ -233,7 +239,7 @@ const SearchResults = (props) => {
             <span id='display-job-description'>{clickedJob?.summary || clickedJob?.description}</span>
             <br/>
             <br/>
-            <button id='display-job-apply-btn'>Apply Now</button>
+            <button id='display-job-apply-btn' onClick={()=> clickedJob?.url ? window.open(clickedJob?.url, '_blank') : window.open(clickedJob?.link, '_blank')}>Apply Now</button>
         </div> : ''} 
           </div> ) }
       
