@@ -69,6 +69,10 @@
   display: none;
 }
 
+.saved-description {
+  display: none;
+}
+
 .suggested-search {
   border-radius: 12px;
   background-color: white;
@@ -107,13 +111,51 @@
 
   #suggested {
     position: sticky;
+    height:fit-content;
+    right:8%;
+    top:10%;
   }
 
   #saved-jobs {
-    width: 65%
+    width: 100%;
+  }
+
+  .saved-title {
+    margin-left: 9.5%;
+    display: block;
   }
 
   .body-container {
     display: flex;
+  }
+  
+  .saved-description {
+    display: block;
+    height: 10vh;
+  }
+
+  .card-info > p:nth-child(2) {
+    margin: 0;
+  }
+  
+  .card-info > p:nth-child(3) {
+    margin:0;
+  }
+
+  .card-info {
+    padding: 5px;
+  }
+
+  .saved-job-card {
+    height: 18vh;
+    overflow-y: scroll;
+  }
+
+  .remove-bookmark {
+    align-self: flex-start;
+  }
+
+  .saved-job-card::-webkit-scrollbar {
+   display: none;
   }
 }

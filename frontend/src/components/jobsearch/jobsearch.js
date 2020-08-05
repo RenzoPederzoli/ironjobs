@@ -8,12 +8,12 @@ import jobsArr from './job-phrase-list.json';
 const JobSearch = (props) => {
     let [location, setLocation] = useState("");
     let [searchTerm, setSearchTerm] = useState("");
-    let [searchPlaceholder, setSearchPlaceholder] = useState("")
+    // let [searchPlaceholder, setSearchPlaceholder] = useState("")
 
-    useEffect(() => {
-      let input = document.querySelector(".sc-htpNat > input").placeholder ="Search"
+    // useEffect(() => {
+    //   let input = document.querySelector(".sc-htpNat > input").placeholder ="Search"
 
-    },[])
+    // },[])
 
     const changeLocation = (s) => {
         setLocation(s)

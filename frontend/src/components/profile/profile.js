@@ -69,6 +69,7 @@ const Profile = (props) => {
             <p className="job-title">{job.title}</p>
             <p> {job.company}</p>
             <p> {job.location}</p>
+            <p className="saved-description"> {job.summary || job.description}</p>
           </span> 
           <span className="remove-bookmark" onClick={(e) => removeJob(i,e)}><img src={require("../../images/profile-imgs/full-bookmark.svg")}></img></span>
         </div>
