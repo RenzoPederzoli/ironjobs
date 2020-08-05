@@ -1,4 +1,8 @@
 .suggestions-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 9.5%;
   margin-bottom: 10vh;
 }
 
@@ -11,7 +15,16 @@
   color: rgba(0,0,0,0.65);
 }
 
+.profile-mini-nav > a {
+  color: black;
+  text-decoration: none;
+  color: rgba(0,0,0,0.65);
+}
+
 .saved-job-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 7px;
   position: relative;
   width: 55%;
@@ -26,9 +39,81 @@
 .saved-job-wrapper {
   display: flex;
   align-items: center;
+  margin: 4% 0;
 }
 
-.card-info:nth-child(1) {
+.card-info > p:nth-child(2) {
+  font-size: 0.85em;
+}
+
+.card-info > p:nth-child(3) {
+  opacity: 0.7;
+  font-size:0.8em;
+}
+
+.job-title {
   font-weight: bold;
   font-size: 0.9em;
+}
+
+.remove-bookmark {
+  align-self: flex-end;
+  margin-right: 3%;
+}
+
+.suggestions-title {
+  margin-left: 9.5%;
+}
+
+.saved-title {
+  display: none;
+}
+
+.suggested-search {
+  border-radius: 12px;
+  background-color: white;
+  width: fit-content;
+  padding: 5px 7px;
+  margin: 5px;
+  text-decoration: none;
+  color: black;
+  font-size: 17px;
+  box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
+}
+
+@media only screen and (min-width: 800px) {
+  .profile-wrapper {
+    background-color: white;
+  }
+  /* 1366x768 */
+  .profile-greeting {
+    background-color: #F4F6FA;
+    margin:0;
+    font-size: 35px;
+    font-weight: 400;
+    position: relative;
+    margin-top: 1%;
+    padding-left: 16%;
+    padding-bottom: 2%;
+  }
+
+  .profile-mini-nav {
+    display:none;
+  }
+
+  .suggestions-list {
+    margin-bottom: 0;
+  }
+
+  #suggested {
+    position: sticky;
+  }
+
+  #saved-jobs {
+    width: 65%
+  }
+
+  .body-container {
+    display: flex;
+  }
 }

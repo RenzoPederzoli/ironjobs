@@ -13,8 +13,6 @@ import Profile from './components/profile/profile';
 import Nav from './components/Nav'
 import AboutUs from './components/AboutUs'
 
-console.log(process.env)
-
 function App() {
   let [user, setUser] = useState({loading: true})
 
@@ -35,7 +33,7 @@ function App() {
 
   return (
     <div>
-      <Nav/>
+      <Nav user={user} logOut={logOut}/>
       
       {/* <nav>
         <NavLink to="/"> Home </NavLink>

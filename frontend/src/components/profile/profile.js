@@ -4,7 +4,8 @@ import {Link} from 'react-router-dom'
 import defaultSuggestions from './defaultsuggestions.json'
 import actions from '../../services/actions'
 import FooterMobile from "../FooterMobile";
-import "../../Styles/profile.css"
+import "../../Styles/profile.css";
+import { NotificationManager } from 'react-notifications';
 
 const Profile = (props) => {
   if(!props.user.email && !props.user.loading){ 
@@ -13,7 +14,7 @@ const Profile = (props) => {
   // console.log(props.user)
 
   // suggestions very shaky, i.e. "full"
-  const [suggestions,setSuggestions] = useState([defaultSuggestions])
+  const [suggestions,setSuggestions] = useState(defaultSuggestions)
 
   const selectRandTitle = () => {
     let index = Math.floor(Math.random() * props.user.addedJobs?.length)
@@ -50,6 +51,7 @@ const Profile = (props) => {
     actions.removeJob(props.user.addedJobs[ind].title)
       .then((res) => {
         props.setUser(res.data.user)
+        NotificationManager.info('Removed Job')
         console.log(res)
       })
       .catch((err)=> {
@@ -60,15 +62,16 @@ const Profile = (props) => {
   //apply some sort of basic filtering to this save jobs
   const printJobs = () => {
     return props.user.addedJobs?.map((job,i) => {
-      console.log(job)
       return (
       <div className="saved-job-wrapper" key={i}>
-        <p className="saved-job-card">
+        <div className="saved-job-card">
           <span className="card-info">
-            <span>{job.title}</span>
+            <p className="job-title">{job.title}</p>
+            <p> {job.company}</p>
+            <p> {job.location}</p>
           </span> 
-          <button onClick={(e) => removeJob(i,e)}>Remove</button>
-        </p>
+          <span className="remove-bookmark" onClick={(e) => removeJob(i,e)}><img src={require("../../images/profile-imgs/full-bookmark.svg")}></img></span>
+        </div>
         <a target="_blank" href={job.link || job.url}><img src={require("../../images/profile-imgs/applynow.png")}></img></a>
       </div> 
       )
@@ -76,10 +79,11 @@ const Profile = (props) => {
   }
 
   const printSuggestions = () => {
+    // console.log(suggestions)
     let lastInd = props.user.addedJobs?.length - 1
     let place = props.user.addedJobs[lastInd]?.location
-    return suggestions.map((item) => {
-      return <Link to={`/search-results/${place}/${item.word}`}>{item.word} <br/></Link>
+    return suggestions.map((item,i) => {
+      return <Link key={i} className="suggested-search" to={`/search-results/${place}/${item.word}`}>{item.word} <br/></Link>
     })
   }
 
@@ -87,20 +91,28 @@ const Profile = (props) => {
     return  <>Loading...</>
 
   return (
-    <div>
+    <div className="profile-wrapper">
       <h2 className="profile-greeting">Hi, {props.user.email}!</h2>
       <div className="profile-mini-nav">
-        <span> Saved Jobs </span> | <span>Suggested </span>
+        <a href="#saved-jobs"> Saved Jobs </a> | <a href="#suggested">Suggested </a>
       </div>
-      {props.user.addedJobs ? 
-        ( printJobs() )
-        :
-        ( <Fragment>Start looking for jobs now!</Fragment> )
-      }
-      <h3>Suggestions</h3>
-      <div className="suggestions-list">
-        {printSuggestions()}
+      <div className="body-container">
+        <div id="saved-jobs">
+          <h2 className="saved-title">Saved</h2>
+          {props.user.addedJobs ? 
+            ( printJobs() )
+            :
+            ( <Fragment>Start looking for jobs now!</Fragment> )
+          }
+        </div>
+        <div id="suggested">
+          <h3 className="suggestions-title">Suggestions</h3>
+          <div className="suggestions-list">
+            {printSuggestions()}
+          </div>
+        </div>
       </div>
+      
       <FooterMobile {...props}/>
     </div>
   );
