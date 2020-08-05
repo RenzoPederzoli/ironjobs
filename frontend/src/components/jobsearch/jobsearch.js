@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Autocomplete from 'react-google-autocomplete'
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { NotificationManager } from 'react-notifications';
@@ -9,6 +9,11 @@ const JobSearch = (props) => {
     let [location, setLocation] = useState("");
     let [searchTerm, setSearchTerm] = useState("");
     let [searchPlaceholder, setSearchPlaceholder] = useState("")
+
+    useEffect(() => {
+      let input = document.querySelector(".sc-htpNat > input").placeholder ="Search"
+
+    },[])
 
     const changeLocation = (s) => {
         setLocation(s)
@@ -52,8 +57,8 @@ const JobSearch = (props) => {
               onSelect={handleOnSelect}
               placeholder="Search"
               showIcon={false}
-              onFocus="Search"
-              onBlur="Search"
+              // onFocus="Search"
+              // onBlur="Search"
             />
 
             <Autocomplete
