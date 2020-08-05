@@ -1,3 +1,34 @@
 .suggestions-list {
   margin-bottom: 10vh;
 }
+
+.profile-greeting {
+  margin-left: 9.5%;
+}
+
+.profile-mini-nav {
+  margin-left: 9.5%;
+  color: rgba(0,0,0,0.65);
+}
+
+.saved-job-card {
+  padding: 7px;
+  position: relative;
+  width: 55%;
+  height: 12vh;
+  border-radius: 12px;
+  margin-left: 9.5%;
+  margin-right: 3%;
+  background-color: white;
+  box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
+}
+
+.saved-job-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.card-info:nth-child(1) {
+  font-weight: bold;
+  font-size: 0.9em;
+}

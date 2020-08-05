@@ -25,7 +25,7 @@ function LogIn(props) {
   };
 
   return (
-    <Fragment>
+    <div className="signup-wrapper">
       <div className='signup-container'>
       <div className='form-content'>
       <p className='signup-text'>Sign In</p>
@@ -50,7 +50,7 @@ function LogIn(props) {
       <img className='google-logo' src={require('../../images/google-logo.png')} />
       </div>
       </div>
-    </Fragment>
+    </div>
   );
 }
 

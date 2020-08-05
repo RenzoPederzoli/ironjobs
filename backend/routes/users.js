@@ -21,9 +21,9 @@ router.post('/removejob', isAuth, function(req,res,next) {
   let updated = [...req.user.addedJobs].filter(each => {
     return each.title != req.body.title
   })
-  User.findByIdAndUpdate({_id: req.user._id}, {addedJobs: updated})
-  .then(() => {
-    res.status(200).send("Removed Job!")
+  User.findByIdAndUpdate(req.user._id, {addedJobs: updated}, {new: true})
+  .then((user) => {
+    res.status(200).send({user})
   })
   .catch((err) => {
     console.log(req.user)
