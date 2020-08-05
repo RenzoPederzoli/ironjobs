@@ -24,6 +24,7 @@ const JobSearch = (props) => {
       }
       else
        props.history.push(`/search-results/${location}/${searchTerm}`)
+       window.location.reload()
     }
 
     const handleOnSearch = (string, cached) => {
@@ -59,12 +60,13 @@ const JobSearch = (props) => {
             <Autocomplete
               id='search-results-location-input'
               placeholder="Location"
+              autocomplete='new-password'
               onPlaceSelected={(place) => {
                 changeLocation(place.address_components[0].short_name)
               }}
               componentRestrictions={{country: "us"}}
             />
-            <input className="search-results-submit-btn" type="submit" value=""/>
+            <input className="search-results-submit-btn" type="submit" value="Find Jobs"/>
         </form>
         </div>
         </div>

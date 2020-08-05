@@ -2,6 +2,10 @@
   display:none;
 }
 
+#display-job{
+  display:none;
+}
+
 .search-results {
   margin-bottom: 10vh;
   display: flex;
@@ -76,6 +80,7 @@
 #filter-button-container{
   display:flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 #filter-button-container > button{
@@ -144,24 +149,56 @@
   font-size: 1.6em;
 }
 
-@media only screen and (min-width: 750px) {
+#all-jobs{
+  margin-left: 10%;
+}
+
+@media only screen and (min-width: 1000px) {
    #jobsearch-container{
        background-color: #F4F6FA;
-       display:flex;
+       display:block;
+       margin-left: 18%;
+       margin-right: 50%;
+       margin-top:2%;
+       height:10vh;
    }
 
-   /* .search-results-form{
+   .search-results-form{
        display: flex;
-       flex-direction: row;
-   } */
+   }
+
+   #jobsearch-container > form > div > div{
+    width:296px;
+    border-radius: 12.5px;
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
+   }
+
+   #jobsearch-container > form > div > div > div > input{
+     font-size: 1.1em;
+   }
+
    #search-results-location-input{
-       width:200px;
-       margin:20px;
+    position: relative;
+    margin-left: 310px;
+    min-width: 296px;
+    border-radius: 12.5px;
+    border:none;
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
+    font-size: 1.1em;
    }
-   #search-results-job-input{
-       width: 200px;
-       margin-left:2000px;
+
+   #jobsearch-container > form > input.search-results-submit-btn{
+    background-color: #f06239;
+    color:	#fef8f6;
+    border:none;
+    border-radius: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    min-width:179px;
+    font-size: 1.6em;
    }
+   
+
    #search-results-container{
        background-color: white;
    }
@@ -170,9 +207,62 @@
        flex-direction: column;
    }
 
-   .job-info{
-       width:200px;
-       height:200px;
+   #mobile-back-arrow{
+     display:none;
    }
+
+   #back-arrow-container > h4{
+    margin-left: 18%;
+    font-size: 1.4em;
+  }
+
+  .search-results{
+    flex-direction: row;
+    /* margin-left: 10%; */
+  }
+
+  #display-job{
+    display:block;
+    align-self: flex-start;
+    position: sticky;
+    right:10%;
+    top:10%;
+    width:25%;
+    max-height: 80vh;
+    height:fit-content;
+    border-radius: 12.5px;
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
+    padding:2%;
+    overflow-y:auto;
+  }
+
+  #display-job-title{
+    font-size: 1.5em;
+    font-family: 'Shree Devanagari 714';
+    font-weight: bold;
+  }
+
+  #display-job-company{
+    font-family: 'Shree Devanagari 714';
+    font-size:1.4em;
+  }
+
+  #display-job-location{
+    font-family: 'Shree Devanagari 714';
+    font-size:1.2em;
+  }
+
+  #display-job-apply-btn{
+    background-color: #f06239;
+    color:	#fef8f6;
+    border:none;
+    border-radius: 25px;
+    width:75%;
+    max-width:302px;
+    height:4vh;
+    font-size: 1.6em;
+    margin-left: 12.5%;
+  }
+
    
 }
