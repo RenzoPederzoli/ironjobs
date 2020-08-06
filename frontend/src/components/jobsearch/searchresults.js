@@ -5,6 +5,7 @@ import { NotificationManager } from 'react-notifications';
 import JobSearchPage from './jobsearchpage'
 import FooterMobile from "../FooterMobile.js";
 import "../../Styles/search-results.css"
+import Select from 'react-dropdown-select';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
@@ -13,13 +14,26 @@ const SearchResults = (props) => {
   let [originalJobsArray, setOriginalJobsArray] = useState([]);
   let [moreResultsLoading, setMoreResultsLoading] = useState(false)
   let [loading,setLoading] = useState(true)
+
   let [filters, setFilters] = useState({
-    filterByDate:false, 
-    filterBySeniorotyLevel:false, 
-    sortedByDate:false})
+    // filterByDate:false, 
+    // filterBySeniorotyLevel:false, 
+    sortByDate:false,
+    sortBySalary:false})
+
   const [modalShow, setModalShow] = React.useState(false);
   let [clickedJob, setClickedJob] = useState(null)
 
+  const dateFilterOptions = [
+    {label: 'Last 24 hours', value: 1},
+    {label: 'Last 3 days', value: 3},
+    {label: 'Last 7 days', value: 7},
+    {label: 'Last 14 days', value: 14},
+    {label: 'Last 21 days', value: 21},
+    {label: 'All Results', value: null}]
+
+  let [dateFilter, setDateFilter] = useState(null)
+    
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal
@@ -166,33 +180,48 @@ const SearchResults = (props) => {
   const changeFilters = jobProp =>{
     setFilters({...filters, 
     [jobProp] : !filters[jobProp]})
-    console.log(filters)
   }
 
   const printJobs = () => {
 
     return jobs.filter(j => {
-      if(filters.filterBySeniorotyLevel) {
-        if(j.senorityLevel !== 'Entry level' || !j.senorityLevel)
-          return false
-      } 
-      if(filters.filterByDate && parseInt(j.postDate.split(' ')[0]) >= 14)
+      // if(filters.filterBySeniorotyLevel) {
+      //   if(j.senorityLevel !== 'Entry level' || !j.senorityLevel)
+      //     return false
+      // } 
+      if(dateFilter === null)
+        return true
+      else if( /*filters.filterByDate && */ parseInt(j.postDate.split(' ')[0]) > dateFilter)
         return false
       return true
     })
-    .sort((a,b) => {if(filters.sortedByDate){
+    .sort((a,b) => {if(filters.sortByDate){
       if(a.postDate[0]==='J'){return -1}
       if(a.postDate[0]==='T'){return -1}
       if(parseInt(a.postDate.split(' ')[0]) < parseInt(b.postDate.split(' ')[0])) { return -1; }
       if(parseInt(a.postDate.split(' ')[0]) > parseInt(b.postDate.split(' ')[0])) { return 1; }
       return 0;
     }})
+    .sort((a,b)=>{if(filters.sortBySalary){
+      if(a.salary && b.salary){
+        if(parseInt(a.salary.split(' ')[0].substr(1).replace(',','')) > parseInt(b.salary.split(' ')[0].substr(1).replace(',',''))) {return -1}
+        if(parseInt(a.salary.split(' ')[0].substr(1).replace(',','')) > parseInt(b.salary.split(' ')[0].substr(1).replace(',',''))) {return 1}
+        return 0
+      } 
+      if(a.salary && !b.salary)
+        return -1
+      if(!a.salary && b.salary)
+        return 1    
+      return 0
+
+  }
+    })
     .map((job,i) => {
       return (
         <div onClick={(e) => {
           if(e.target.type !== 'submit'){
           setClickedJob(job); 
-          window.innerWidth < 750 ? setModalShow(true) : setModalShow(false)}}} 
+          window.innerWidth < 800 ? setModalShow(true) : setModalShow(false)}}} 
           className="job-card" key={i}>
           
           <ul className='job-list'>
@@ -201,6 +230,7 @@ const SearchResults = (props) => {
             <li className='job-location'>{job.location}</li> 
             <li className='job-description'>{job.summary ? job.summary?.slice(0,50)+'...' : job.description?.slice(0,50)+'...'}</li> 
             <li className='job-postDate-seniorityLevel'>{job.postDate} {job.senorityLevel}</li>
+          <li>{job.salary}</li>
           </ul> 
               
         </div>
@@ -217,15 +247,48 @@ const SearchResults = (props) => {
       <h4>Showing Results for '{props.match.params.searchTerm}' in {props.match.params.location}</h4>
       </div>
       <div id='filter-button-container'>
+
       <button onClick={() => {
-        changeFilters('sortedByDate')
-        }}>Sort by date</button>
+        if(filters.sortBySalary){
+          setFilters({
+            ...filters,
+            'sortByDate': !filters['sortByDate'],
+            'sortBySalary': !filters['sortBySalary']
+          })
+          // changeFilters('sortByDate')
+          // changeFilters('sortBySalary')
+          
+          // console.log(filters)
+        }
+        else{
+        changeFilters('sortByDate')
+        }
+        }}>Sort by Date</button>
+
       <button onClick={() => {
-        changeFilters('filterByDate')
-        }}>Filter by date</button>
-      <button onClick={() => {
+        if(filters.sortByDate){
+          setFilters({
+            ...filters,
+            'sortByDate': !filters['sortByDate'],
+            'sortBySalary': !filters['sortBySalary']
+          })
+        }
+        else{
+        changeFilters('sortBySalary')
+        }
+        }}>Sort by Salary</button>
+
+      <Select
+      placeholder='Date Posted '
+      options={dateFilterOptions}
+      onChange={(value)=>setDateFilter(value[0].value)}
+      // onClick={() => {changeFilters('filterByDate')
+      />
+
+      {/* <button onClick={() => {
         changeFilters('filterBySeniorotyLevel')
-        }}>Filter by seniority level</button>
+        }}>Filter by seniority level</button> */}
+
         </div>
       <br/>
       {loading ? 
