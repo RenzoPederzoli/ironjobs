@@ -20,14 +20,25 @@ const popularJobs = [
 const Home = (props) => {
 
   const printPopJobs = () => {
-    return popularJobs.map(item => {
-      return <Link className="pop-job" to={`/search-results/Miami/${item}`}>{item}</Link>
+    return popularJobs.map((item,i) => {
+      return <Link key={i} className="pop-job" to={`/search-results/Miami/${item}`}>{item}</Link>
     })
+  }
+
+  const printGreeting = () => {
+    let d = new Date()
+    let t = d.getHours()
+    if (t >= 19 && t <= 4)
+      return "Goot Evening"
+    else if (t >= 5 && t <= 11) 
+      return "Good Morning"
+    else
+      return "Good Afternoon"
   }
 
   return ( 
     <div id='home-container'>
-      <p className='home-greeting'>Good Morning</p>
+      <p className='home-greeting'>{printGreeting()}</p>
       <p className="home-description">Find Your Next Job Using The Centralized Job Search.</p>
       <JobSearch {...props}/>
       <img id='desktop-home-image' src={require('../images/desktop-home/desktop-home-image.png')} />

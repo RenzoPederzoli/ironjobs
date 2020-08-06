@@ -48,7 +48,6 @@ function LogIn(props) {
         <input className='signin-btn' type="submit" value="Sign In" />
       </form>
       <img className='or-sign-in-with' src={require('../../images/or-sign-in-with.svg')}/>
-      {/* <img className='google-logo' src={require('../../images/google-logo.svg')} /> */}
       <GoogleLogIn {...props} setUser={props.setUser}/>
       </div>
       </div>
