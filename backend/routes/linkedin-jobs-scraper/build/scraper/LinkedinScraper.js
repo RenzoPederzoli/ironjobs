@@ -1,4 +1,4 @@
-console.log("in build banana")
+console.log("in build kiwi banana!!!!")
 
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -194,13 +194,15 @@ class LinkedinScraper extends events_1.EventEmitter {
                 logger_1.logger.info(tag, `Query="${query}"`, `Location="${location}"`);
                 // Open url
                 yield page.goto(url, {
-                    waitUntil: 'networkidle0',
+                    waitUntil: 'domcontentloaded',
                 });
-                logger_1.logger.info(tag, "Page loaded");
+
+                console.log('page', page, 'peanuts')
+                logger_1.logger.info(tag, "Page loaded?");
                 // Wait form search input selectors
                 yield Promise.all([
-                    page.waitForSelector("form#JOBS", { timeout: 10000 }),
-                    page.waitForSelector(`button[form="JOBS"]`, { timeout: 10000 })
+                    page.waitForSelector("form#JOBS", { timeout: 10000,   waitUntil: 'domcontentloaded' }),
+                    page.waitForSelector(`button[form="JOBS"]`, { timeout: 10000,   waitUntil: 'domcontentloaded' })
                 ]);
                 // Clear search inputs
                 yield page.evaluate(() => document.querySelector(`form#JOBS input[name="keywords"]`).value = "");
