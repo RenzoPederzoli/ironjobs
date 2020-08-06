@@ -14,6 +14,7 @@ const browserDefaults = {
         "--disable-setuid-sandbox",
         "--disable-gpu",
         "--disable-dev-shm-usage",
+        
     ],
     defaultViewport: null,
     pipe: true,

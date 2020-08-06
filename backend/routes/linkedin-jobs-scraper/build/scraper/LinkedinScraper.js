@@ -1,4 +1,4 @@
-console.log("in build kiwi banana!!!!")
+console.log("apple banana!!!!")
 
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -48,6 +48,7 @@ const _loadJobDetails = (page, jobTitle, jobCompany, timeout = 2000) => __awaite
         loaded = yield page.evaluate((jobTitle, jobCompany) => {
             const jobHeaderRight = document.querySelector(".topcard__content-left");
             console.log(jobHeaderRight, ' pineapple')
+
             return jobHeaderRight &&
                 jobHeaderRight.innerText.includes(jobTitle) &&
                 jobHeaderRight.innerText.includes(jobCompany);
@@ -118,6 +119,7 @@ const _loadMoreJobs = (page, seeMoreJobsSelector, linksSelector, jobLinksTot, ti
  */
 class LinkedinScraper extends events_1.EventEmitter {
     constructor(options) {
+
         super();
         this._browser = undefined;
         this._state = states_1.states.notInitialized;
@@ -194,18 +196,14 @@ class LinkedinScraper extends events_1.EventEmitter {
                 tag = `[${query}][${location}]`;
                 logger_1.logger.info(tag, `Query="${query}"`, `Location="${location}"`);
                 // Open url
-                yield page.goto(url)
-                
-                // , {
-                //     waitUntil: 'domcontentloaded',
-                // });
-
-                console.log('page', page, 'peanuts again???')
-                logger_1.logger.info(tag, "Page loaded?");
+                yield page.goto(url, {
+                    waitUntil: 'networkidle0',
+                });
+                logger_1.logger.info(tag, "Page loaded");
                 // Wait form search input selectors
                 yield Promise.all([
-                    page.waitForSelector("form#JOBS", { timeout: 30000  }),
-                    page.waitForSelector(`button[form="JOBS"]`, { timeout: 30000 })
+                    page.waitForSelector("form#JOBS", { timeout: 10000 }),
+                    page.waitForSelector(`button[form="JOBS"]`, { timeout: 10000 })
                 ]);
                 // Clear search inputs
                 yield page.evaluate(() => document.querySelector(`form#JOBS input[name="keywords"]`).value = "");
@@ -383,6 +381,7 @@ class LinkedinScraper extends events_1.EventEmitter {
             this._state = states_1.states.notInitialized;
         });
         this.options = options;
+        console.log('options', options)
     }
     /**
      * Initialize browser

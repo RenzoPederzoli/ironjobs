@@ -10,8 +10,12 @@ router.get(`/linkedin-results/:location/:searchTerm`, async function(req, res, n
             // Each scraper instance is associated with one browser.
         // Concurrent queries will run on different pages within the same browser instance.
         const scraper = new LinkedinScraper({
-            headless: false,
-            args: ['--no-sandbox']
+            headless: true,
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+              ],
+            //args: ['--no-sandbox']
             // slowMo: 100,
         });
     
