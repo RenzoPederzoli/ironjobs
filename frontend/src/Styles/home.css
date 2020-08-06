@@ -43,14 +43,17 @@ body {
 #home-container > div:nth-child(3) > form > div > div {
   border-radius: 12px;
   width: 50vw;
-  height:6.5vh;
+  height:48px;
   /* top: 30%; */
   margin-left: 9.5%;
   box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
 }
 /* selector before input for search!! */
 .cHDtue {
-  height: 6.5vh;
+  /* height: 6.5vh; */
+  /* min-height: 48px;
+  max-height: 58px; */
+  height: 48px;
 }
 .bars-wrapper {
   width: fit-content;
@@ -79,10 +82,10 @@ body {
 /* selector for second search bar*/
 .pac-target-input {
   width: 50vw;
-  min-height: 44px;
+  min-height: 48px;
   border: 1px solid #dfe1e5;
   outline: none;
-  height: 6.5vh;
+  /* height: 44px; */
   border-radius: 12px;
   margin-left: 9.5%;
   margin-top: 6%;
@@ -107,7 +110,7 @@ body {
   margin-left: 8%;
   border: none;
   outline: none;
-  align-self: flex-end;
+  align-self: center;
   /* z-index: -1; */
 }
 
@@ -174,13 +177,13 @@ body {
   }
 
   #home-container > div:nth-child(3) > form > div > div > div {
-    max-height: 58px;
+    min-height: 48px;
   }
 
   /* job search wrapper */
   #home-container > div:nth-child(3) > form > div > div{
     width:21.7vw;
-    max-height: 58px;
+    min-height: 48px;
     /* margin-left:10.2%; */
     /* box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25); */
     /* height: 48px; */
@@ -212,7 +215,7 @@ body {
     width:21.7vw;
     /* height:6.6vh; */
     min-height: 48px;
-    max-height: 58px;
+    /* max-height: 48px; */
     /* margin-left:33.2%; */
     /* opacity: 1; */
     box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
