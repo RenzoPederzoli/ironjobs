@@ -20,7 +20,7 @@ const SignUp = (props) => {
         NotificationManager.success("Signed Up Succesfully!")
         console.log(user.data);
         props.setUser({ ...user.data });
-        props.history.goBack() // takes you back to where you were
+        props.history.go(-2) // takes you back to where you were
       })
       .catch((response) => {
         NotificationManager.error("Error message","Already Exists")

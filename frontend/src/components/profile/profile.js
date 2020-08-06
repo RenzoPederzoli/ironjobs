@@ -124,6 +124,7 @@ const Profile = (props) => {
           <h3 className="suggestions-title">Suggestions</h3>
           <div className="suggestions-list">
             {printSuggestions()}
+            <img className="nice-pic" src={require("../../images/profile-imgs/nice-pic.svg")}></img>
           </div>
         </div>
       </div>

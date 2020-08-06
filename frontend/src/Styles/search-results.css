@@ -188,6 +188,8 @@
     border:none;
     box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
     font-size: 1.1em;
+    border: 1px solid #dfe1e5;
+    padding-left:1.5%;
    }
 
    #jobsearch-container > form > input.search-results-submit-btn{

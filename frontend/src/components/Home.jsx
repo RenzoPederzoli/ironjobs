@@ -47,6 +47,29 @@ const Home = (props) => {
         {printPopJobs()}
       </div>
       <FooterMobile {...props}/>
+      <div className="desktop-home-footer">
+        <div>
+          Delu - <i>Designer</i>
+          <div>
+            <a target="_blank" href="https://www.linkedin.com/in/delawit/"><i id="link-img" className="fa fa-linkedin-square" aria-hidden="true"></i></a>
+            <a target="_blank" href="https://medium.com/@deluu"><i id="link-img" className="fa fa-medium" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div>
+          Andrew - <i>Developer</i>
+          <div>
+            <a target="_blank" href="https://www.linkedin.com/in/hararia/"><i id="link-img" className="fa fa-linkedin-square" aria-hidden="true"></i></a>
+            <a target="_blank" href="https://github.com/hararia"><i id="link-img" className="fa fa-github-alt" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div>
+          Renzo - <i>Developer</i>
+          <div>
+            <a target="_blank" href="https://www.linkedin.com/in/renzop9/"><i id="link-img" className="fa fa-linkedin-square" aria-hidden="true"></i></a>
+            <a target="_blank" href="https://github.com/RenzoPederzoli"><i id="link-img" className="fa fa-github-alt" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

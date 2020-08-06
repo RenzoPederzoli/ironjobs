@@ -40,6 +40,7 @@
   display: flex;
   align-items: center;
   margin: 4% 0;
+  /* width: 65vw; */
 }
 
 .card-info > p:nth-child(2) {
@@ -92,12 +93,16 @@
   margin-left: 9.5%;
   font-style: italic;
 }
-
+.nice-pic {
+  display: none;
+}
 @media only screen and (min-width: 800px) {
   .profile-wrapper {
     background-color: white;
   }
-  
+  .saved-job-wrapper {
+    width: 65vw;
+  }
   .profile-greeting {
     background-color: #F4F6FA;
     margin:0;
@@ -115,24 +120,34 @@
 
   .suggestions-list {
     margin-bottom: 0;
+    width:35vw;
   }
-
+  .job-title {
+    padding-top: 8px;
+  }
   #suggested {
     position: sticky;
     height:fit-content;
-    right:8%;
+    /* display: flex; */
+    right:0;
     top:10%;
   }
 
+  .nice-pic {
+    /* margin-left: 20%; */
+    display: block;
+    margin-top: 10%;
+    width: 100%
+  }
+
   #saved-jobs {
-    width: 100%;
+    width: 60%;
   }
 
   .saved-title {
     margin-left: 9.5%;
     display: block;
   }
-
   .body-container {
     display: flex;
   }

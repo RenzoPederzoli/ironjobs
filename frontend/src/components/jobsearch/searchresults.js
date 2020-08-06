@@ -19,7 +19,7 @@ const SearchResults = (props) => {
     sortedByDate:false})
   const [modalShow, setModalShow] = React.useState(false);
   let [clickedJob, setClickedJob] = useState(null)
-    
+
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal
@@ -97,6 +97,8 @@ const SearchResults = (props) => {
     getJobs();
   }, []);
 
+
+  console.log(props)
   const addJob = (i) => {
     if (!props.user.email) {
       NotificationManager.warning("Please sign in to add a listing!")
