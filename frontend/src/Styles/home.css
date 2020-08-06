@@ -80,6 +80,7 @@ body {
 #root > div > div:nth-child(2) > form > input.pac-target-input::placeholder {
   font-size: 21px;
   opacity: 70%;
+  color:red;
 }
 
 .submit-btn {
