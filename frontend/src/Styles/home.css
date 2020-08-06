@@ -35,7 +35,7 @@ body {
 }
 
  /* selector for 'search wrapper' */
-#root > div > div:nth-child(2) > form > div > div {
+#home-container > div:nth-child(3) > form > div > div {
   border-radius: 12px;
   width: 58%;
   height:6.5vh;
@@ -45,7 +45,7 @@ body {
 }
 
 /* to fix pop up */
-#root > div > div:nth-child(2) > form > div > div > div {
+#home-container > div:nth-child(3) > form > div > div > div {
   background-color: white;
   width: 100%;
   border-radius: 12px;
@@ -53,18 +53,18 @@ body {
 }
 
  /* selector for 'search input' */
-#root > div > div:nth-child(2) > form > div > div > div > input {
-  padding: 10px;
+ #home-container > div:nth-child(3) > form > div > div > div > input {
+  margin-top: 10px;
 }
 
 /*selector for first placeholder */
-#root > div > div:nth-child(2) > form > div > div > div > input::placeholder {
+#home-container > div:nth-child(3) > form > div > div > div > input::placeholder {
   font-size: 21px;
   opacity: 70%;
 }
 
 /* selector for second search bar*/
-#root > div > div:nth-child(2) > form > input.pac-target-input {
+#home-container > div:nth-child(3) > form > input.pac-target-input {
   width: 58%;
   border: 1px solid #dfe1e5;
   outline: none;
@@ -77,10 +77,9 @@ body {
 }
 
 /* selector for second search bar placeholder*/
-#root > div > div:nth-child(2) > form > input.pac-target-input::placeholder {
+#home-container > div:nth-child(3) > form > input.pac-target-input::placeholder {
   font-size: 21px;
   opacity: 70%;
-  color:red;
 }
 
 .submit-btn {
