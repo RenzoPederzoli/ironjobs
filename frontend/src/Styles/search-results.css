@@ -151,17 +151,17 @@
 
 #all-jobs{
   margin-left: 10%;
-  width:300px;
+  /* width:300px; */
   max-width:400px;
   min-width: 50%;
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 750px) {
    #jobsearch-container{
        background-color: #F4F6FA;
        display:block;
-       margin-left: 18%;
-       margin-right: 50%;
+       /* margin-left: 5%; */
+       /* margin-right: 50%; */
        margin-top:2%;
        height:10vh;
    }
@@ -270,5 +270,10 @@
     margin-left: 12.5%;
   }
 
-   
+}
+
+@media only screen and (min-width: 1000px) {
+  #jobsearch-container{
+    margin-left: 17%;
+  }
 }

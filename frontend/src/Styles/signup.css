@@ -33,6 +33,7 @@
     /* margin-left: 36%;
     margin-right: 43%; */
     margin-bottom: 1vh;
+    align-self: center;
 }
 
 .signup-text::after {
@@ -44,7 +45,9 @@
     left: 46%;
     position: relative;
     transform: translate(-50%,0);
-    width: 70px;
+    width: 65%;
+    margin-left: auto;
+    margin-right: 55%;
 }
 
 .to-login{
@@ -53,6 +56,8 @@
     text-decoration: none;
     /* margin-left: 41%; */
     width:fit-content;
+    margin-left: auto;
+    margin-right: 41%;
 }
 
 .signup-form{
@@ -66,7 +71,7 @@
     min-width: 50%;
     width: 280px;
     margin-bottom: 2%;
-    height: 7vh;
+    height: 5.5vh;
     box-shadow: 5px 5px 10px #00000026;
     border-radius: 15px;
     outline: none;
@@ -83,26 +88,45 @@
 }
 
 .signup-btn{
-    align-self: center;
+    /* align-self: center;
     width:174px;
     height: 7vh;
     margin-top:3%;
     /* margin-left: 30%; */
-    background: transparent url('../images/signup-btn.svg') 0% 0% no-repeat padding-box;
+    /* background: transparent url('../images/signup-btn.svg') 0% 0% no-repeat padding-box;
     outline: none;
     border: none;
-    box-sizing: border-box;
+    box-sizing: border-box; */
+    background-color: #f06239;
+    color:	#fef8f6;
+    border:none;
+    border-radius: 25px;
+    width:60%;
+    height:5.5vh;
+    margin-top:3%;
+    font-size: 1.5em;
+    align-self: center;
+    font-family: 'Shree Devanagari 714', Regular
 }
 .signin-btn{
-    align-self: center;
+    /* align-self: center;
     width:174px;
     height: 7vh;
-    margin-top:3%;
+    margin-top:3%; */
     /* margin-left: 30%; */
-    background: transparent url('../images/signin-btn.svg') 0% 0% no-repeat padding-box;
+    /* background: transparent url('../images/signin-btn.svg') 0% 0% no-repeat padding-box;
     outline: none;
     border: none;
-    box-sizing: border-box;
+    box-sizing: border-box; */
+    background-color: #f06239;
+    color:	#fef8f6;
+    border:none;
+    border-radius: 25px;
+    width:60%;
+    height:5vh;
+    font-size: 1.6em;
+    align-self: center;
+    font-family: 'Shree Devanagari 714', Regular
 }
 .or-sign-in-with{
     margin-top: 2.2%;
@@ -112,4 +136,12 @@
 
 .google-logo{
     margin-top: 15%;
+}
+
+@media only screen and (min-width: 750px){
+
+    .signup-btn{
+        height:5vh;
+    }
+
 }

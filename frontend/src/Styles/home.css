@@ -80,7 +80,6 @@ body {
 #root > div > div:nth-child(2) > form > input.pac-target-input::placeholder {
   font-size: 21px;
   opacity: 70%;
-  color:red;
 }
 
 .submit-btn {
@@ -123,7 +122,7 @@ body {
   box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 750px) {
   /* body{
     background: linear-gradient(90deg, #FFFFFF 62%, #F4F6FA 38%);
   } */
@@ -176,7 +175,7 @@ body {
   /* location search bar */
   #root > div > div:nth-child(2) > form > input.pac-target-input{
     position: relative;
-    bottom:8vh;
+    bottom:7.5vh;
     width:21.7%;
     height:6.6vh;
     margin-left:33.2%;
@@ -185,6 +184,7 @@ body {
     border: 1px solid #DFE1E5;
     outline: none;
     border-radius: 12px;
+    margin-bottom: auto;
   }
   
   .search-form{
@@ -246,15 +246,5 @@ body {
     font-size: 17px;
     box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
   }
-}
-
-@media only screen and (min-width: 1600px) {
-
-  #root > div > div:nth-child(2) > form > input.pac-target-input{
-    
-    bottom:6vh;
-    
-  }
-
 }
 

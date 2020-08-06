@@ -57,7 +57,7 @@ const SignUp = (props) => {
           autoComplete="on"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <input className='signup-btn' type="submit" value="" />
+        <input className='signup-btn' type="submit" value="Sign Up" />
       </form>
       <img className='or-sign-in-with' src={require('../../images/or-sign-in-with.png')}/>
       <img className='google-logo' src={require('../../images/google-logo.png')} />

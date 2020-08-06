@@ -187,7 +187,7 @@ const SearchResults = (props) => {
         <div onClick={(e) => {
           if(e.target.type !== 'submit'){
           setClickedJob(job); 
-          window.innerWidth < 1000 ? setModalShow(true) : setModalShow(false)}}} 
+          window.innerWidth < 750 ? setModalShow(true) : setModalShow(false)}}} 
           className="job-card" key={i}>
           
           <ul className='job-list'>

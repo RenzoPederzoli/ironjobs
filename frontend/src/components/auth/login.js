@@ -44,7 +44,7 @@ function LogIn(props) {
           placeholder='Password'
           onChange={(e) => setPassword(e.target.value)}
         />
-        <input className='signin-btn' type="submit" value="" />
+        <input className='signin-btn' type="submit" value="Sign In" />
       </form>
       <img className='or-sign-in-with' src={require('../../images/or-sign-in-with.png')}/>
       <img className='google-logo' src={require('../../images/google-logo.png')} />

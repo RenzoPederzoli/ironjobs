@@ -13,22 +13,22 @@ router.get(`/linkedin-results/:location/:searchTerm`, async function(req, res, n
             // slowMo: 100,
         });
     
-    
+        console.log(scraper.launch)
         // Add listeners for scraper events
         scraper.on(events.scraper.data, (data) => {
             // console.log(
-                // data.description.length,
-                // `Query='${data.query}'`,
-                // `Location='${data.location}'`,
-                // `Title='${data.title}'`,
-                // `Company='${data.company}'`,
-                // `Place='${data.place}'`,
-                // `Date='${data.date}'`,
-                // `Link='${data.link}'`,
-                // `senorityLevel='${data.senorityLevel}'`,
-                // `function='${data.jobFunction}'`,
-                // `employmentType='${data.employmentType}'`,
-                // `industries='${data.industries}'`,
+            //     data.description.length,
+            //     `Query='${data.query}'`,
+            //     `Location='${data.location}'`,
+            //     `Title='${data.title}'`,
+            //     `Company='${data.company}'`,
+            //     `Place='${data.place}'`,
+            //     `Date='${data.date}'`,
+            //     `Link='${data.link}'`,
+            //     `senorityLevel='${data.senorityLevel}'`,
+            //     `function='${data.jobFunction}'`,
+            //     `employmentType='${data.employmentType}'`,
+            //     `industries='${data.industries}'`,
             // );
             allData.push(data)
         });

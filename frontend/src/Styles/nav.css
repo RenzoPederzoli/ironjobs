@@ -10,6 +10,8 @@
   width: 45%;
   height: 4.6%;
   padding: 1.6% 0;
+  margin-left: 50%;
+  margin-right: 50%;
 }
 
 .right-content {
@@ -26,7 +28,7 @@
   display:none;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 750px) {
   
   .nav-wrapper{
     display:flex;
