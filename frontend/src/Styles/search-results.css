@@ -97,6 +97,11 @@
 }
 
 .modal{
+  position:sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   height: 90vh;
   background-color: white;
 }
@@ -143,10 +148,11 @@
   color:	#fef8f6;
   border:none;
   border-radius: 25px;
-  width:100%;
+  width:75%;
   max-width:302px;
   height:6.8vh;
   font-size: 1.6em;
+  margin-left: 11%;
 }
 
 #all-jobs{
