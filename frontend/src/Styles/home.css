@@ -147,7 +147,7 @@ body {
   }
 
   /* to fix popup */
-  #root > div > div:nth-child(2) > form > div > div > div > * {
+  #home-container > div:nth-child(3) > form > div > div > div > * {
     background-color: white;
     width: 100%;
     border-radius: 12px;
@@ -155,7 +155,7 @@ body {
   }
 
   /* job search wrapper */
-  #root > div > div:nth-child(2) > form > div > div{
+  #home-container > div:nth-child(3) > form > div > div{
     width:21.7%;
     margin-left:10.2%;
     box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.25);
@@ -163,17 +163,17 @@ body {
   }
 
   /* job search bar */
-  #root > div > div:nth-child(2) > form > div > div > div{
+  #home-container > div:nth-child(3) > form > div > div > div{
     height:6.6vh;
   }
   
   /* job search placeholder */
-  #root > div > div:nth-child(2) > form > div > div > div > input{
+  #home-container > div:nth-child(3) > form > div > div > div > input{
     font-size:100%;
   }
 
   /* location search bar */
-  #root > div > div:nth-child(2) > form > input.pac-target-input{
+  #home-container > div:nth-child(3) > form > input.pac-target-input{
     position: relative;
     bottom:8vh;
     width:21.7%;
@@ -192,7 +192,7 @@ body {
     margin-bottom: 0;
   }
 
-  #root > div > div:nth-child(2) > form > input.submit-btn{
+  #home-container > div:nth-child(3) > form > input.submit-btn{
     position: relative;
     left: 0;
     margin-left: 24%;
@@ -248,7 +248,7 @@ body {
 
 @media only screen and (min-width: 1600px) {
 
-  #root > div > div:nth-child(2) > form > input.pac-target-input{
+  #home-container > div:nth-child(3) > form > input.pac-target-input{
     
     bottom:6vh;
     
