@@ -1,0 +1,81 @@
+{
+  "_args": [
+    [
+      "linkedin-jobs-scraper@2.1.2",
+      "/Users/niko/Documents/Code/IH/ironjobs/backend"
+    ]
+  ],
+  "_from": "linkedin-jobs-scraper@2.1.2",
+  "_id": "linkedin-jobs-scraper@2.1.2",
+  "_inBundle": false,
+  "_integrity": "sha512-iepBIqEtUGQvTgRahEIq9XR9ZIDzVPjftUbg7/ZMuBBPnDMf8xR8hsZZrl02jx9Kv4n4kKOyjSMmlegEB38BVA==",
+  "_location": "/linkedin-jobs-scraper",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "linkedin-jobs-scraper@2.1.2",
+    "name": "linkedin-jobs-scraper",
+    "escapedName": "linkedin-jobs-scraper",
+    "rawSpec": "2.1.2",
+    "saveSpec": null,
+    "fetchSpec": "2.1.2"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/linkedin-jobs-scraper/-/linkedin-jobs-scraper-2.1.2.tgz",
+  "_spec": "2.1.2",
+  "_where": "/Users/niko/Documents/Code/IH/ironjobs/backend",
+  "author": {
+    "name": "Ludovico Fabbri"
+  },
+  "bugs": {
+    "url": "https://github.com/spinlud/linkedin-jobs-scraper.git/issues"
+  },
+  "dependencies": {
+    "debug": "^4.1.1",
+    "puppeteer": "^5.2.1"
+  },
+  "description": "Scrape public available job offers on Linkedin using headless browser",
+  "devDependencies": {
+    "@types/debug": "^4.1.5",
+    "@types/jest": "^26.0.7",
+    "@types/node": "^14.0.26",
+    "@types/puppeteer": "^3.0.1",
+    "jest": "^26.1.0",
+    "ts-jest": "^26.1.4",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  },
+  "homepage": "https://github.com/spinlud/linkedin-jobs-scraper.git#readme",
+  "keywords": [
+    "scraper",
+    "crawler",
+    "Linkedin",
+    "jobs",
+    "puppeteer",
+    "headless",
+    "chrome",
+    "chromium",
+    "text",
+    "text-mining",
+    "data-mining",
+    "machine-learning",
+    "selenium"
+  ],
+  "license": "ISC",
+  "main": "build/index.js",
+  "name": "linkedin-jobs-scraper",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spinlud/linkedin-jobs-scraper.git"
+  },
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rm -fr build",
+    "test": "jest"
+  },
+  "types": "build/index.d.ts",
+  "version": "2.1.2"
+}

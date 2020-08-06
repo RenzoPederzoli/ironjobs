@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { LinkedinScraper, events, IData } = require('linkedin-jobs-scraper');
+const { LinkedinScraper, events, IData } = require('./linkedin-jobs-scraper');
 
+console.log('hey yo')
 router.get(`/linkedin-results/:location/:searchTerm`, async function(req, res, next){
         
         let allData=[]
