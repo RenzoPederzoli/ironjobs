@@ -3,6 +3,7 @@ import actions from "../../services/actions";
 import { Link } from 'react-router-dom'
 import { NotificationManager } from 'react-notifications';
 import "../../Styles/signup.css"
+import GoogleSignUp from '../auth/googlesingup'
 
 const SignUp = (props) => {
   let [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ const SignUp = (props) => {
     e.preventDefault();
     console.log(email, password);
     actions
-      .signUp({ email, password })
+      .signUp({ email, password, firstName, lastName})
       .then((user) => {
         NotificationManager.success("Signed Up Succesfully!")
         console.log(user.data);
@@ -38,11 +39,13 @@ const SignUp = (props) => {
           name="firstName"
           type="text"
           placeholder='First Name'
+          onChange={(e) => setFirstName(e.target.value)}
         />
         <input className='text-input'
           name="lastName"
           type="text"
           placeholder='Last Name'
+          onChange={(e) => setLastName(e.target.value)}
         />
         <input className='text-input'
           name="email"
@@ -59,8 +62,8 @@ const SignUp = (props) => {
         />
         <input className='signup-btn' type="submit" value="Sign Up" />
       </form>
-      <img className='or-sign-in-with' src={require('../../images/or-sign-in-with.png')}/>
-      <img className='google-logo' src={require('../../images/google-logo.png')} />
+      <img className='or-sign-in-with' src={require('../../images/or-sign-in-with.svg')}/>
+      <GoogleSignUp {...props} setUser={props.setUser} />
       </div>
       </div>
     </div>

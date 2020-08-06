@@ -1,6 +1,7 @@
 import React from "react";
 import actions from "../../services/actions";
 import { GoogleLogin } from "react-google-login";
+import {NotificationManager} from 'react-notifications'
 
 const responseGoogle = (props) => {
   const onResponse = (response) => {
@@ -13,6 +14,8 @@ const responseGoogle = (props) => {
       .logIn(user)
       .then((user) => {
         props.setUser({ ...user.data });
+        NotificationManager.success("Successfully signed in!")
+        props.history.goBack()
       })
       .catch(({ response }) => console.error(response.data));
   };

@@ -10,6 +10,7 @@ router.get(`/linkedin-results/:location/:searchTerm`, async function(req, res, n
         // Concurrent queries will run on different pages within the same browser instance.
         const scraper = new LinkedinScraper({
             headless: true,
+            args: ['--no-sandbox']
             // slowMo: 100,
         });
     

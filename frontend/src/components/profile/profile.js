@@ -11,29 +11,34 @@ const Profile = (props) => {
   if(!props.user.email && !props.user.loading){ 
     props.history.push('/signup') 
   }
+  
   // console.log(props.user)
 
   // suggestions very shaky, i.e. "full"
   const [suggestions,setSuggestions] = useState(defaultSuggestions)
 
   const selectRandTitle = () => {
-    let index = Math.floor(Math.random() * props.user.addedJobs?.length)
-    let obj = props.user?.addedJobs[index]
-    let regexp = /^[A-Z,a-z]/
-    console.log(obj.title.split(" ")[0])
-    if (regexp.test(obj.title.split(" ")[0])) {
-      return obj.title.split(" ")[0]
+    if(props.user.addedJobs.length !== 0) {
+      let index = Math.floor(Math.random() * props.user.addedJobs?.length)
+      let obj = props.user?.addedJobs[index]
+      let regexp = /^[A-Z,a-z]/
+      // console.log(obj.title.split(" ")[0])
+      if (regexp.test(obj.title.split(" ")[0])) {
+        return obj.title.split(" ")[0]
+      }
+      else {
+        return "industry"
+      }
     }
-    else {
-      return "industry"
-    }
+    else
+      return ""
   }
   
   useEffect(() => {
     if(!props.user.email) return
     let str = selectRandTitle()
     async function getSuggestions() { //proxy to prevent cross site hack
-      await axios.get(`https://cors-anywhere.herokuapp.com/https://api.datamuse.com/words?rel_trg=${str}&topics=jobs&max=10`)
+      await axios.get(`https://cors-anywhere.herokuapp.com/https://api.datamuse.com/words?rel_trg=${str}&topics=jobs&max=15`)
       .then((res) => {
         console.log(res)
           if (res.data.length !== 0)
@@ -88,22 +93,31 @@ const Profile = (props) => {
     })
   }
 
+  const printHandle = (str) => {
+    let s = ""
+    for(let char of str) {
+      if (char === "@")
+        return s
+      s += char
+    }
+  }
+
   if (!props.user.email) // put a spinner loader here!
     return  <>Loading...</>
 
   return (
     <div className="profile-wrapper">
-      <h2 className="profile-greeting">Hi, {props.user.email}!</h2>
+      <h2 className="profile-greeting">Hi, {props.user.firstName || printHandle(props.user.email)}!</h2>
       <div className="profile-mini-nav">
         <a href="#saved-jobs"> Saved Jobs </a> | <a href="#suggested">Suggested </a>
       </div>
       <div className="body-container">
         <div id="saved-jobs">
-          <h2 className="saved-title">Saved</h2>
-          {props.user.addedJobs ? 
+          <h2 className="saved-title"></h2>
+          {props.user.addedJobs.length ? 
             ( printJobs() )
             :
-            ( <Fragment>Start looking for jobs now!</Fragment> )
+            ( <div className="start-looking">Your saved jobs will appear here, start searching now!</div> )
           }
         </div>
         <div id="suggested">

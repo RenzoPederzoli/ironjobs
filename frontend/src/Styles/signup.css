@@ -129,13 +129,11 @@
     font-family: 'Shree Devanagari 714', Regular
 }
 .or-sign-in-with{
-    margin-top: 2.2%;
+    margin-top: 8.2%;
+    margin-bottom: 8.2%;
     width: 100%;
     box-sizing: border-box;
-}
-
-.google-logo{
-    margin-top: 15%;
+    padding: 3px;
 }
 
 @media only screen and (min-width: 750px){

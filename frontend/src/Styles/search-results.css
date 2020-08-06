@@ -261,11 +261,11 @@
   #display-job-apply-btn{
     background-color: #f06239;
     color:	#fef8f6;
+    padding: 7px;
     border:none;
     border-radius: 25px;
     width:75%;
     max-width:302px;
-    height:4vh;
     font-size: 1.6em;
     margin-left: 12.5%;
   }
