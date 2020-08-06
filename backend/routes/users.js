@@ -5,7 +5,15 @@ const User = require('../models/User');
 /* POST job to user */
 router.post('/addjob', isAuth, function(req, res, next) {
   let updated = [...req.user.addedJobs]
-  updated.push(req.body)
+  let shouldAdd = true
+  for (let i = 0; i < req.user.addedJobs.length; i++) {
+    if (JSON.stringify(req.body) === JSON.stringify(req.user.addedJobs[i])) {
+      shouldAdd = false
+      break
+    }
+  }
+  if (shouldAdd)
+    updated.push(req.body)
   User.findByIdAndUpdate(req.user._id, {addedJobs: updated}, {new: true})
     .then((user) => {
       res.status(200).send({user})

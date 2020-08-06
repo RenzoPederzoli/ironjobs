@@ -104,8 +104,11 @@ const SearchResults = (props) => {
     else {
       actions.addJob(jobs[i])
         .then((res) => {
+          if (res.data.user.addedJobs.length === props.user.addedJobs.length)
+            NotificationManager.warning("You've already added that job!")
+          else 
+            NotificationManager.success("Added Job!")
           props.setUser(res.data.user)
-          NotificationManager.success("Added Job!")
           console.log(res)
         })
         .catch((error) => {
