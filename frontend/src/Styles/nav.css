@@ -26,6 +26,10 @@
   display:none;
 }
 
+.signout-btn {
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 800px) {
   
   .nav-wrapper{

@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import actions from "../../services/actions";
 import { NotificationManager } from 'react-notifications';
 import { Link } from 'react-router-dom'
+import GoogleLogIn from '../auth/googlelogin'
 
 function LogIn(props) {
   let [email, setEmail] = useState("");
@@ -46,8 +47,9 @@ function LogIn(props) {
         />
         <input className='signin-btn' type="submit" value="" />
       </form>
-      <img className='or-sign-in-with' src={require('../../images/or-sign-in-with.png')}/>
-      <img className='google-logo' src={require('../../images/google-logo.png')} />
+      <img className='or-sign-in-with' src={require('../../images/or-sign-in-with.svg')}/>
+      {/* <img className='google-logo' src={require('../../images/google-logo.svg')} /> */}
+      <GoogleLogIn {...props} setUser={props.setUser}/>
       </div>
       </div>
     </div>

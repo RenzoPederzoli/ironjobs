@@ -5,8 +5,8 @@ import Home from './components/Home'
 import LogIn from './components/auth/login'
 import SignUp from './components/auth/signup';
 import {NotificationContainer,NotificationManager} from 'react-notifications'
-import GoogleSignUp from './components/auth/googlesingup'
-import GoogleLogIn from './components/auth/googlelogin'
+// import GoogleSignUp from './components/auth/googlesingup'
+// import GoogleLogIn from './components/auth/googlelogin'
 // import JobSearchPage from './components/jobsearch/jobsearchpage'
 import SearchResults from './components/jobsearch/searchresults'
 import Profile from './components/profile/profile';

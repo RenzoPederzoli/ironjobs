@@ -97,7 +97,7 @@ body {
 
 .pop-jobs-title {
   font-size: 24px;
-  font-family: "Shree Devanagari 714";
+  font-family: "Shree Devanagari 714" ;
   font-weight: bold;
   margin-left: 9.5%;
   margin-bottom: 3%;
@@ -225,7 +225,6 @@ body {
   .pop-jobs-title{
     margin-left: 10.1%;
     font-size: 35px;
-    font-family: 'Helvetica Neue';
   }
 
   .pop-jobs-container{
