@@ -48,8 +48,7 @@ const JobSearch = (props) => {
     }
 
     return (
-      <div>
-      
+      <div>   
         <form className='search-form' onSubmit = {handleSubmit}>
             <ReactSearchAutocomplete
               items={jobsArr}
@@ -70,8 +69,7 @@ const JobSearch = (props) => {
             />
 
             <input className="submit-btn" type="submit" value=""/>
-        </form>
-        
+        </form> 
       </div>
     );
   };

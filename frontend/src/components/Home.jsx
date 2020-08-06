@@ -27,17 +27,14 @@ const Home = (props) => {
 
   return ( 
     <div id='home-container'>
-      <JobSearch {...props}/>
       <p className='home-greeting'>Good Morning</p>
       <p className="home-description">Find Your Next Job Using The Centralized Job Search.</p>
       <JobSearch {...props}/>
       <img id='desktop-home-image' src={require('../images/desktop-home/desktop-home-image.png')} />
       <p className="pop-jobs-title"> Popular Jobs </p>
-      <JobSearch {...props}/>
       <div className="pop-jobs-container">
         {printPopJobs()}
       </div>
-      <JobSearch {...props}/>
       <FooterMobile {...props}/>
     </div>
   );
