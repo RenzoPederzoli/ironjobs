@@ -47,6 +47,7 @@ const _loadJobDetails = (page, jobTitle, jobCompany, timeout = 2000) => __awaite
     while (!loaded) {
         loaded = yield page.evaluate((jobTitle, jobCompany) => {
             const jobHeaderRight = document.querySelector(".topcard__content-left");
+            console.log(jobHeaderRight, ' pineapple')
             return jobHeaderRight &&
                 jobHeaderRight.innerText.includes(jobTitle) &&
                 jobHeaderRight.innerText.includes(jobCompany);
@@ -193,16 +194,18 @@ class LinkedinScraper extends events_1.EventEmitter {
                 tag = `[${query}][${location}]`;
                 logger_1.logger.info(tag, `Query="${query}"`, `Location="${location}"`);
                 // Open url
-                yield page.goto(url, {
-                    waitUntil: 'domcontentloaded',
-                });
+                yield page.goto(url)
+                
+                // , {
+                //     waitUntil: 'domcontentloaded',
+                // });
 
-                console.log('page', page, 'peanuts')
+                console.log('page', page, 'peanuts again???')
                 logger_1.logger.info(tag, "Page loaded?");
                 // Wait form search input selectors
                 yield Promise.all([
-                    page.waitForSelector("form#JOBS", { timeout: 10000,   waitUntil: 'domcontentloaded' }),
-                    page.waitForSelector(`button[form="JOBS"]`, { timeout: 10000,   waitUntil: 'domcontentloaded' })
+                    page.waitForSelector("form#JOBS", { timeout: 30000  }),
+                    page.waitForSelector(`button[form="JOBS"]`, { timeout: 30000 })
                 ]);
                 // Clear search inputs
                 yield page.evaluate(() => document.querySelector(`form#JOBS input[name="keywords"]`).value = "");
