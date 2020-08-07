@@ -7,32 +7,32 @@
 }
 
 .footer-nav-home{
-  background: transparent url('../images/footer-imgs/home-footer.svg') 0% 0% no-repeat padding-box;
-  background-size: cover;
+  background: transparent url('../images/footer-imgs/home-footer.png') 0% 0% no-repeat padding-box;
+  background-size: 100% 100%;
   background-color: #F4F6FA;
   display: flex;
   flex-direction: row;
 }
 
 .footer-nav-profile {
-  background: transparent url('../images/footer-imgs/profile-footer.svg') 0% 0% no-repeat padding-box;
-  background-size: cover;
+  background: transparent url('../images/footer-imgs/profile-footer.png') 0% 0% no-repeat padding-box;
+  background-size: 100% 100%;
   background-color: #F4F6FA;
   display: flex;
   flex-direction: row;
 }
 
 .footer-nav-aboutus {
-  background: transparent url('../images/footer-imgs/aboutus-footer.svg') 0% 0% no-repeat padding-box;
-  background-size: cover;
+  background: transparent url('../images/footer-imgs/aboutus-footer.png') 0% 0% no-repeat padding-box;
+  background-size: 100% 100%;
   background-color: #F4F6FA;
   display: flex;
   flex-direction: row;
 }
 
 .footer-nav-blank {
-  background: transparent url('../images/footer-imgs/blank-footer.svg') 0% 0% no-repeat padding-box;
-  background-size: cover;
+  background: transparent url('../images/footer-imgs/blank-footer.png') 0% 0% no-repeat padding-box;
+  background-size: 100% 100%;
   background-color: #F4F6FA;
   display: flex;
   flex-direction: row;
