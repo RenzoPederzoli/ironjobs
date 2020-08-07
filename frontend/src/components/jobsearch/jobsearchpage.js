@@ -53,14 +53,12 @@ const JobSearch = (props) => {
               onSearch={handleOnSearch}
               onSelect={handleOnSelect}
               placeholder={"Search"}
-              autoFocus
               showIcon={false}
             />
 
             <Autocomplete
               id='search-results-location-input'
-              placeholder="Location"
-              autoFocus
+              placeholder={"Location"}
               autoComplete='new-password'
               onPlaceSelected={(place) => {
                 changeLocation(place.address_components[0].short_name)

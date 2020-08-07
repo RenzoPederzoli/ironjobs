@@ -54,7 +54,6 @@ const JobSearch = (props) => {
             onSelect={handleOnSelect}
             placeholder="Search"
             showIcon={false}
-            autoFocus
             // onFocus="Search"
             // onBlur="Search"
           />
@@ -64,7 +63,6 @@ const JobSearch = (props) => {
             onPlaceSelected={(place) => {
               changeLocation(place.address_components[0].short_name);
             }}
-            autoFocus
             componentRestrictions={{ country: "us" }}
           />
         </div>
