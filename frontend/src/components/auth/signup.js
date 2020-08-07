@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { NotificationManager } from 'react-notifications';
 import "../../Styles/signup.css"
 import GoogleSignUp from '../auth/googlesingup'
+import FooterMobile from '../FooterMobile'
 
 const SignUp = (props) => {
   let [email, setEmail] = useState("");
