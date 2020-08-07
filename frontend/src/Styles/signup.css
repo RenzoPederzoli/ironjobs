@@ -25,7 +25,7 @@
 }
 
 .signup-text{
-    width:105px;
+    /* width:105px; */
     font-family: 'Shree Devanagari 714', Regular;
     font-size: 28px;
     color: #333232;
@@ -38,16 +38,16 @@
 
 .signup-text::after {
     background-color: #F06239; 
-    bottom: 0;
+    /* bottom: 0; */
     content: '';
     display: block;
     height: 1px;
-    left: 46%;
-    position: relative;
-    transform: translate(-50%,0);
-    width: 65%;
-    margin-left: auto;
-    margin-right: 55%;
+    /* left: 46%; */
+    /* position: relative; */
+    /* transform: translate(-50%,0); */
+    /* width: 65%; */
+    /* margin-left: auto;
+    margin-right: 55%; */
 }
 
 .to-login{
@@ -56,9 +56,9 @@
     text-decoration: none;
     color: black;
     /* margin-left: 41%; */
-    width:fit-content;
-    margin-left: auto;
-    margin-right: 41%;
+    /* width:fit-content; */
+    /* margin-left: auto; */
+    /* margin-right: 41%; */
 }
 
 .signup-form{

@@ -112,10 +112,13 @@ const SearchResults = (props) => {
   }, []);
 
 
-  console.log(props)
+  // console.log(props)
   const addJob = (job) => {
     if (!props.user.email) {
       NotificationManager.warning("Please sign in to add a listing!")
+    }
+    if (!job) {
+      NotificationManager.warning("Error: please try again")
     }
     else {
       actions.addJob(job)
@@ -279,6 +282,7 @@ const SearchResults = (props) => {
         }}>Sort by Salary</button>
 
       <Select
+      autoFocus={false}
       placeholder='Date Posted '
       options={dateFilterOptions}
       onChange={(value)=>setDateFilter(value[0].value)}

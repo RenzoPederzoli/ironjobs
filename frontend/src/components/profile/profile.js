@@ -9,7 +9,7 @@ import { NotificationManager } from 'react-notifications';
 
 const Profile = (props) => {
   if(!props.user.email && !props.user.loading){ 
-    props.history.push('/signup') 
+    props.history.push('/signup')
   }
   
   // console.log(props.user)
@@ -87,9 +87,9 @@ const Profile = (props) => {
   const printSuggestions = () => {
     // console.log(suggestions)
     let lastInd = props.user.addedJobs?.length - 1
-    let place = props.user.addedJobs[lastInd]?.location
+    // let place = props.user.addedJobs[lastInd]?.location
     return suggestions.map((item,i) => {
-      return <Link key={i} className="suggested-search" to={`/search-results/${place}/${item.word}`}>{item.word} <br/></Link>
+      return <Link key={i} className="suggested-search" to={`/search-results/Miami/${item.word}`}>{item.word} <br/></Link>
     })
   }
 
