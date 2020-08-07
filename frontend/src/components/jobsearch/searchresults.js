@@ -282,6 +282,7 @@ const SearchResults = (props) => {
         }}>Sort by Salary</button>
 
       <Select
+      searchable={false}
       autoFocus={false}
       placeholder='Date Posted '
       options={dateFilterOptions}
