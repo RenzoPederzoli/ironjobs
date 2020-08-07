@@ -27,10 +27,11 @@
 }
 
 #link-img {
-  font-size: 1.9em;
+  font-size: 1.6em;
   color:black;
 }
 
 .avatar {
-  width: 22vw;
+  width: 25%;
+  max-width: 80px;
 }
