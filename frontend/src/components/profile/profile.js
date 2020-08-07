@@ -6,6 +6,7 @@ import actions from '../../services/actions'
 import FooterMobile from "../FooterMobile";
 import "../../Styles/profile.css";
 import { NotificationManager } from 'react-notifications';
+import PropagateLoader from 'react-spinners/PropagateLoader'
 
 const Profile = (props) => {
   if(!props.user.email && !props.user.loading){ 
@@ -64,6 +65,13 @@ const Profile = (props) => {
       })
   }
 
+  const trimWord = (s) => {
+    if (s.length < 30)
+      return s
+    else
+      return s.slice(0,30)+"..."
+  }
+
   //apply some sort of basic filtering to this save jobs
   const printJobs = () => {
     return props.user.addedJobs?.map((job,i) => {
@@ -71,7 +79,7 @@ const Profile = (props) => {
       <div className="saved-job-wrapper" key={i}>
         <div className="saved-job-card">
           <span className="card-info">
-            <p className="job-title">{job.title}</p>
+            <p className="job-title">{trimWord(job.title)}</p>
             <p> {job.company}</p>
             <p> {job.location}</p>
             <p className="saved-description"> {job.summary || job.description}</p>
@@ -103,7 +111,7 @@ const Profile = (props) => {
   }
 
   if (!props.user.email) // put a spinner loader here!
-    return  <>Loading...</>
+    return  <PropagateLoader css={"margin: auto;"}/>
 
   return (
     <div className="profile-wrapper">
