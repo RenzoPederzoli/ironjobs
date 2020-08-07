@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-left: 9.5%;
+  margin-left: 8%;
   margin-bottom: 10vh;
 }
 
@@ -28,7 +28,8 @@
   padding: 7px;
   position: relative;
   width: 55%;
-  height: 12vh;
+  height: 13vh;
+  /* overflow: hidden; */
   border-radius: 12px;
   margin-left: 9.5%;
   margin-right: 3%;
