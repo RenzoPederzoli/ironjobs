@@ -113,12 +113,12 @@ const SearchResults = (props) => {
 
 
   console.log(props)
-  const addJob = (i) => {
+  const addJob = (job) => {
     if (!props.user.email) {
       NotificationManager.warning("Please sign in to add a listing!")
     }
     else {
-      actions.addJob(jobs[i])
+      actions.addJob(job)
         .then((res) => {
           if (res.data.user.addedJobs.length === props.user.addedJobs.length)
             NotificationManager.warning("You've already added that job!")
@@ -225,7 +225,7 @@ const SearchResults = (props) => {
           className="job-card" key={i}>
           
           <ul className='job-list'>
-            <li className='job-title'>{job.title} <button className='add-job-btn' onClick={() => {addJob(i)}}></button></li> 
+            <li className='job-title'>{job.title} <button className='add-job-btn' onClick={() => {addJob(job)}}></button></li> 
             <li className='job-company'>{job.company}</li> 
             <li className='job-location'>{job.location}</li> 
             <li className='job-description'>{job.summary ? job.summary?.slice(0,50)+'...' : job.description?.slice(0,50)+'...'}</li> 
