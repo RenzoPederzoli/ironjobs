@@ -7,7 +7,8 @@ import FooterMobile from "../FooterMobile.js";
 import "../../Styles/search-results.css"
 import Select from 'react-dropdown-select';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
+import ClimbingBoxLoader from 'react-spinners/ClimbingBoxLoader'
 
 const SearchResults = (props) => {
   let [jobs, setJobs] = useState([]);
@@ -297,7 +298,7 @@ const SearchResults = (props) => {
         </div>
       <br/>
       {loading ? 
-      ( <Fragment>Loading...</Fragment> )
+      ( <ClimbingBoxLoader css={"margin: auto;"}/> )
         :
         
       ( <div className="search-results"> 

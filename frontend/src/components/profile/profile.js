@@ -6,6 +6,7 @@ import actions from '../../services/actions'
 import FooterMobile from "../FooterMobile";
 import "../../Styles/profile.css";
 import { NotificationManager } from 'react-notifications';
+import PropagateLoader from 'react-spinners/PropagateLoader'
 
 const Profile = (props) => {
   if(!props.user.email && !props.user.loading){ 
@@ -110,7 +111,7 @@ const Profile = (props) => {
   }
 
   if (!props.user.email) // put a spinner loader here!
-    return  <>Loading...</>
+    return  <PropagateLoader css={"margin: auto;"}/>
 
   return (
     <div className="profile-wrapper">
