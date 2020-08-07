@@ -54,8 +54,8 @@ const JobSearch = (props) => {
             onSelect={handleOnSelect}
             placeholder="Search"
             showIcon={false}
-            // onFocus="Search"
-            // onBlur="Search"
+            onFocus={this.type='text'}
+            onBlur={this.type='text'}
           />
 
           <Autocomplete
