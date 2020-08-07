@@ -56,7 +56,6 @@ const JobSearch = (props) => {
               // placeholder={"Search"}
               showIcon={true}
             />
-
             <Autocomplete
               id='search-results-location-input'
               // placeholder={"Location"}
