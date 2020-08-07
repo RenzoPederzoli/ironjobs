@@ -48,23 +48,30 @@ const JobSearch = (props) => {
     <div>
       <form className="search-form" onSubmit={handleSubmit}>
         <div className="bars-wrapper">
-          <ReactSearchAutocomplete
+          <div>
+            <>Search</>
+            <ReactSearchAutocomplete
             items={jobsArr}
             onSearch={handleOnSearch}
             onSelect={handleOnSelect}
-            placeholder="Search"
+            // placeholder="Search"
             showIcon={false}
-            onFocus="(this.type='text')"
-            onBlur="(this.type='text')"
+            // onFocus="(this.type='text')"
+            // onBlur="(this.type='text')"
           />
-
-          <Autocomplete
-            placeholder="Location"
+          </div>
+          
+          <div>
+            <>Location</>
+            <Autocomplete
+            placeholder=""
             onPlaceSelected={(place) => {
               changeLocation(place.address_components[0].short_name);
             }}
             componentRestrictions={{ country: "us" }}
           />
+          </div>
+          
         </div>
 
         <input className="submit-btn" type="submit" value="" />

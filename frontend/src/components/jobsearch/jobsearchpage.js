@@ -47,18 +47,19 @@ const JobSearch = (props) => {
         <div>
       <div id='jobsearch-container'>
         <form className='search-results-form' onSubmit = {handleSubmit}>
+          
             <ReactSearchAutocomplete
               id='search-results-job-input'
               items={jobsArr}
               onSearch={handleOnSearch}
               onSelect={handleOnSelect}
-              placeholder={"Search"}
-              showIcon={false}
+              // placeholder={"Search"}
+              showIcon={true}
             />
 
             <Autocomplete
               id='search-results-location-input'
-              placeholder={"Location"}
+              // placeholder={"Location"}
               autoComplete='new-password'
               onPlaceSelected={(place) => {
                 changeLocation(place.address_components[0].short_name)

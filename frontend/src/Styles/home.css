@@ -38,9 +38,12 @@ body {
   display: flex;
   /* align-items: center; */
 }
-
+.bars-wrapper > div {
+  display: flex;
+  flex-direction: column;
+}
  /* selector for 'search wrapper' */
-#home-container > div:nth-child(3) > form > div > div {
+#home-container > div:nth-child(3) > form > div > div > div {
   border-radius: 12px;
   width: 50vw;
   height:48px;
@@ -60,7 +63,7 @@ body {
   margin-left: 4.5%;
 }
 /* to fix pop up */
-#home-container > div:nth-child(3) > form > div > div > div {
+#home-container > div:nth-child(3) > form > div > div > div > div {
   background-color: white;
   width: 100%;
   border-radius: 12.5px;
@@ -68,13 +71,13 @@ body {
 }
 
  /* selector for 'search input' */
- #home-container > div:nth-child(3) > form > div > div > div > input {
+ #home-container > div:nth-child(3) > form > div > div > div > div > input {
   /* margin-top: 10px; */
   /* min-width: fit-content; */
 }
 
 /*selector for first placeholder */
-#home-container > div:nth-child(3) > form > div > div > div > div > input::placeholder {
+#home-container > div:nth-child(3) > form > div > div > div > div > div > input::placeholder {
   /* font-size: 21px; */
   opacity: 70%;
 }
@@ -171,17 +174,17 @@ body {
   }
 
   /* to fix popup */
-  #home-container > div:nth-child(3) > form > div > div > div > div > * {
+  #home-container > div:nth-child(3) > form > div > div > div > div > div > * {
     background-color: white;
     border-radius: 12px;
   }
 
-  #home-container > div:nth-child(3) > form > div > div > div {
+  #home-container > div:nth-child(3) > form > div > div > div > div {
     min-height: 48px;
   }
 
   /* job search wrapper */
-  #home-container > div:nth-child(3) > form > div > div{
+  #home-container > div:nth-child(3) > form > div > div > div{
     width:21.7vw;
     min-height: 48px;
     /* margin-left:10.2%; */
@@ -199,12 +202,12 @@ body {
   }
 
   /* job search bar */
-  #home-container > div:nth-child(3) > form > div > div > div{
+  #home-container > div:nth-child(3) > form > div > div > div > div{
     /* height:6.6vh; */
   }
   
   /* job search placeholder */
-  #home-container > div:nth-child(3) > form > div > div > div > input{
+  #home-container > div:nth-child(3) > form > div > div > div > div > input{
     /* font-size:100%; */
   }
 
