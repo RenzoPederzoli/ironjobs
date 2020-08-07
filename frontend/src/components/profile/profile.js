@@ -9,7 +9,7 @@ import { NotificationManager } from 'react-notifications';
 
 const Profile = (props) => {
   if(!props.user.email && !props.user.loading){ 
-    props.history.push('/signup') 
+    props.history.push('/signup')
   }
   
   // console.log(props.user)
