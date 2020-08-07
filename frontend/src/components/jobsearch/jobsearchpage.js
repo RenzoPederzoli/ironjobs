@@ -47,16 +47,17 @@ const JobSearch = (props) => {
         <div>
       <div id='jobsearch-container'>
         <form className='search-results-form' onSubmit = {handleSubmit}>
+          <label>Searcg</label>
             <ReactSearchAutocomplete
               id='search-results-job-input'
               items={jobsArr}
               onSearch={handleOnSearch}
               onSelect={handleOnSelect}
-              placeholder={"Search"}
+              // placeholder={"Search"}
               autoFocus
               showIcon={false}
             />
-
+            <label>Location</label>
             <Autocomplete
               id='search-results-location-input'
               placeholder="Location"
