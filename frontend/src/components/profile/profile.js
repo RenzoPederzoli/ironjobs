@@ -10,7 +10,7 @@ import PropagateLoader from 'react-spinners/PropagateLoader'
 
 const Profile = (props) => {
   if(!props.user.email && !props.user.loading){ 
-    props.history.push('/signup')
+    props.history.push('/signup') 
   }
   
   // console.log(props.user)
@@ -136,7 +136,6 @@ const Profile = (props) => {
           </div>
         </div>
       </div>
-      
       <FooterMobile {...props}/>
     </div>
   );
