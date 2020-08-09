@@ -109,6 +109,9 @@
     align-self: center;
     font-family: 'Shree Devanagari 714', Regular
 }
+#root > div > div.signup-wrapper > div > div > form > input[type=submit]{
+    background-color: #f06239;
+}
 .signin-btn{
     /* align-self: center;
     width:174px;
@@ -130,6 +133,11 @@
     margin-top:3%;
     font-family: 'Shree Devanagari 714', Regular
 }
+
+#root > div > div.signup-wrapper > div > div > form > input[type=submit]{
+    background-color: #f06239;
+}
+
 .or-sign-in-with{
     margin-top: 8.2%;
     margin-bottom: 8.2%;
