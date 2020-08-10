@@ -49,7 +49,7 @@ const JobSearch = (props) => {
       <form className="search-form" onSubmit={handleSubmit}>
         <div className="bars-wrapper">
           <div>
-            <>Search</>
+            <>Job Title:</>
             <ReactSearchAutocomplete
             items={jobsArr}
             onSearch={handleOnSearch}
@@ -62,7 +62,7 @@ const JobSearch = (props) => {
           </div>
           
           <div>
-            <>Location</>
+            <>Location:</>
             <Autocomplete
             placeholder=""
             onPlaceSelected={(place) => {

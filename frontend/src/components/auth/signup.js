@@ -1,16 +1,24 @@
 import React, { Fragment, useState } from "react";
 import actions from "../../services/actions";
-import { Link } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import { NotificationManager } from 'react-notifications';
 import "../../Styles/signup.css"
 import GoogleSignUp from '../auth/googlesingup'
-import FooterMobile from '../FooterMobile'
 
 const SignUp = (props) => {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let [firstName, setFirstName] = useState("");
   let [lastName, setLastName] = useState("");
+
+  
+    window.onpopstate = (e =>{
+      if(e.currentTarget.location.pathname==='/signup'){
+        if(!props.user.email && !props.user.loading){
+          props.history.go(-2)
+    }
+  }
+  })
 
   const handleSubmit = (e) => {
     e.preventDefault();
