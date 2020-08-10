@@ -78,6 +78,7 @@ const SearchResults = (props) => {
           setOriginalJobsArray(response.data)
           setLoading(false)
           setMoreResultsLoading(true)
+          setClickedJob(response.data[0])
           if (response.data.length === 0) {
             NotificationManager.warning("No Jobs found")
             props.history.push('/search')
