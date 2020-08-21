@@ -12,8 +12,6 @@ const Profile = (props) => {
   if(!props.user.email && !props.user.loading){ 
     props.history.push('/signup') 
   }
-  
-  // console.log(props.user)
 
   // suggestions very shaky, i.e. "full"
   const [suggestions,setSuggestions] = useState(defaultSuggestions)
@@ -93,7 +91,6 @@ const Profile = (props) => {
   }
 
   const printSuggestions = () => {
-    // console.log(suggestions)
     let lastInd = props.user.addedJobs?.length - 1
     // let place = props.user.addedJobs[lastInd]?.location
     return suggestions.map((item,i) => {

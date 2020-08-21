@@ -94,13 +94,10 @@ const SearchResults = (props) => {
           props.match.params.searchTerm
         )
         .then((response) => {
-          console.log(response)
           let today = new Date()
           response.data.map(job=>formatDate(job,today)) //format linkedin jod-posting dates to match indeed's
           let temp = [...aid]
-          console.log(temp)
           temp = temp.concat(response.data)
-          console.log(temp)
           setJobs(temp)
           setOriginalJobsArray(temp)
           setMoreResultsLoading(false)
@@ -114,7 +111,6 @@ const SearchResults = (props) => {
   }, []);
 
 
-  // console.log(props)
   const addJob = (job) => {
     if (!props.user.email) {
       NotificationManager.warning("Please sign in to add a listing!")

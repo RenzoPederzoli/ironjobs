@@ -5,7 +5,6 @@ import "../Styles/mobilefooter.css"
 const FooterMobile = (props) => {
 
   const determineFooter = () => {
-    console.log(props.location.pathname)
     switch (props.location.pathname) {
       case ("/") :
         return (<div className="footer-nav-home">

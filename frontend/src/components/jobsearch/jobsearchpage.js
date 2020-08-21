@@ -39,7 +39,6 @@ const JobSearch = (props) => {
 
     const handleOnSelect = item => {
       setSearchTerm(item.name)
-      console.log(item);
     }
 
     return (
